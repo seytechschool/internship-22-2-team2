@@ -1,4 +1,4 @@
-import { useTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, useTheme } from '@material-ui/core/styles';
 import { selectContrastMainTheme } from 'app/store/fuse/settingsSlice';
 import { useSelector } from 'react-redux';
 

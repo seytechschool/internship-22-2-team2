@@ -10,8 +10,8 @@ import clsx from 'clsx';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from './store/contactsSlice';
 import { sendMessage } from './store/chatSlice';
+import { selectContacts } from './store/contactsSlice';
 
 const useStyles = makeStyles(theme => ({
   messageRow: {
@@ -218,7 +218,7 @@ function Chat(props) {
                 shrink: false,
                 className: classes.bootstrapFormLabel
               }}
-              onChange={onInputChange}
+              onChange={e => onInputChange(e)}
               value={messageText}
             />
             <IconButton className="absolute ltr:right-0 rtl:left-0 top-0" type="submit">

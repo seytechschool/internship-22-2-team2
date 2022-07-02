@@ -1,7 +1,5 @@
-import { forwardRef, useRef, useEffect } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import Table from '@material-ui/core/Table';
-import PropTypes from 'prop-types';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -9,8 +7,10 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
+import { forwardRef, useEffect, useRef } from 'react';
+import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import ContactsTablePaginationActions from './ContactsTablePaginationActions';
 
 const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {

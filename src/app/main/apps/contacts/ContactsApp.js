@@ -1,9 +1,9 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
+import { useDeepCompareEffect } from '@fuse/hooks';
 import withReducer from 'app/store/withReducer';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { useDeepCompareEffect } from '@fuse/hooks';
 // import ContactDialog from './ContactDialog';
 import ContactsHeader from './ContactsHeader';
 import ContactsList from './ContactsList';

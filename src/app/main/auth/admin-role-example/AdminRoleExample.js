@@ -4,8 +4,8 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch } from 'react-redux';
 import { logoutUser } from 'app/auth/store/userSlice';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   layoutRoot: {}

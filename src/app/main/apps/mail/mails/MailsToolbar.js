@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFolders } from '../store/foldersSlice';
 import { selectLabels } from '../store/labelsSlice';
 import {
-  toggleLabelOnSelectedMails,
-  setFolderOnSelectedMails,
-  selectMailsByParameter,
   deselectAllMails,
   selectAllMails,
-  selectMails
+  selectMails,
+  selectMailsByParameter,
+  setFolderOnSelectedMails,
+  toggleLabelOnSelectedMails
 } from '../store/mailsSlice';
 
 function MailToolbar(props) {
@@ -50,7 +50,7 @@ function MailToolbar(props) {
   return (
     <div className="flex flex-1 items-center sm:px-8">
       <Checkbox
-        onChange={handleCheckChange}
+        onChange={e => handleCheckChange(e)}
         checked={selectedMailIds.length === Object.keys(mails).length && selectedMailIds.length > 0}
         indeterminate={selectedMailIds.length !== Object.keys(mails).length && selectedMailIds.length > 0}
       />

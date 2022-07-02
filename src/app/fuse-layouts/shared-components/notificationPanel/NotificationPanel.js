@@ -1,20 +1,20 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { makeStyles } from '@material-ui/core/styles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import Typography from '@material-ui/core/Typography';
 import withReducer from 'app/store/withReducer';
+import clsx from 'clsx';
 import { useSnackbar } from 'notistack';
-import { useEffect, memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import clsx from 'clsx';
 import NotificationModel from './model/NotificationModel';
 import NotificationCard from './NotificationCard';
 import NotificationTemplate from './NotificationTemplate';
-import { getNotifications, addNotification, dismissAll, dismissItem, selectNotifications } from './store/dataSlice';
 import reducer from './store';
+import { addNotification, dismissAll, dismissItem, getNotifications, selectNotifications } from './store/dataSlice';
 import { closeNotificationPanel, toggleNotificationPanel } from './store/stateSlice';
 
 const useStyles = makeStyles(theme => ({
@@ -142,7 +142,7 @@ function NotificationPanel(props) {
       onClose={ev => dispatch(toggleNotificationPanel())}
       disableSwipeToOpen
     >
-      <IconButton className="m-4 absolute top-0 right-0 z-999" onClick={handleClose}>
+      <IconButton className="m-4 absolute top-0 right-0 z-999" onClick={() => handleClose()}>
         <Icon color="action">close</Icon>
       </IconButton>
       {notifications.length > 0 ? (
@@ -150,12 +150,16 @@ function NotificationPanel(props) {
           <div className="flex flex-col">
             <div className="flex justify-between items-end pt-136 mb-36">
               <Typography className="text-28 font-semibold leading-none">Notifications</Typography>
-              <Typography className="text-12 underline cursor-pointer" color="secondary" onClick={handleDismissAll}>
+              <Typography
+                className="text-12 underline cursor-pointer"
+                color="secondary"
+                onClick={() => handleDismissAll()}
+              >
                 dismiss all
               </Typography>
             </div>
             {notifications.map(item => (
-              <NotificationCard key={item.id} className="mb-16" item={item} onClose={handleDismiss} />
+              <NotificationCard key={item.id} className="mb-16" item={item} onClose={() => handleDismiss(item.id)} />
             ))}
           </div>
         </FuseScrollbars>

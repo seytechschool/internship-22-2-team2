@@ -1,15 +1,11 @@
-import { motion } from 'framer-motion';
 import FuseUtils from '@fuse/utils';
-import Avatar from '@material-ui/core/Avatar';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { useMemo, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
 // import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-import { openEditContactDialog, selectContacts } from './store/contactsSlice';
+import { selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles.map(vehicle => {

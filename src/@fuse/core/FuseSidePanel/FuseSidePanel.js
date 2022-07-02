@@ -193,7 +193,7 @@ function FuseSidePanel(props) {
 
           <div className={classes.buttonWrapper}>
             <Tooltip title="Toggle side panel" placement={props.position === 'left' ? 'right' : 'right'}>
-              <IconButton className={classes.button} onClick={toggleOpened} disableRipple>
+              <IconButton className={classes.button} onClick={() => toggleOpened()} disableRipple>
                 <Icon className={classes.buttonIcon}>keyboard_arrow_left</Icon>
               </IconButton>
             </Tooltip>
@@ -208,14 +208,18 @@ function FuseSidePanel(props) {
           anchor={props.position}
           open={mobileOpen}
           onOpen={ev => {}}
-          onClose={toggleMobileDrawer}
+          onClose={() => toggleMobileDrawer()}
           disableSwipeToOpen
         >
           <FuseScrollbars className={clsx('content', classes.content)}>{props.children}</FuseScrollbars>
         </SwipeableDrawer>
 
         <Tooltip title="Hide side panel" placement={props.position === 'left' ? 'right' : 'right'}>
-          <Fab className={clsx(classes.mobileButton, props.position)} onClick={toggleMobileDrawer} disableRipple>
+          <Fab
+            className={clsx(classes.mobileButton, props.position)}
+            onClick={() => toggleMobileDrawer()}
+            disableRipple
+          >
             <Icon className={classes.buttonIcon} color="action">
               keyboard_arrow_right
             </Icon>

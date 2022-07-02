@@ -1,7 +1,7 @@
+import _ from '@lodash';
 import Paper from '@material-ui/core/Paper';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import _ from '@lodash';
 import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 

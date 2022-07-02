@@ -1,8 +1,8 @@
-import { createSelector, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import navigationConfig from 'app/fuse-configs/navigationConfig';
 import FuseUtils from '@fuse/utils';
-import i18next from 'i18next';
 import _ from '@lodash';
+import { createEntityAdapter, createSelector, createSlice } from '@reduxjs/toolkit';
+import navigationConfig from 'app/fuse-configs/navigationConfig';
+// import i18next from 'i18next';
 
 const navigationAdapter = createEntityAdapter();
 const emptyInitialState = navigationAdapter.getInitialState();
@@ -58,7 +58,7 @@ export const selectNavigation = createSelector(
       // loop through every object in the array
       return data.map(item => {
         if (item.translate && item.title) {
-          item.title = i18next.t(`navigation:${item.translate}`);
+          // item.title = i18next.t(`navigation:${item.translate}`);
         }
 
         // see if there is a children node

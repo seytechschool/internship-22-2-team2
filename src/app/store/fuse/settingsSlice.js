@@ -1,16 +1,16 @@
+import {
+  defaultSettings,
+  defaultThemeOptions,
+  defaultThemes,
+  extendThemeWithMixins,
+  getParsedQuerySettings,
+  mainThemeVariations,
+  mustHaveThemeOptions
+} from '@fuse/default-settings';
+import _ from '@lodash';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { getContrastRatio } from '@material-ui/core/styles/colorManipulator';
-import { createSlice, createSelector } from '@reduxjs/toolkit';
-import _ from '@lodash';
-import {
-  defaultThemes,
-  mainThemeVariations,
-  extendThemeWithMixins,
-  mustHaveThemeOptions,
-  defaultThemeOptions,
-  getParsedQuerySettings,
-  defaultSettings
-} from '@fuse/default-settings';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 import FuseSettingsConfig from 'app/fuse-configs/settingsConfig';
 import FuseThemesConfig from 'app/fuse-configs/themesConfig';
 import FuseLayoutConfigs from 'app/fuse-layouts/FuseLayoutConfigs';

@@ -68,7 +68,12 @@ function Register() {
               </div>
             </motion.div>
 
-            <Tabs value={selectedTab} onChange={handleTabChange} variant="fullWidth" className="w-full mb-32">
+            <Tabs
+              value={selectedTab}
+              onChange={e => handleTabChange(e, selectedTab)}
+              variant="fullWidth"
+              className="w-full mb-32"
+            >
               <Tab
                 icon={<img className="h-40 p-4 bg-black rounded-12" src="assets/images/logos/jwt.svg" alt="firebase" />}
                 className="min-w-0"

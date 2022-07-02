@@ -115,7 +115,11 @@ function FuseAnimateDoc() {
         <div className="flex w-full sm:w-1/2 p-24 justify-center">
           <FormControl className="w-256">
             <InputLabel htmlFor="effect-helper">Select Effect</InputLabel>
-            <Select value={selectedEffect} onChange={handleChange} input={<Input name="effect" id="effect-helper" />}>
+            <Select
+              value={selectedEffect}
+              onChange={e => handleChange(e)}
+              input={<Input name="effect" id="effect-helper" />}
+            >
               {EFFECTS.map(effect => (
                 <MenuItem key={effect} value={effect}>
                   transition.{effect}In

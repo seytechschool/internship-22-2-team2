@@ -2,7 +2,6 @@ import FuseDialog from '@fuse/core/FuseDialog';
 import FuseSuspense from '@fuse/core/FuseSuspense';
 import { makeStyles } from '@material-ui/core/styles';
 import AppContext from 'app/AppContext';
-import SettingsPanel from 'app/fuse-layouts/shared-components/SettingsPanel';
 import clsx from 'clsx';
 import { memo, useContext } from 'react';
 import { useSelector } from 'react-redux';

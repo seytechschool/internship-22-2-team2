@@ -35,7 +35,7 @@ function FuseExample(props) {
             flexContainer: 'justify-end'
           }}
           value={currentTab}
-          onChange={handleChange}
+          onChange={e => handleChange(e, props.currentTabIndex)}
         >
           {Component && <Tab classes={{ root: 'min-w-64' }} icon={<Icon>remove_red_eye</Icon>} />}
           {raw && <Tab classes={{ root: 'min-w-64' }} icon={<Icon>code</Icon>} />}

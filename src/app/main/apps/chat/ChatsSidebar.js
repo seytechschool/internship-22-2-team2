@@ -118,7 +118,12 @@ function ChatsSidebar(props) {
                 <StatusIcon status={user.status} />
               </div>
 
-              <Menu id="status-switch" anchorEl={statusMenuEl} open={Boolean(statusMenuEl)} onClose={handleStatusClose}>
+              <Menu
+                id="status-switch"
+                anchorEl={statusMenuEl}
+                open={Boolean(statusMenuEl)}
+                onClose={e => handleStatusClose(e)}
+              >
                 {statusArr.map(status => (
                   <MenuItem onClick={ev => handleStatusSelect(ev, status.value)} key={status.value}>
                     <ListItemIcon className="min-w-40">
@@ -135,13 +140,18 @@ function ChatsSidebar(props) {
             <IconButton
               aria-owns={moreMenuEl ? 'chats-more-menu' : null}
               aria-haspopup="true"
-              onClick={handleMoreMenuClick}
+              onClick={e => handleMoreMenuClick(e)}
             >
               <Icon>more_vert</Icon>
             </IconButton>
-            <Menu id="chats-more-menu" anchorEl={moreMenuEl} open={Boolean(moreMenuEl)} onClose={handleMoreMenuClose}>
-              <MenuItem onClick={handleMoreMenuClose}>Profile</MenuItem>
-              <MenuItem onClick={handleMoreMenuClose}>Logout</MenuItem>
+            <Menu
+              id="chats-more-menu"
+              anchorEl={moreMenuEl}
+              open={Boolean(moreMenuEl)}
+              onClose={e => handleMoreMenuClose(e)}
+            >
+              <MenuItem onClick={e => handleMoreMenuClose(e)}>Profile</MenuItem>
+              <MenuItem onClick={e => handleMoreMenuClose(e)}>Logout</MenuItem>
             </Menu>
           </div>
         </Toolbar>
@@ -160,7 +170,7 @@ function ChatsSidebar(props) {
                   inputProps={{
                     'aria-label': 'Search'
                   }}
-                  onChange={handleSearchText}
+                  onChange={e => handleSearchText(e)}
                 />
               </Paper>
             </Toolbar>

@@ -1,10 +1,10 @@
-import { useState, forwardRef } from 'react';
-import { EditorState, convertToRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import draftToHtml from 'draftjs-to-html';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
+import { convertToRaw, EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import { forwardRef, useState } from 'react';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const useStyles = makeStyles({
   root: {
@@ -41,7 +41,7 @@ const WYSIWYGEditor = forwardRef((props, ref) => {
         toolbarClassName={classes.toolbar}
         wrapperClassName={classes.wrapper}
         editorClassName={classes.editor}
-        onEditorStateChange={onEditorStateChange}
+        onEditorStateChange={() => onEditorStateChange(editorState)}
       />
     </div>
   );

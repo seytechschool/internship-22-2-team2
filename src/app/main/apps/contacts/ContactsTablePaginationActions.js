@@ -1,9 +1,9 @@
-import FirstPageIcon from '@material-ui/icons/FirstPage';
 import IconButton from '@material-ui/core/IconButton';
+import { useTheme } from '@material-ui/core/styles';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import { useTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const ContactsTablePaginationActions = props => {

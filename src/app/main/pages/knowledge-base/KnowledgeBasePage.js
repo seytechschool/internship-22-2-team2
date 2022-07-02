@@ -139,7 +139,7 @@ function KnowledgeBasePage() {
         return (
           <Dialog
             open={dialog.open}
-            onClose={handleCloseDialog}
+            onClose={() => handleCloseDialog()}
             aria-labelledby="knowledge-base-document"
             TransitionComponent={Transition}
           >
@@ -153,7 +153,7 @@ function KnowledgeBasePage() {
               />
             </DialogContent>
             <DialogActions className="p-16">
-              <Button onClick={handleCloseDialog} color="primary" variant="outlined">
+              <Button onClick={() => handleCloseDialog()} color="primary" variant="outlined">
                 CLOSE
               </Button>
             </DialogActions>

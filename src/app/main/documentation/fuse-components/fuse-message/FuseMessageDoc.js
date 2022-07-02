@@ -1,8 +1,8 @@
 import FuseHighlight from '@fuse/core/FuseHighlight';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch } from 'react-redux';
 import { showMessage } from 'app/store/fuse/messageSlice';
+import { useDispatch } from 'react-redux';
 
 function FuseMessageDoc(props) {
   const dispatch = useDispatch();

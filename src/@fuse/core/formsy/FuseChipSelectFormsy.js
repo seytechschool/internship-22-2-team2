@@ -52,7 +52,7 @@ function FuseChipSelectFormsy(props) {
       <FuseChipSelect
         {...importedProps}
         value={value}
-        onChange={changeValue}
+        onChange={e => changeValue(e)}
         error={Boolean((!props.isPristine && props.showRequired) || errorMessage)}
       />
       {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}

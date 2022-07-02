@@ -1,9 +1,9 @@
+import _ from '@lodash';
 import Divider from '@material-ui/core/Divider';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import _ from '@lodash';
 import { memo, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
@@ -12,9 +12,9 @@ function Widget9(props) {
   const widget = _.merge({}, props.widget);
   const theme = useTheme();
 
-  function handleChangeRange(ev) {
+  const handleChangeRange = ev => {
     setCurrentRange(ev.target.value);
-  }
+  };
 
   return (
     <Paper className="w-full rounded-20 shadow">
@@ -24,7 +24,7 @@ function Widget9(props) {
         <Select
           native
           value={currentRange}
-          onChange={handleChangeRange}
+          onChange={e => handleChangeRange(e)}
           inputProps={{
             name: 'currentRange'
           }}

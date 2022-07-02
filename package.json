@@ -107,7 +107,7 @@
     "@babel/plugin-transform-react-jsx": "7.12.17",
     "@babel/preset-env": "7.12.17",
     "@craco/craco": "^6.1.2",
-    "@tailwindcss/postcss7-compat": "2.1.2",
+    "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat@2.1.2",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "@yarnpkg/pnpify": "2.4.0",

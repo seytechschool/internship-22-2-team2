@@ -1,10 +1,6 @@
-import { authRoles } from 'app/auth';
-import i18next from 'i18next';
-import DocumentationNavigation from '../main/documentation/DocumentationNavigation';
+// import i18next from 'i18next';
 
-import en from './navigation-i18n/en';
-
-i18next.addResourceBundle('en', 'navigation', en);
+// i18next.addResourceBundle('en', 'navigation', en);
 
 const navigationConfig = [
   {

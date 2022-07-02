@@ -1,7 +1,6 @@
 import List from '@material-ui/core/List';
-import { useTheme, makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import React from 'react';
 import FuseNavVerticalTab from './types/FuseNavVerticalTab';
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +48,7 @@ function FuseNavVerticalLayout2(props) {
           type={`vertical-${_item.type}`}
           item={_item}
           nestedLevel={0}
-          onItemClick={handleItemClick}
+          onItemClick={() => handleItemClick(_item)}
           firstLevel={firstLevel}
           dense={dense}
           selectedId={selectedId}

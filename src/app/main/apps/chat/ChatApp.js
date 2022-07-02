@@ -20,15 +20,15 @@ import ChatsSidebar from './ChatsSidebar';
 import ContactSidebar from './ContactSidebar';
 import StatusIcon from './StatusIcon';
 import reducer from './store';
-import { getUserData } from './store/userSlice';
-import { selectContactById, getContacts } from './store/contactsSlice';
+import { getContacts, selectContactById } from './store/contactsSlice';
 import {
   closeContactSidebar,
-  openContactSidebar,
-  openMobileChatsSidebar,
+  closeMobileChatsSidebar,
   closeUserSidebar,
-  closeMobileChatsSidebar
+  openContactSidebar,
+  openMobileChatsSidebar
 } from './store/sidebarsSlice';
+import { getUserData } from './store/userSlice';
 
 import UserSidebar from './UserSidebar';
 

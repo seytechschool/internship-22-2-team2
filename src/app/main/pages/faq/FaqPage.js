@@ -105,7 +105,7 @@ function FaqPage() {
               'aria-label': 'Search'
             }}
             value={searchText}
-            onChange={handleSearch}
+            onChange={e => handleSearch(e)}
           />
         </Paper>
       </div>

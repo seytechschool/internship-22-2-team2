@@ -1,9 +1,9 @@
 import { useTimeout } from '@fuse/hooks';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import clsx from 'clsx';
 
 function FuseLoading(props) {
   const [showLoading, setShowLoading] = useState(!props.delay);

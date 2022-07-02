@@ -8,10 +8,10 @@ import ChatPanelToggleButton from 'app/fuse-layouts/shared-components/chatPanel/
 import NavbarToggleButton from 'app/fuse-layouts/shared-components/NavbarToggleButton';
 import QuickPanelToggleButton from 'app/fuse-layouts/shared-components/quickPanel/QuickPanelToggleButton';
 import UserMenu from 'app/fuse-layouts/shared-components/UserMenu';
+import { selectToolbarTheme } from 'app/store/fuse/settingsSlice';
 import clsx from 'clsx';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { selectToolbarTheme } from 'app/store/fuse/settingsSlice';
 import AdjustFontSize from '../../shared-components/AdjustFontSize';
 import FullScreenToggle from '../../shared-components/FullScreenToggle';
 import NotificationPanelToggleButton from '../../shared-components/notificationPanel/NotificationPanelToggleButton';

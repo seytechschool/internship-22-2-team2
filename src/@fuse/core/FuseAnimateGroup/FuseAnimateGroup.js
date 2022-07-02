@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { memo } from 'react';
-import { VelocityTransitionGroup } from 'velocity-react';
 import 'velocity-animate/velocity.ui';
+import { VelocityTransitionGroup } from 'velocity-react';
 
 const enterAnimationDefaults = {
   animation: 'transition.fadeIn',

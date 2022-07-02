@@ -1,10 +1,9 @@
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import clsx from 'clsx';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { navbarCloseMobile } from 'app/store/fuse/navbarSlice';
+import clsx from 'clsx';
+import { useDispatch, useSelector } from 'react-redux';
 import NavbarStyleContent from './NavbarStyleContent';
 
 const navbarWidth = 280;

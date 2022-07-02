@@ -1,19 +1,14 @@
 import FusePageSimple from '@fuse/core/FusePageSimple';
-import Divider from '@material-ui/core/Divider';
-import { makeStyles } from '@material-ui/core/styles';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import withReducer from 'app/store/withReducer';
 import _ from '@lodash';
+import { makeStyles } from '@material-ui/core/styles';
+import withReducer from 'app/store/withReducer';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProjectDashboardAppHeader from './ProjectDashboardAppHeader';
 import ProjectDashboardAppSidebar from './ProjectDashboardAppSidebar';
 import reducer from './store';
 import { getWidgets, selectWidgets } from './store/widgetsSlice';
-import BudgetSummaryTab from './tabs/BudgetSummaryTab';
 import HomeTab from './tabs/HomeTab';
-import TeamMembersTab from './tabs/TeamMembersTab';
 
 const useStyles = makeStyles(theme => ({
   content: {

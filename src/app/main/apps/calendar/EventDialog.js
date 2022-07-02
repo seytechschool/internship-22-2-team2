@@ -1,7 +1,6 @@
-import { yupResolver } from '@hookform/resolvers/yup';
-import formatISO from 'date-fns/formatISO';
-import { Controller, useForm } from 'react-hook-form';
 import FuseUtils from '@fuse/utils/FuseUtils';
+import { yupResolver } from '@hookform/resolvers/yup';
+import _ from '@lodash';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,11 +14,12 @@ import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { DateTimePicker } from '@material-ui/pickers';
+import formatISO from 'date-fns/formatISO';
 import { useCallback, useEffect } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
-import _ from '@lodash';
-import { removeEvent, updateEvent, addEvent, closeNewEventDialog, closeEditEventDialog } from './store/eventsSlice';
+import { addEvent, closeEditEventDialog, closeNewEventDialog, removeEvent, updateEvent } from './store/eventsSlice';
 
 const defaultValues = {
   id: FuseUtils.generateGUID(),
@@ -113,7 +113,7 @@ function EventDialog(props) {
   }
 
   return (
-    <Dialog {...eventDialog.props} onClose={closeComposeDialog} fullWidth maxWidth="xs" component="form">
+    <Dialog {...eventDialog.props} onClose={() => closeComposeDialog()} fullWidth maxWidth="xs" component="form">
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
           <Typography variant="subtitle1" color="inherit">
@@ -228,7 +228,7 @@ function EventDialog(props) {
             <Button variant="contained" color="primary" type="submit" disabled={_.isEmpty(dirtyFields) || !isValid}>
               Save
             </Button>
-            <IconButton onClick={handleRemove}>
+            <IconButton onClick={() => handleRemove()}>
               <Icon>delete</Icon>
             </IconButton>
           </DialogActions>

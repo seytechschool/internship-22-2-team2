@@ -1,12 +1,12 @@
 import { lazy } from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthenticationDocRoutes from './authentication/AuthenticationDocRoutes';
+import ConfigurationDocRoutes from './configuration/ConfigurationDocRoutes';
 import FuseComponentsRoutes from './fuse-components/FuseComponentsRoutes';
 import GettingStartedDocRoutes from './getting-started/GettingStartedDocRoutes';
 import MaterialUIComponentsRoutes from './material-ui-components/MaterialUIComponentsRoutes';
 import ThemingDocRoutes from './theming/ThemingDocRoutes';
 import ThirdPartyComponentsRoutes from './third-party-components/ThirdPartyComponentsRoutes';
-import ConfigurationDocRoutes from './configuration/ConfigurationDocRoutes';
 
 const DocumentationConfig = {
   routes: [

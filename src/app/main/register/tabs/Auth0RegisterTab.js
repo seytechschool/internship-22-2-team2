@@ -1,9 +1,9 @@
 import Button from '@material-ui/core/Button';
+import { setUserDataAuth0 } from 'app/auth/store/userSlice';
 import auth0Service from 'app/services/auth0Service';
+import { showMessage } from 'app/store/fuse/messageSlice';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUserDataAuth0 } from 'app/auth/store/userSlice';
-import { showMessage } from 'app/store/fuse/messageSlice';
 
 function Auth0RegisterTab(props) {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function Auth0RegisterTab(props) {
 
   return (
     <div className="w-full">
-      <Button className="w-full my-48" color="primary" variant="contained" onClick={showDialog}>
+      <Button className="w-full my-48" color="primary" variant="contained" onClick={() => showDialog()}>
         Log In/Sign Up with Auth0
       </Button>
     </div>

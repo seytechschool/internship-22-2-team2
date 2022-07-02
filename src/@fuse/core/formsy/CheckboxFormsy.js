@@ -36,7 +36,7 @@ function CheckboxFormsy(props) {
   return (
     <FormControl error={Boolean((!props.isPristine && props.showRequired) || errorMessage)} className={props.className}>
       <FormControlLabel
-        control={<Checkbox {...importedProps} type="checkbox" checked={value} onChange={changeValue} />}
+        control={<Checkbox {...importedProps} type="checkbox" checked={value} onChange={e => changeValue(e)} />}
         label={props.label}
       />
       {Boolean(errorMessage) && <FormHelperText>{errorMessage}</FormHelperText>}

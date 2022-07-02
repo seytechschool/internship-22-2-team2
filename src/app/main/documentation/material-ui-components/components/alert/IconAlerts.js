@@ -1,8 +1,7 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Alert from '@material-ui/lab/Alert';
 import CheckIcon from '@material-ui/icons/Check';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -1,14 +1,14 @@
 /* eslint import/no-extraneous-dependencies: off*/
-import { createSlice } from '@reduxjs/toolkit';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import history from '@history';
 import _ from '@lodash';
-import { setInitialSettings, setDefaultSettings } from 'app/store/fuse/settingsSlice';
-import { showMessage } from 'app/store/fuse/messageSlice';
+import { createSlice } from '@reduxjs/toolkit';
 import auth0Service from 'app/services/auth0Service';
 import firebaseService from 'app/services/firebaseService';
 import jwtService from 'app/services/jwtService';
+import { showMessage } from 'app/store/fuse/messageSlice';
+import { setDefaultSettings, setInitialSettings } from 'app/store/fuse/settingsSlice';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 export const setUserDataAuth0 = tokenData => async dispatch => {
   const user = {

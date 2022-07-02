@@ -82,7 +82,7 @@ function IconsUI() {
                       disableUnderline
                       fullWidth
                       value={searchText}
-                      onChange={handleSearch}
+                      onChange={e => handleSearch(e)}
                       inputProps={{
                         'aria-label': 'Search'
                       }}

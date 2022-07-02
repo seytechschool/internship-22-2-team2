@@ -24,7 +24,7 @@ function Widget7(props) {
         <Select
           native
           value={currentRange}
-          onChange={handleChangeRange}
+          onChange={e => handleChangeRange(e)}
           inputProps={{
             name: 'currentRange'
           }}

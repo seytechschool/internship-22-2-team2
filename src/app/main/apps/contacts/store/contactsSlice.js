@@ -1,6 +1,5 @@
-import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
+import { createAsyncThunk, createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { getUserData } from './userSlice';
 
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',

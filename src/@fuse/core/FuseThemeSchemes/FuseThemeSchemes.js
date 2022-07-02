@@ -1,10 +1,10 @@
-import Typography from '@material-ui/core/Typography';
-import { memo } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 import { updateUserSettings } from 'app/auth/store/userSlice';
 import { setDefaultSettings } from 'app/store/fuse/settingsSlice';
+import clsx from 'clsx';
+import { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -107,7 +107,7 @@ function FuseThemeSchemes(props) {
           .filter(([key, val]) => !(key === 'mainThemeDark' || key === 'mainThemeLight'))
           .map(([key, val]) => (
             <div key={key} className="w-1/2 p-8">
-              <SchemePreview id={key} theme={val} onSelect={handleSchemeSelect} />
+              <SchemePreview id={key} theme={val} onSelect={() => handleSchemeSelect(key)} />
             </div>
           ))}
       </div>

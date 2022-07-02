@@ -1,7 +1,6 @@
 import List from '@material-ui/core/List';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import FuseNavItem from '../FuseNavItem';
 
@@ -56,7 +55,7 @@ function FuseNavVerticalLayout1(props) {
           type={`vertical-${_item.type}`}
           item={_item}
           nestedLevel={0}
-          onItemClick={handleItemClick}
+          onItemClick={() => handleItemClick(_item)}
         />
       ))}
     </List>

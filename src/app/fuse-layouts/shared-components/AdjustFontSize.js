@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import Slider from '@material-ui/core/Slider';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Menu from '@material-ui/core/Menu';
+import Slider from '@material-ui/core/Slider';
+import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
+import { useState } from 'react';
 
 const marks = [
   {
@@ -99,7 +99,7 @@ function AdjustFontSize(props) {
             max={1.3}
             valueLabelDisplay="off"
             onChange={(ev, value) => setFontSize(value)}
-            onChangeCommitted={changeHtmlFontSize}
+            onChangeCommitted={() => changeHtmlFontSize()}
           />
         </div>
       </Menu>

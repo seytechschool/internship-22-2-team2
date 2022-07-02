@@ -48,7 +48,7 @@ function TextFieldFormsy(props) {
   return (
     <TextField
       {...importedProps}
-      onChange={changeValue}
+      onChange={e => changeValue(e)}
       value={value}
       error={Boolean((!props.isPristine && props.showRequired) || errorMessage)}
       helperText={errorMessage}

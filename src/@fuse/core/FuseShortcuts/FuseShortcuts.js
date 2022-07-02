@@ -10,13 +10,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import { updateUserShortcuts } from 'app/auth/store/userSlice';
 import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { memo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateUserShortcuts } from 'app/auth/store/userSlice';
 
 const useStyles = makeStyles({
   root: {
@@ -150,7 +150,7 @@ function FuseShortcuts(props) {
             className="w-40 h-40 p-0"
             aria-owns={addMenu ? 'add-menu' : null}
             aria-haspopup="true"
-            onClick={addMenuClick}
+            onClick={e => addMenuClick(e)}
           >
             <Icon className={classes.addIcon}>star</Icon>
           </IconButton>
@@ -161,7 +161,7 @@ function FuseShortcuts(props) {
         id="add-menu"
         anchorEl={addMenu}
         open={Boolean(addMenu)}
-        onClose={addMenuClose}
+        onClose={() => addMenuClose()}
         classes={{
           paper: 'mt-48 min-w-256'
         }}
@@ -176,7 +176,7 @@ function FuseShortcuts(props) {
           <Input
             inputRef={searchInputRef}
             value={searchText}
-            onChange={search}
+            onChange={e => search(e)}
             placeholder="Search for an app or page"
             className=""
             fullWidth

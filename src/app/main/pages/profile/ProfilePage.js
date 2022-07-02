@@ -6,9 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Typography from '@material-ui/core/Typography';
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import clsx from 'clsx';
 import AboutTab from './tabs/AboutTab';
 import PhotosVideosTab from './tabs/PhotosVideosTab';
 import TimelineTab from './tabs/TimelineTab';
@@ -83,7 +83,7 @@ function ProfilePage() {
           </div>
           <Tabs
             value={selectedTab}
-            onChange={handleTabChange}
+            onChange={e => handleTabChange(e, selectedTab)}
             indicatorColor="primary"
             textColor="inherit"
             variant="scrollable"

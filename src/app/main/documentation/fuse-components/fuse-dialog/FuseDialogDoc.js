@@ -5,8 +5,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch } from 'react-redux';
 import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { useDispatch } from 'react-redux';
 
 function FuseDialogDoc(props) {
   const dispatch = useDispatch();

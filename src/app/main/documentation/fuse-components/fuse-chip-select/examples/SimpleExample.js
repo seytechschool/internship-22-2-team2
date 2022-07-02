@@ -36,7 +36,7 @@ function SimpleExample() {
       <FuseChipSelect
         className="w-full my-16"
         value={tags}
-        onChange={handleChipChange}
+        onChange={e => handleChipChange(tags)}
         placeholder="Select multiple tags"
         textFieldProps={{
           label: 'Tags',
@@ -56,7 +56,7 @@ function SimpleExample() {
       <FuseChipSelect
         className="w-full my-16"
         value={tags}
-        onChange={handleChipChange}
+        onChange={e => handleChipChange(tags)}
         placeholder="Select multiple tags"
         textFieldProps={{
           label: 'Tags',
@@ -76,7 +76,7 @@ function SimpleExample() {
       <FuseChipSelect
         className="w-full my-16"
         value={tags}
-        onChange={handleChipChange}
+        onChange={e => handleChipChange(tags)}
         placeholder="Select multiple tags"
         textFieldProps={{
           label: 'Tags',

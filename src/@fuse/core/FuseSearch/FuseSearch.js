@@ -1,3 +1,4 @@
+import _ from '@lodash';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,15 +11,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import clsx from 'clsx';
-import _ from '@lodash';
 import { memo, useEffect, useReducer, useRef } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectFlatNavigation } from 'app/store/fuse/navigationSlice';
 
 function renderInputComponent(inputProps) {
   const { variant, classes, inputRef = () => {}, ref, ...other } = inputProps;
@@ -352,7 +352,7 @@ function FuseSearch(props) {
           </Tooltip>
 
           {state.opened && (
-            <ClickAwayListener onClickAway={handleClickAway}>
+            <ClickAwayListener onClickAway={e => handleClickAway(e)}>
               <Paper className="absolute left-0 right-0 top-0 h-full z-9999 shadow-0" square>
                 <div className="flex items-center w-full h-full" ref={popperNode}>
                   <Autosuggest
@@ -395,7 +395,7 @@ function FuseSearch(props) {
                       </Popper>
                     )}
                   />
-                  <IconButton onClick={hideSearch} className="mx-8">
+                  <IconButton onClick={() => hideSearch()} className="mx-8">
                     <Icon>close</Icon>
                   </IconButton>
                 </div>

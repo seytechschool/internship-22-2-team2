@@ -1,14 +1,14 @@
 import { useDeepCompareEffect } from '@fuse/hooks';
-import FuseLayouts from '@fuse/layouts/FuseLayouts';
 import _ from '@lodash';
 import { makeStyles } from '@material-ui/core/styles';
+import { fade } from '@material-ui/core/styles/colorManipulator';
 import AppContext from 'app/AppContext';
+import Layout from 'app/fuse-layouts/layout/Layout';
 import { generateSettings, setSettings } from 'app/store/fuse/settingsSlice';
-import { memo, useContext, useMemo, useCallback, useRef } from 'react';
+import { memo, useCallback, useContext, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { matchRoutes } from 'react-router-config';
 import { useLocation } from 'react-router-dom';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -123,7 +123,7 @@ function FuseLayout(props) {
 
   // console.warn('::FuseLayout:: rendered');
 
-  const Layout = useMemo(() => FuseLayouts[settings.layout.style], [settings.layout.style]);
+  // const Layout = useMemo(() => FuseLayouts[settings.layout.style], [settings.layout.style]);
 
   return _.isEqual(newSettings.current, settings) ? <Layout classes={{ root: classes.root }} {...props} /> : null;
 }

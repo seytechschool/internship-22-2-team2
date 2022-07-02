@@ -1,9 +1,9 @@
+import _ from '@lodash';
 import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import { useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import _ from '@lodash';
-import { useEffect, memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 function Widget6(props) {
@@ -35,7 +35,7 @@ function Widget6(props) {
         <Select
           native
           value={currentRange}
-          onChange={handleChangeRange}
+          onChange={e => handleChangeRange(e)}
           inputProps={{
             name: 'currentRange'
           }}

@@ -1,3 +1,4 @@
+import DateFnsUtils from '@date-io/date-fns';
 import '@fake-db';
 import FuseAuthorization from '@fuse/core/FuseAuthorization';
 import FuseLayout from '@fuse/core/FuseLayout';
@@ -8,10 +9,9 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { create } from 'jss';
 import jssExtend from 'jss-plugin-extend';
 import rtl from 'jss-rtl';
+import { SnackbarProvider } from 'notistack';
 import Provider from 'react-redux/es/components/Provider';
 import { Router } from 'react-router-dom';
-import { SnackbarProvider } from 'notistack';
-import DateFnsUtils from '@date-io/date-fns';
 import AppContext from './AppContext';
 import { Auth } from './auth';
 import routes from './fuse-configs/routesConfig';

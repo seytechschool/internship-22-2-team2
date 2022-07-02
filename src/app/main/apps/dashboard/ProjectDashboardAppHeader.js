@@ -1,16 +1,13 @@
+import _ from '@lodash';
 import Avatar from '@material-ui/core/Avatar';
 import Hidden from '@material-ui/core/Hidden';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import Typography from '@material-ui/core/Typography';
-import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import _ from '@lodash';
 import { getProjects, selectProjects } from './store/projectsSlice';
 import { selectWidgets } from './store/widgetsSlice';
 

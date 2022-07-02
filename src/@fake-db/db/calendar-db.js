@@ -1,6 +1,6 @@
 import FuseUtils from '@fuse/utils';
-import mock from '../mock';
 import formatISO from 'date-fns/formatISO';
+import mock from '../mock';
 
 function setDate(year, month, date, hours, minutes, seconds) {
   return formatISO(new Date(year, month, date, hours || '', minutes || '', seconds || ''));

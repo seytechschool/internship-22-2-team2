@@ -5,9 +5,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { selectMainThemeDark } from 'app/store/fuse/settingsSlice';
 import clsx from 'clsx';
+import format from 'date-fns/format';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
-import format from 'date-fns/format';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -1,13 +1,13 @@
-import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import { selectWidgets } from '../store/widgetsSlice';
 import Widget1 from '../widgets/Widget1';
+import Widget12 from '../widgets/Widget12';
 import Widget2 from '../widgets/Widget2';
 import Widget3 from '../widgets/Widget3';
 import Widget4 from '../widgets/Widget4';
 import Widget5 from '../widgets/Widget5';
 import Widget8 from '../widgets/Widget8';
-import Widget12 from '../widgets/Widget12';
 
 function HomeTab() {
   const widgets = useSelector(selectWidgets);

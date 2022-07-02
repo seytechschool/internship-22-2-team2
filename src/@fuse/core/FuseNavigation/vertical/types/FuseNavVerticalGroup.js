@@ -2,11 +2,11 @@ import NavLinkAdapter from '@fuse/core/NavLinkAdapter';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import FuseNavItem from '../../FuseNavItem';
 
 const useStyles = makeStyles(theme => ({

@@ -1,4 +1,4 @@
-import { forwardRef, Component } from 'react';
+import { Component, forwardRef } from 'react';
 import { withRouter } from 'react-router-dom';
 
 const withRouterAndRef = WrappedComponent => {

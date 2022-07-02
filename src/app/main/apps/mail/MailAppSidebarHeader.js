@@ -49,7 +49,7 @@ function MailAppSidebarHeader(props) {
           select
           label={selectedAccount}
           value={selectedAccount}
-          onChange={handleAccountChange}
+          onChange={e => handleAccountChange(e)}
           placeholder="Select Account"
           margin="normal"
           variant="filled"

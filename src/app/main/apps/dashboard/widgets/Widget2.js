@@ -20,7 +20,7 @@ function Widget2(props) {
           className="mx-16"
           classes={{ root: 'py-8 font-medium opacity-75' }}
           value={currentRange}
-          onChange={handleChangeRange}
+          onChange={e => handleChangeRange(e)}
           inputProps={{
             name: 'currentRange'
           }}

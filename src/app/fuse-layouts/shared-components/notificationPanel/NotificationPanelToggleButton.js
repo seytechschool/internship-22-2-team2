@@ -1,8 +1,8 @@
 import Badge from '@material-ui/core/Badge';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
-import { useSelector, useDispatch } from 'react-redux';
 import withReducer from 'app/store/withReducer';
+import { useDispatch, useSelector } from 'react-redux';
 import reducer from './store';
 
 import { selectNotifications } from './store/dataSlice';

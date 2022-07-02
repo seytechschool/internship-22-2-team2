@@ -1,5 +1,6 @@
 import FuseScrollbars from '@fuse/core/FuseScrollbars';
 import { useDebounce } from '@fuse/hooks';
+import _ from '@lodash';
 import AppBar from '@material-ui/core/AppBar';
 import Avatar from '@material-ui/core/Avatar';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,10 +13,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import _ from '@lodash';
 import StatusIcon from './StatusIcon';
 import { closeUserSidebar } from './store/sidebarsSlice';
 import { updateUserData } from './store/userSlice';

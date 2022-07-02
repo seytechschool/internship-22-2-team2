@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react';
 import deepEqual from 'lodash/isEqual';
+import { useEffect, useRef } from 'react';
 
 /**
  * https://github.com/kentcdodds/use-deep-compare-effect

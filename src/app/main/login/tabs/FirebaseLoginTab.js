@@ -6,11 +6,11 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { useEffect, useRef, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { submitLoginWithFireBase } from 'app/auth/store/loginSlice';
-import * as yup from 'yup';
-import TextField from '@material-ui/core/TextField';
 import _ from '@lodash';
+import TextField from '@material-ui/core/TextField';
+import { submitLoginWithFireBase } from 'app/auth/store/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import * as yup from 'yup';
 
 /**
  * Form Validation Schema
