@@ -100,7 +100,7 @@ function Login() {
             <div>
               <span className="font-normal mr-8">Don't have an account?</span>
               <Link className="font-normal" to="/register">
-                Register
+                Register Changed
               </Link>
             </div>
             <Link className="font-normal mt-8" to="/">
