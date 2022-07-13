@@ -16,8 +16,8 @@ import _ from '@lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { submitLoginWithFireBase } from 'app/auth/store/loginSlice';
-
-
+import LockPage from '../pages/auth/lock/LockPage';
+import LoginPage from '../pages/auth/login/LoginPage';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -30,10 +30,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.contrastText
   }
 }));
-
-/**
- * Form Validation Schema
- */
 const schema = yup.object().shape({
   email: yup.string().email('You must enter a valid email').required('You must enter a email'),
   password: yup
@@ -97,7 +93,7 @@ function Login() {
                 <div>
                   <img
                     style={{ background: 'black', padding: '5px' }}
-                    className="logo-icon w-48"
+                    className="logo-icon w-60"
                     src="https://www.emplosoft.com/assets/img/logo.png"
                     alt="logo"
                   />
@@ -156,7 +152,7 @@ function Login() {
               />
 
               <div className=" items-center text-center ">
-                <Link className="font-normal" style={{ color: '#008900' }} to="/forgoPassword">
+                <Link className="font-normal" style={{ color: '#008900' }} to="/forgot">
                   Forgot Password?
                 </Link>
               </div>
@@ -188,11 +184,11 @@ function Login() {
                 EmploSoft <br />
               </Typography>
             </motion.div>
-
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.3 } }}>
               <Typography variant="subtitle1" color="inherit" className="mt-32 font-medium">
                 Fleet Management Software
               </Typography>
+              <LoginPage />
             </motion.div>
           </div>
         </div>
