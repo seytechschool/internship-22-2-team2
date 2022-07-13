@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { motion } from 'framer-motion';
 import { Controller, useForm } from 'react-hook-form';
-
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -16,7 +15,6 @@ import _ from '@lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { submitLoginWithFireBase } from 'app/auth/store/loginSlice';
-import LockPage from '../pages/auth/lock/LockPage';
 import LoginPage from '../pages/auth/login/LoginPage';
 
 const useStyles = makeStyles(theme => ({
