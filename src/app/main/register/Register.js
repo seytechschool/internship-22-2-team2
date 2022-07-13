@@ -101,7 +101,7 @@ function Register() {
               <div className="flex items-center mb-48">
                 <img
                   style={{ background: 'black', padding: '5px' }}
-                  className="logo-icon w-48"
+                  className="logo-icon w-60"
                   src="https://www.emplosoft.com/assets/img/logo.png"
                   alt="logo"
                 />
