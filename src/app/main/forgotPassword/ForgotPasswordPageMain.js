@@ -11,6 +11,14 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import _ from '@lodash';
+import firebaseService from 'app/services/firebaseService';
+import firebase from 'firebase/app';
+import history from '@history';
+// import 'firebase/auth';
+// import { sendPasswordResetEmail } from "firebase/auth";
+
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -38,9 +46,40 @@ function ForgotPasswordPageMain() {
   const { isValid, dirtyFields, errors } = formState;
 
   function onSubmit() {
-    reset(defaultValues);
+    // reset(defaultValues);
+
+    // const firebase = require("firebase");
+    const auth = firebase.auth()
+    const testEmail = "gyzyl89@gmail.com"
+    firebase.auth().sendPasswordResetEmail(testEmail, firebase.auth())
+    .then(function () {
+        alert('Please check your email...')
+    }).catch(function (e) {
+        console.log(e) 
+    })
+
+    // setTimeout(()=>{
+    //   history.push("/login")
+    // }, 1000)
+    // const author = firebase.auth()
+    // // const auth = getAuth();
+    // const testEmail = "gyzyl89@gmail.com"
+    // console.log("testEmail: ", testEmail)
+    // return firebase.auth().sendPasswordResetEmail(testEmail, author)
+    //   .then(() => {
+    //     console.log("hello password")
+    //     alert('Please check your email...');
+    //     // ..
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorMessage);
+    //     // ..
+    //   });
   }
 
+   
   return (
     <div className={clsx(classes.root, 'flex flex-col flex-auto items-center justify-center p-16 sm:p-32')}>
       <div className="flex flex-col items-center justify-center w-full">
