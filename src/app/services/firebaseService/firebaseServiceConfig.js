@@ -5,8 +5,7 @@ const prodConfig = {
   storageBucket: "team-2-61536.appspot.com",
   messagingSenderId: "781607155451",
   appId: "1:781607155451:web:4f5a67fea9ebed7e76625e",
-  databaseURL: 'https://team-2-61536-default-rtdb.firebaseio.com/'
-    
+  databaseURL: 'https://team-2-61536-default-rtdb.firebaseio.com/' 
   };
 
 const devConfig = {
@@ -17,9 +16,7 @@ const devConfig = {
   messagingSenderId: "781607155451",
   appId: "1:781607155451:web:4f5a67fea9ebed7e76625e",
   databaseURL: 'https://team-2-61536-default-rtdb.firebaseio.com/'
-  
   };
-
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
