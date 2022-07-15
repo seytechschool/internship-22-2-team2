@@ -69,6 +69,7 @@ function Login() {
   }, [login.errors, setError]);
 
   function onSubmit(model) {
+    console.log(model, "model")
     dispatch(submitLoginWithFireBase(model));
   }
 
