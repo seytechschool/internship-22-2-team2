@@ -1,24 +1,25 @@
 const prodConfig = {
-  
-    apiKey: "AIzaSyAiW0juurABzfesp39FfCBGzkX1ogPrGhM",
-    authDomain: "vlmd-77b18.firebaseapp.com",
-    projectId: "vlmd-77b18",
-    storageBucket: "vlmd-77b18.appspot.com",
-    messagingSenderId: "1066128254966",
-    appId: "1:1066128254966:web:c1ebc4dd9b69b1e36709d7",
-    measurementId: "G-R87MQW7C6M"
+  apiKey: "AIzaSyDaY9Ak5DzDNj4RkWQoKivKz8o8KZZrwQI",
+  authDomain: "team-2-61536.firebaseapp.com",
+  projectId: "team-2-61536",
+  storageBucket: "team-2-61536.appspot.com",
+  messagingSenderId: "781607155451",
+  appId: "1:781607155451:web:4f5a67fea9ebed7e76625e",
+  databaseURL: 'https://team-2-61536-default-rtdb.firebaseio.com/'
+    
   };
 
 const devConfig = {
-
-    apiKey: "AIzaSyAiW0juurABzfesp39FfCBGzkX1ogPrGhM",
-    authDomain: "vlmd-77b18.firebaseapp.com",
-    projectId: "vlmd-77b18",
-    storageBucket: "vlmd-77b18.appspot.com",
-    messagingSenderId: "1066128254966",
-    appId: "1:1066128254966:web:c1ebc4dd9b69b1e36709d7",
-    measurementId: "G-R87MQW7C6M"
+  apiKey: "AIzaSyDaY9Ak5DzDNj4RkWQoKivKz8o8KZZrwQI",
+  authDomain: "team-2-61536.firebaseapp.com",
+  projectId: "team-2-61536",
+  storageBucket: "team-2-61536.appspot.com",
+  messagingSenderId: "781607155451",
+  appId: "1:781607155451:web:4f5a67fea9ebed7e76625e",
+  databaseURL: 'https://team-2-61536-default-rtdb.firebaseio.com/'
+  
   };
+
 
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
