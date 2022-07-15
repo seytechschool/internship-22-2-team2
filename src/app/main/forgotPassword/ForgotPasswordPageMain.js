@@ -11,7 +11,8 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import _ from '@lodash';
-import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
+// import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
+import { forgotPasswordFirebase } from 'app/auth/store/resetSlice';
 import { useDispatch, useSelector } from 'react-redux';
 // import firebaseService from 'app/services/firebaseService';
 // import firebase from 'firebase/app';
@@ -50,10 +51,9 @@ function ForgotPasswordPageMain() {
   
   function onSubmit(model) {
     dispatch(forgotPasswordFirebase(model));
-    console.log(model, "testemail")
+    // console.log(model, "testemail")
     reset(defaultValues);
   }
-
    
   return (
     <div className={clsx(classes.root, 'flex flex-col flex-auto items-center justify-center p-16 sm:p-32')}>
