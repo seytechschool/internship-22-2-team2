@@ -11,6 +11,16 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import _ from '@lodash';
+import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+// import firebaseService from 'app/services/firebaseService';
+// import firebase from 'firebase/app';
+// import history from '@history';
+// import 'firebase/auth';
+// import { sendPasswordResetEmail } from "firebase/auth";
+
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -36,11 +46,15 @@ function ForgotPasswordPageMain() {
   });
 
   const { isValid, dirtyFields, errors } = formState;
-
-  function onSubmit() {
+  const dispatch = useDispatch();
+  
+  function onSubmit(model) {
+    dispatch(forgotPasswordFirebase(model));
+    console.log(model, "testemail")
     reset(defaultValues);
   }
 
+   
   return (
     <div className={clsx(classes.root, 'flex flex-col flex-auto items-center justify-center p-16 sm:p-32')}>
       <div className="flex flex-col items-center justify-center w-full">

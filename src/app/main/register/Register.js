@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  name: yup.string().required('You must enter your name'),
+  displayName: yup.string().required('You must enter your name'),
   email: yup.string().email('You must enter a valid email').required('You must enter a email'),
   password: yup
     .string()
@@ -49,7 +49,7 @@ const schema = yup.object().shape({
 });
 
 const defaultValues = {
-  name: '',
+  displayName: '',
   email: '',
   password: '',
   passwordConfirm: '',
@@ -121,17 +121,17 @@ function Register() {
               onSubmit={handleSubmit(onSubmit)}
             >
               <Controller
-                name="name"
+                name="displayName"
                 control={control}
                 render={({ field }) => (
                   <TextField
                     {...field}
                     className="mb-16"
-                    label="Name"
+                    label="Display name"
                     autoFocus
                     type="name"
-                    error={!!errors.name}
-                    helperText={errors?.name?.message}
+                    error={!!errors.displayName}
+                    helperText={errors?.displayName?.message}
                     variant="outlined"
                     required
                     fullWidth
