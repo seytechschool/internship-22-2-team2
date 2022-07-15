@@ -11,9 +11,11 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import _ from '@lodash';
-import firebaseService from 'app/services/firebaseService';
-import firebase from 'firebase/app';
-import history from '@history';
+import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+// import firebaseService from 'app/services/firebaseService';
+// import firebase from 'firebase/app';
+// import history from '@history';
 // import 'firebase/auth';
 // import { sendPasswordResetEmail } from "firebase/auth";
 
@@ -44,39 +46,12 @@ function ForgotPasswordPageMain() {
   });
 
   const { isValid, dirtyFields, errors } = formState;
-
-  function onSubmit() {
-    // reset(defaultValues);
-
-    // const firebase = require("firebase");
-    const auth = firebase.auth()
-    const testEmail = "gyzyl89@gmail.com"
-    firebase.auth().sendPasswordResetEmail(testEmail, firebase.auth())
-    .then(function () {
-        alert('Please check your email...')
-    }).catch(function (e) {
-        console.log(e) 
-    })
-
-    // setTimeout(()=>{
-    //   history.push("/login")
-    // }, 1000)
-    // const author = firebase.auth()
-    // // const auth = getAuth();
-    // const testEmail = "gyzyl89@gmail.com"
-    // console.log("testEmail: ", testEmail)
-    // return firebase.auth().sendPasswordResetEmail(testEmail, author)
-    //   .then(() => {
-    //     console.log("hello password")
-    //     alert('Please check your email...');
-    //     // ..
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     console.log(errorMessage);
-    //     // ..
-    //   });
+  const dispatch = useDispatch();
+  
+  function onSubmit(model) {
+    dispatch(forgotPasswordFirebase(model));
+    console.log(model, "testemail")
+    reset(defaultValues);
   }
 
    
