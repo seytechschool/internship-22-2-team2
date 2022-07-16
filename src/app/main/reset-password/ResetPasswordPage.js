@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Controller, useForm } from 'react-hook-form';
-
+import {useState} from 'react'
 import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -9,9 +9,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import * as yup from 'yup';
 import _ from '@lodash';
+import { useDispatch, useSelector } from 'react-redux';
+import { ResetPassword } from 'app/auth/store/loginSlice';
+
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -35,7 +38,19 @@ const defaultValues = {
   passwordConfirm: ''
 };
 
+function useQuery(){
+  const location=useLocation()
+  return new URLSearchParams(location.search)
+}
+
 function ResetPasswordPage() {
+// const[code,setCode]=useState('')
+
+//   const dispatch=useDispatch();
+//   const query=useQuery()
+//   const oobCode=query.get('oobCode')
+//   setCode(oobCode)
+
   const classes = useStyles();
 
   const { control, formState, handleSubmit, reset } = useForm({
@@ -46,8 +61,11 @@ function ResetPasswordPage() {
 
   const { isValid, dirtyFields, errors } = formState;
 
-  function onSubmit() {
+  function onSubmit(code,model) {
+    dispatch(ResetPassword(code,model))
+    console.log(model,'model')
     reset(defaultValues);
+    console.log(code,'oobCode')
   }
 
   return (
@@ -56,7 +74,12 @@ function ResetPasswordPage() {
         <motion.div initial={{ opacity: 0, scale: 0.6 }} animate={{ opacity: 1, scale: 1 }}>
           <Card className="w-full max-w-384">
             <CardContent className="flex flex-col items-center justify-center p-16 sm:p-24 md:p-32">
-              <img className="w-128 m-32" src="assets/images/logos/fuse.svg" alt="logo" />
+            <img
+                style={{ background: 'black', padding: '5px' }}
+                className="w-70 m-32"
+                src="https://www.emplosoft.com/assets/img/logo.png"
+                alt="logo"
+              />
 
               <Typography variant="h6" className="mt-16 mb-24 font-semibold text-18 sm:text-24">
                 Reset your password

@@ -13,14 +13,7 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
 import { useDispatch, useSelector } from 'react-redux';
-// import firebaseService from 'app/services/firebaseService';
-// import firebase from 'firebase/app';
-// import history from '@history';
-// import 'firebase/auth';
-// import { sendPasswordResetEmail } from "firebase/auth";
-
-
-
+import history from '@history';
 
 const useStyles = makeStyles(theme => ({
   root: {}
@@ -52,6 +45,7 @@ function ForgotPasswordPageMain() {
     dispatch(forgotPasswordFirebase(model));
     console.log(model, "testemail")
     reset(defaultValues);
+    // history.push('/reset')
   }
 
    

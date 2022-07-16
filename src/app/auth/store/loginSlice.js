@@ -87,7 +87,7 @@ export const forgotPasswordFirebase =
       .then(() => {
         alert('Please check your email...');
         // return dispatch(loginSuccess());
-        console.log("hello")
+        console.log(firebaseService.auth,"hello")
       })
       .catch(error => {
         const emailErrorCodes = [
@@ -121,51 +121,63 @@ export const forgotPasswordFirebase =
         // return dispatch(loginError(response));
       });
   };
-// export const ResetPassword =
-//   ({ email, password }) =>
-//   async dispatch => {
-//     if (!firebaseService.auth) {
-//       console.warn("Firebase Service didn't initialize, check your configuration");
 
-//       return () => false;
-//     }
-//     return firebaseService.auth
-//       .signInWithEmailAndPassword(email, password)
-//       .then(() => {
-//         return dispatch(loginSuccess());
-//       })
-//       .catch(error => {
-//         const emailErrorCodes = [
-//           'auth/email-already-in-use',
-//           'auth/invalid-email',
-//           'auth/operation-not-allowed',
-//           'auth/user-not-found',
-//           'auth/user-disabled'
-//         ];
-//         const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
-//         const response = [];
 
-//         if (emailErrorCodes.includes(error.code)) {
-//           response.push({
-//             type: 'email',
-//             message: error.message
-//           });
-//         }
+//   const user = firebase.auth().currentUser;
+// const newPassword = getASecureRandomPassword();
 
-//         if (passwordErrorCodes.includes(error.code)) {
-//           response.push({
-//             type: 'password',
-//             message: error.message
-//           });
-//         }
+// user.updatePassword(newPassword).then(() => {
+//   // Update successful.
+// }).catch((error) => {
+//   // An error ocurred
+//   // ...
+// });
+export const ResetPassword =
+({ email, password }) =>
+  async dispatch => {
+    if (!firebaseService.auth) {
+      console.warn("Firebase Service didn't initialize, check your configuration");
 
-//         if (error.code === 'auth/invalid-api-key') {
-//           dispatch(showMessage({ message: error.message }));
-//         }
+      return () => false;
+    }
+    const user = firebaseService.auth.currentUser;
+    return firebaseService.auth.updatePassword(password)
+      .then(() => {
+        return dispatch(loginSuccess());
 
-//         return dispatch(loginError(response));
-//       });
-//   };
+      })
+      .catch(error => {
+        const emailErrorCodes = [
+          'auth/email-already-in-use',
+          'auth/invalid-email',
+          'auth/operation-not-allowed',
+          'auth/user-not-found',
+          'auth/user-disabled'
+        ];
+        const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
+        const response = [];
+
+        if (emailErrorCodes.includes(error.code)) {
+          response.push({
+            type: 'email',
+            message: error.message
+          });
+        }
+
+        if (passwordErrorCodes.includes(error.code)) {
+          response.push({
+            type: 'password',
+            message: error.message
+          });
+        }
+
+        if (error.code === 'auth/invalid-api-key') {
+          dispatch(showMessage({ message: error.message }));
+        }
+
+        return dispatch(loginError(response));
+      });
+  };
 
 const initialState = {
   success: false,

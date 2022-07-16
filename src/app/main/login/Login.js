@@ -15,7 +15,7 @@ import _ from '@lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { submitLoginWithFireBase } from 'app/auth/store/loginSlice';
-import LoginPage from '../pages/auth/login/LoginPage';
+
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -34,7 +34,7 @@ const schema = yup.object().shape({
     .string()
     .required('Please enter your password.')
     /* Change to 8 Later On */
-    .min(3, 'Password is too short - should be 8 chars minimum.')
+    .min(8, 'Password is too short - should be 8 chars minimum.')
 });
 
 const defaultValues = {
@@ -89,9 +89,6 @@ function Login() {
           <CardContent className="flex flex-col items-center justify-center w-full py-96 max-w-320">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.2 } }}>
               <div className="flex items-center mb-48">
-<<<<<<< HEAD
-                {/* <img className="logo-icon w-48" src="assets/images/logos/fuse.svg" alt="logo" /> */}
-=======
                 <div>
                   <img
                     style={{ background: 'black', padding: '5px' }}
@@ -101,46 +98,15 @@ function Login() {
                   />
                 </div>
 
->>>>>>> 0cf40c1df22212dd2a524d9794b2af6554c34eec
                 <div className="border-l-1 mr-4 w-1 h-40" />
                 <div>
                   <Typography className="text-24 font-semibold logo-text" color="inherit">
                     EMPLOSOFT
-<<<<<<< HEAD
-                  </Typography>
-                  <Typography className="text-16 tracking-widest -mt-8 font-700" color="textSecondary">
-                    LTD
-=======
->>>>>>> 0cf40c1df22212dd2a524d9794b2af6554c34eec
                   </Typography>
                 </div>
               </div>
             </motion.div>
 
-<<<<<<< HEAD
-            {/* <Tabs value={selectedTab} onChange={handleTabChange} variant="fullWidth" className="w-full mb-32"> */}
-              {/* <Tab
-                icon={<img className="h-40 p-4 bg-black rounded-12" src="assets/images/logos/jwt.svg" alt="firebase" />}
-                className="min-w-0"
-                label="JWT"
-              /> */}
-              <Tab
-                icon={<img className="h-40" src="assets/images/logos/firebase.svg" alt="firebase" />}
-                className="min-w-0"
-                label="Firebase"
-              />
-              {/* <Tab
-                icon={<img className="h-40" src="assets/images/logos/auth0.svg" alt="auth0" />}
-                className="min-w-0"
-                label="Auth0"
-              /> */}
-            {/* </Tabs> */}
-            <FirebaseLoginTab />
-            {/* {selectedTab === 0 && <JWTLoginTab />} */}
-            {/* {selectedTab === 1 && <FirebaseLoginTab />} */}
-            {/* {selectedTab === 2 && <Auth0LoginTab />} */}
-          </CardContent>
-=======
             <form
               name="loginForm"
               noValidate
@@ -200,7 +166,6 @@ function Login() {
                 Login
               </Button>
             </form>
->>>>>>> 0cf40c1df22212dd2a524d9794b2af6554c34eec
 
             <div className="flex flex-col items-center justify-center pb-32" style={{ marginTop: '30px' }}>
               <span className="font-normal">Don't have an account?</span>
@@ -222,7 +187,6 @@ function Login() {
               <Typography variant="subtitle1" color="inherit" className="mt-32 font-medium">
                 Fleet Management Software
               </Typography>
-              <LoginPage />
             </motion.div>
           </div>
         </div>
