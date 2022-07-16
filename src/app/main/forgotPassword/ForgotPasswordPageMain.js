@@ -48,6 +48,7 @@ function ForgotPasswordPageMain() {
   const { isValid, dirtyFields, errors } = formState;
   const dispatch = useDispatch();
   
+  
   function onSubmit(model) {
     dispatch(forgotPasswordFirebase(model));
     console.log(model, "testemail")

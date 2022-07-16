@@ -81,15 +81,14 @@ export const forgotPasswordFirebase =
     console.log(email, "FSemail")
     console.log(firebaseService.auth, "firebaseService.auth")
 
-    //  const auth = firebase.auth()
     return firebaseService.auth
       .sendPasswordResetEmail(email)
       .then(() => {
         alert('Please check your email...');
-        // return dispatch(loginSuccess());
         console.log("hello")
       })
       .catch(error => {
+        console.log(error, "error")
         const emailErrorCodes = [
           'auth/email-already-in-use',
           'auth/invalid-email',
@@ -100,12 +99,12 @@ export const forgotPasswordFirebase =
         // const passwordErrorCodes = ['auth/weak-password', 'auth/wrong-password'];
         const response = [];
 
-        // if (emailErrorCodes.includes(error.code)) {
-        //   response.push({
-        //     type: 'email',
-        //     message: error.message
-        //   });
-        // }
+        if (emailErrorCodes.includes(error.code)) {
+          response.push({
+            type: 'email',
+            message: error.message
+          });
+        }
 
         // if (passwordErrorCodes.includes(error.code)) {
         //   response.push({
@@ -114,11 +113,16 @@ export const forgotPasswordFirebase =
         //   });
         // }
 
-        // if (error.code === 'auth/invalid-api-key') {
-        //   dispatch(showMessage({ message: error.message }));
-        // }
+        if (error.code === 'auth/invalid-api-key') {
+          dispatch(showMessage({ message: error.message }));
+        }
 
-        // return dispatch(loginError(response));
+        if (error.code === 'auth/user-not-found') {
+          alert("user not found")
+          // dispatch(showMessage({ message: error.message }));
+        }
+
+        return dispatch(loginError(response));
       });
   };
 // export const ResetPassword =
