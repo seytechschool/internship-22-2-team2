@@ -1,5 +1,5 @@
 // import firebase from 'firebase/app';
-import "firebase/auth"
+// import 'firebase/auth'
 import { createSlice } from '@reduxjs/toolkit';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import firebaseService from 'app/services/firebaseService';
@@ -30,8 +30,8 @@ export const submitLoginWithFireBase =
 
       return () => false;
     }
-    console.log(email, "email")
-    console.log(password, "password")
+    console.log(email, 'email');
+    console.log(password, 'password');
     return firebaseService.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -71,24 +71,24 @@ export const submitLoginWithFireBase =
   };
 
 export const forgotPasswordFirebase =
-  ({ email }) => 
+  ({ email }) =>
   async dispatch => {
     if (!firebaseService.auth) {
       console.warn("Firebase Service didn't initialize, check your configuration");
 
       return () => false;
     }
-    console.log(email, "FSemail")
-    console.log(firebaseService.auth, "firebaseService.auth")
+    console.log(email, 'FSemail');
+    console.log(firebaseService.auth, 'firebaseService.auth');
 
     return firebaseService.auth
       .sendPasswordResetEmail(email)
       .then(() => {
         alert('Please check your email...');
-        console.log("hello")
+        console.log('hello');
       })
       .catch(error => {
-        console.log(error, "error")
+        console.log(error, 'error');
         const emailErrorCodes = [
           'auth/email-already-in-use',
           'auth/invalid-email',
@@ -118,7 +118,7 @@ export const forgotPasswordFirebase =
         }
 
         if (error.code === 'auth/user-not-found') {
-          alert("user not found")
+          alert('user not found');
           // dispatch(showMessage({ message: error.message }));
         }
 
