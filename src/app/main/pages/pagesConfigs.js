@@ -9,7 +9,7 @@ import Register2PageConfig from './auth/register-2/Register2PageConfig';
 import Register3PageConfig from './auth/register-3/Register3PageConfig';
 import RegisterPageConfig from './auth/register/RegisterPageConfig';
 import ResetPassword2PageConfig from './auth/reset-password-2/ResetPassword2PageConfig';
-import ResetPasswordPageConfig from './auth/reset-password/ResetPasswordPageConfig';
+import ResetPasswordPageConfig from '../reset-password/ResetPasswordPageConfig';
 import ComingSoonPageConfig from './coming-soon/ComingSoonPageConfig';
 import Error404PageConfig from './errors/404/Error404PageConfig';
 import Error500PageConfig from './errors/500/Error500PageConfig';

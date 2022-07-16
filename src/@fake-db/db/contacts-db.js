@@ -116,7 +116,7 @@ const vehiclesDB = {
     }
   ]
 };
-
+//https://internship-api-22-2-team2.herokuapp.com/vehicles  real api
 mock.onGet('/api/vehicle-list-app/vehicles').reply(config => {
   const { id } = config.params;
   let response = [];
