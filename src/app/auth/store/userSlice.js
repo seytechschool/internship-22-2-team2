@@ -157,31 +157,31 @@ export const updateUserData = user => async (dispatch, getState) => {
         });
       break;
     }
-  //   case 'auth0': {
-  //     auth0Service
-  //       .updateUserData({
-  //         settings: user.data.settings,
-  //         shortcuts: user.data.shortcuts
-  //       })
-  //       .then(() => {
-  //         dispatch(showMessage({ message: 'User data saved to auth0' }));
-  //       })
-  //       .catch(error => {
-  //         dispatch(showMessage({ message: error.message }));
-  //       });
-  //     break;
-  //   }
-  //   default: {
-  //     jwtService
-  //       .updateUserData(user)
-  //       .then(() => {
-  //         dispatch(showMessage({ message: 'User data saved with api' }));
-  //       })
-  //       .catch(error => {
-  //         dispatch(showMessage({ message: error.message }));
-  //       });
-  //     break;
-  //   }
+    //   case 'auth0': {
+    //     auth0Service
+    //       .updateUserData({
+    //         settings: user.data.settings,
+    //         shortcuts: user.data.shortcuts
+    //       })
+    //       .then(() => {
+    //         dispatch(showMessage({ message: 'User data saved to auth0' }));
+    //       })
+    //       .catch(error => {
+    //         dispatch(showMessage({ message: error.message }));
+    //       });
+    //     break;
+    //   }
+    //   default: {
+    //     jwtService
+    //       .updateUserData(user)
+    //       .then(() => {
+    //         dispatch(showMessage({ message: 'User data saved with api' }));
+    //       })
+    //       .catch(error => {
+    //         dispatch(showMessage({ message: error.message }));
+    //       });
+    //     break;
+    //   }
   }
 };
 

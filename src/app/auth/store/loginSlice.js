@@ -180,7 +180,7 @@ const loginSlice = createSlice({
   name: 'auth/login',
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
+    loginSuccess: state => {
       state.success = true;
       state.errors = [];
     },
