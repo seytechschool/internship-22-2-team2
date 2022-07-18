@@ -1,5 +1,5 @@
 // import firebase from 'firebase/app';
-// import 'firebase/auth'
+// import 'firebase/auth';
 import { createSlice } from '@reduxjs/toolkit';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import firebaseService from 'app/services/firebaseService';
@@ -84,8 +84,8 @@ export const forgotPasswordFirebase =
     return firebaseService.auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        alert('Please check your email...');
-        console.log('hello');
+        // alert('Please check your email...');
+        // console.log('hello');
       })
       .catch(error => {
         console.log(error, 'error');
@@ -118,7 +118,7 @@ export const forgotPasswordFirebase =
         }
 
         if (error.code === 'auth/user-not-found') {
-          alert('user not found');
+          // alert('user not found');
           // dispatch(showMessage({ message: error.message }));
         }
 
