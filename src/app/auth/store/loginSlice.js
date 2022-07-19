@@ -1,5 +1,5 @@
-import firebase from 'firebase/app';
-import "firebase/auth"
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
 import { createSlice } from '@reduxjs/toolkit';
 import { showMessage } from 'app/store/fuse/messageSlice';
 import firebaseService from 'app/services/firebaseService';
@@ -30,8 +30,8 @@ export const submitLoginWithFireBase =
 
       return () => false;
     }
-    console.log(email, "email")
-    console.log(password, "password")
+    console.log(email, 'email');
+    console.log(password, 'password');
     return firebaseService.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => {
@@ -71,15 +71,15 @@ export const submitLoginWithFireBase =
   };
 
 export const forgotPasswordFirebase =
-  ({ email }) => 
+  ({ email }) =>
   async dispatch => {
     if (!firebaseService.auth) {
       console.warn("Firebase Service didn't initialize, check your configuration");
 
       return () => false;
     }
-    console.log(email, "FSemail")
-    console.log(firebaseService.auth, "firebaseService.auth")
+    console.log(email, 'FSemail');
+    console.log(firebaseService.auth, 'firebaseService.auth');
 
     //  const auth = firebase.auth()
     return firebaseService.auth
@@ -117,6 +117,14 @@ export const forgotPasswordFirebase =
         // if (error.code === 'auth/invalid-api-key') {
         //   dispatch(showMessage({ message: error.message }));
         // }
+        if (error.code === 'auth/invalid-api-key') {
+          dispatch(showMessage({ message: error.message }));
+        }
+
+        if (error.code === 'auth/user-not-found') {
+          // alert('user not found');
+          // dispatch(showMessage({ message: error.message }));
+        }
 
         // return dispatch(loginError(response));
       });
@@ -176,7 +184,7 @@ const loginSlice = createSlice({
   name: 'auth/login',
   initialState,
   reducers: {
-    loginSuccess: (state, action) => {
+    loginSuccess: state => {
       state.success = true;
       state.errors = [];
     },
