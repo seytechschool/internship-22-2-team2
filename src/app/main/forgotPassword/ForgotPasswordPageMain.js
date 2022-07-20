@@ -19,10 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import 'firebase/auth';
 // import { sendPasswordResetEmail } from "firebase/auth";
 
-
-
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {}
 }));
 
@@ -47,14 +44,17 @@ function ForgotPasswordPageMain() {
 
   const { isValid, dirtyFields, errors } = formState;
   const dispatch = useDispatch();
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> f8352273cc8c837e47ac1b3d0719a78a1df9b1af
   function onSubmit(model) {
     dispatch(forgotPasswordFirebase(model));
-    console.log(model, "testemail")
+    console.log(model, 'testemail');
     reset(defaultValues);
   }
 
-   
   return (
     <div className={clsx(classes.root, 'flex flex-col flex-auto items-center justify-center p-16 sm:p-32')}>
       <div className="flex flex-col items-center justify-center w-full">

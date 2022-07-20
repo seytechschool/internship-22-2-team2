@@ -174,6 +174,9 @@ const contactsSlice = createSlice({
         },
         data: null
       };
+    },
+    clearInputValue: (state, action) => {
+      state.searchText = '';
     }
   },
   extraReducers: {
@@ -195,7 +198,8 @@ export const {
   openNewContactDialog,
   closeNewContactDialog,
   openEditContactDialog,
-  closeEditContactDialog
+  closeEditContactDialog,
+  clearInputValue
 } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
