@@ -11,11 +11,29 @@ import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import { setContactsSearchText, clearInputValue } from './store/contactsSlice';
+import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
+import "./autocomplete.css"
 
 function ContactsHeader(props) {
   const dispatch = useDispatch();
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const mainTheme = useSelector(selectMainTheme);
+  // const {
+  //   getTableProps,
+  //   headerGroups,
+  //   prepareRow,
+  //   page,
+  //   gotoPage,
+  //   setPageSize,
+  //   state: { pageIndex, pageSize }
+  // } = useTable(
+  //   {
+  //     columns,
+  //     data,
+  //     autoResetPage: true
+  //   }),
+
+  // console.log(headerGroups.map(el=>el.headers), "headerGroups")
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
       <div className="flex flex-shrink items-center sm:w-224">
@@ -75,6 +93,11 @@ function ContactsHeader(props) {
             {searchText && (
               <CloseIcon style={{ cursor: 'pointer' }} onClick={() => dispatch(clearInputValue())} color="action" />
             )}
+
+            {/* <div className={index === 0 ? "active" :"item" } key={country.name.common} onClick={()=>setSearch(country.name.common)}>
+                    <span>{country.name.common}</span><span className="capital"> capital: {country.capital ? country.capital :"No Informatin"}</span>
+                    <p>population: {country.population ? country.population : "No Informatin"}</p>
+                </div> */}
           </Paper>
           <Button style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
             ADD
