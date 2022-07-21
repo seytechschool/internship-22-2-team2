@@ -10,30 +10,16 @@ import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
-import { setContactsSearchText, clearInputValue } from './store/contactsSlice';
-import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
+import contactsSlice, { setContactsSearchText, selectContacts, clearInputValue, setSearchVal } from './store/contactsSlice';
 import "./autocomplete.css"
 
 function ContactsHeader(props) {
   const dispatch = useDispatch();
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
+  const contacts = useSelector(selectContacts);
   const mainTheme = useSelector(selectMainTheme);
-  // const {
-  //   getTableProps,
-  //   headerGroups,
-  //   prepareRow,
-  //   page,
-  //   gotoPage,
-  //   setPageSize,
-  //   state: { pageIndex, pageSize }
-  // } = useTable(
-  //   {
-  //     columns,
-  //     data,
-  //     autoResetPage: true
-  //   }),
+  // console.log(contacts, "contact")
 
-  // console.log(headerGroups.map(el=>el.headers), "headerGroups")
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
       <div className="flex flex-shrink items-center sm:w-224">
@@ -71,14 +57,16 @@ function ContactsHeader(props) {
 
       <div className="flex flex-1 items-center justify-center px-8 sm:px-12">
         <ThemeProvider theme={mainTheme}>
+          
           <Paper
             component={motion.div}
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1, transition: { delay: 0.2 } }}
             className="flex p-4 items-center w-full max-w-512 h-48 px-16 py-4 shadow"
           >
-            <Icon color="action">search</Icon>
-
+            {/* <div className='wrapper'> */}
+            {/* <div className='d-flex align-items-center'> */}
+              <Icon color="action">search</Icon>
             <Input
               placeholder="Search for anything"
               className="flex flex-1 px-16"
@@ -90,14 +78,18 @@ function ContactsHeader(props) {
               }}
               onChange={ev => dispatch(setContactsSearchText(ev))}
             />
-            {searchText && (
+                  {searchText && (
               <CloseIcon style={{ cursor: 'pointer' }} onClick={() => dispatch(clearInputValue())} color="action" />
             )}
-
-            {/* <div className={index === 0 ? "active" :"item" } key={country.name.common} onClick={()=>setSearch(country.name.common)}>
-                    <span>{country.name.common}</span><span className="capital"> capital: {country.capital ? country.capital :"No Informatin"}</span>
-                    <p>population: {country.population ? country.population : "No Informatin"}</p>
-                </div> */}
+            {/* </div> */}
+            {/* {searchText !== "" && contacts.map((item, index) => (
+                <div className={index === 0 ? "active" :"item" } key={item.id} 
+                onClick={() => dispatch(setSearchVal(item.model))}
+                >
+                  <span>{item.brand}</span><span className="capital">{item.model}</span>
+                </div>
+            ))} */}
+            {/* </div> */}
           </Paper>
           <Button style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
             ADD

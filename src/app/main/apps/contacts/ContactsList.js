@@ -12,13 +12,14 @@ import ContactsTable from './ContactsTable';
 import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
-  vehicles.map(vehicle => {
-    const totalCost = `$${(vehicle.serviceCost + vehicle.fuelCost).toLocaleString()}`;
+  vehicles[0].map(vehicle => {
+    const totalCost = `$${(vehicle.fuelHistory.cost + vehicle.serviceHistory.cost).toLocaleString()}`;
+    // console.log(vehicle, "vehicles")
     return {
       ...vehicle,
       isAssigned: vehicle.isAssigned ? 'YES' : 'NO',
       totalCost,
-      millage: vehicle.millage.toLocaleString()
+      millage: vehicle.millageHistory.millage.toLocaleString()
     };
   });
 
