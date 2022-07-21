@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const getUserData = createAsyncThunk('contactsApp/user/getUserData', async () => {
   const response = await axios.get('/api/contacts-app/user');
+  // const response = await axios.get('/vehicles-emplosoft.herokuapp.com/vehicles');
   const data = await response.data;
   return data;
 });

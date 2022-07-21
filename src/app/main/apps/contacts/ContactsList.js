@@ -8,8 +8,8 @@ import { useMemo, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
-// import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-import { openEditContactDialog, selectContacts } from './store/contactsSlice';
+import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
+// import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles[0].map(vehicle => {
@@ -27,7 +27,7 @@ function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
-  // const user = useSelector(({ contactsApp }) => contactsApp.user);
+  const user = useSelector(({ contactsApp }) => contactsApp.user);
 
   const [filteredData, setFilteredData] = useState(null);
 
@@ -89,37 +89,37 @@ function ContactsList(props) {
         Header: 'Millage',
         accessor: 'millage',
         sortable: true
-      }
+      },
 
-      // {
-      //   id: 'action',
-      //   width: 128,
-      //   sortable: false,
-      //   Cell: ({ row }) => (
-      //     <div className="flex items-center">
-      //       <IconButton
-      //         onClick={ev => {
-      //           ev.stopPropagation();
-      //           dispatch(toggleStarredContact(row.original.id));
-      //         }}
-      //       >
-      //         {user.starred && user.starred.includes(row.original.id) ? (
-      //           <Icon className="text-yellow-700">star</Icon>
-      //         ) : (
-      //           <Icon>star_border</Icon>
-      //         )}
-      //       </IconButton>
-      //       {/* <IconButton
-      //         onClick={ev => {
-      //           ev.stopPropagation();
-      //           dispatch(removeContact(row.original.id));
-      //         }}
-      //       >
-      //         <Icon>delete</Icon>
-      //       </IconButton> */}
-      //     </div>
-      //   )
-      // }
+      {
+        id: 'action',
+        width: 128,
+        sortable: false,
+        Cell: ({ row }) => (
+          <div className="flex items-center">
+            <IconButton
+              onClick={ev => {
+                ev.stopPropagation();
+                dispatch(toggleStarredContact(row.original.id));
+              }}
+            >
+              {user.starred && user.starred.includes(row.original.id) ? (
+                <Icon className="text-yellow-700">star</Icon>
+              ) : (
+                <Icon>star_border</Icon>
+              )}
+            </IconButton>
+            <IconButton
+              onClick={ev => {
+                ev.stopPropagation();
+                dispatch(removeContact(row.original.id));
+              }}
+            >
+              <Icon>delete</Icon>
+            </IconButton>
+          </div>
+        )
+      }
     ],
     // eslint-disable-next-line
     [dispatch, contacts]
@@ -159,11 +159,11 @@ function ContactsList(props) {
       <ContactsTable
         columns={columns}
         data={formattedData}
-        // onRowClick={(ev, row) => {
-        //   if (row) {
-        //     dispatch(openEditContactDialog(row.original));
-        //   }
-        // }}
+        onRowClick={(ev, row) => {
+          if (row) {
+            dispatch(openEditContactDialog(row.original));
+          }
+        }}
       />
     </motion.div>
   );
