@@ -13,11 +13,7 @@ import * as yup from 'yup';
 import _ from '@lodash';
 import { forgotPasswordFirebase } from 'app/auth/store/loginSlice';
 import { useDispatch, useSelector } from 'react-redux';
-// import firebaseService from 'app/services/firebaseService';
-// import firebase from 'firebase/app';
-// import history from '@history';
-// import 'firebase/auth';
-// import { sendPasswordResetEmail } from "firebase/auth";
+import { useEffect } from 'react';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -36,18 +32,26 @@ const defaultValues = {
 
 function ForgotPasswordPageMain() {
   const classes = useStyles();
-  const { control, formState, handleSubmit, reset } = useForm({
+  const { control, formState, handleSubmit, reset, setError } = useForm({
     mode: 'onChange',
     defaultValues,
     resolver: yupResolver(schema)
   });
-
+  const login = useSelector(({ auth }) => auth.login);
   const { isValid, dirtyFields, errors } = formState;
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    login.errors.forEach(error => {
+      setError(error.type, {
+        type: 'manual',
+        message: error.message
+      });
+    });
+  }, [login.errors, setError]);
+
   function onSubmit(model) {
     dispatch(forgotPasswordFirebase(model));
-    console.log(model, 'testemail');
     reset(defaultValues);
   }
 
