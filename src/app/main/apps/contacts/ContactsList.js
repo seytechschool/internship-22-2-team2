@@ -12,20 +12,20 @@ import { openEditContactDialog, removeContact, toggleStarredContact, selectConta
 // import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
-  vehicles[0].map(vehicle => {
+  vehicles.map(vehicle => {
     const totalCost = `$${(vehicle.fuelHistory.cost + vehicle.serviceHistory.cost).toLocaleString()}`;
-    // console.log(vehicle, "vehicles")
     return {
       ...vehicle,
       isAssigned: vehicle.isAssigned ? 'YES' : 'NO',
       totalCost,
-      millage: vehicle.millageHistory.millage.toLocaleString()
+      millage: vehicle.mileageHistory.mileage.toLocaleString()
     };
   });
 
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  console.log(contacts, "contacts")
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const user = useSelector(({ contactsApp }) => contactsApp.user);
 

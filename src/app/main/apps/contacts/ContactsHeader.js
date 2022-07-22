@@ -12,13 +12,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
 import contactsSlice, { setContactsSearchText, selectContacts, clearInputValue, setSearchVal } from './store/contactsSlice';
 import "./autocomplete.css"
+import Asynchronous from './Asynchronous';
 
 function ContactsHeader(props) {
   const dispatch = useDispatch();
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const contacts = useSelector(selectContacts);
   const mainTheme = useSelector(selectMainTheme);
-  // console.log(contacts, "contact")
+  console.log(contacts, "contactHeader")
 
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
@@ -81,6 +82,7 @@ function ContactsHeader(props) {
                   {searchText && (
               <CloseIcon style={{ cursor: 'pointer' }} onClick={() => dispatch(clearInputValue())} color="action" />
             )}
+            {/* <Asynchronous/> */}
             {/* </div> */}
             {/* {searchText !== "" && contacts.map((item, index) => (
                 <div className={index === 0 ? "active" :"item" } key={item.id} 
