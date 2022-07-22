@@ -137,7 +137,7 @@ mock.onGet('/api/vehicle-list-app/vehicles').reply(config => {
 });
 
 // mock.onGet('/api/contacts-app/user').reply(config => {
-//   return [200, contactsDB.user[0]];
+// //   return [200, contactsDB.user[0]];
 // });
 
 // mock.onPost('/api/contacts-app/add-contact').reply(request => {

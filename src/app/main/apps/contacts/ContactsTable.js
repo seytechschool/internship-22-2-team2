@@ -32,8 +32,8 @@ const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
 });
 
 const EnhancedTable = ({ columns, data, onRowClick }) => {
+  
   const [hiddenBtn, setHiddenBtn] = useState(false);
-  console.log(hiddenBtn);
   const {
     getTableProps,
     headerGroups,
