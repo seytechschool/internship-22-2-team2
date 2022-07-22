@@ -4,114 +4,116 @@ import { getUserData } from './userSlice';
 
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
+  // '/vehicles-emplosoft.herokuapp.com/vehicles',
   async (routeParams, { getState }) => {
     routeParams = routeParams || getState().contactsApp.contacts.routeParams;
     const response = await axios.get('/api/vehicle-list-app/vehicles', {
+    // const response = await axios.get('/api/vehicles-emplosoft.herokuapp.com/vehicles', {
       params: routeParams
     });
     const data = await response.data;
-
+console.log(data,'data')
     return { data, routeParams };
   }
 );
 
-// export const addContact = createAsyncThunk(
-//   'contactsApp/contacts/addContact',
-//   async (contact, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/add-contact', { contact });
-//     const data = await response.data;
+export const addContact = createAsyncThunk(
+  'contactsApp/contacts/addContact',
+  async (contact, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/add-contact', { contact });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
-// export const updateContact = createAsyncThunk(
-//   'contactsApp/contacts/updateContact',
-//   async (contact, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/update-contact', { contact });
-//     const data = await response.data;
+export const updateContact = createAsyncThunk(
+  'contactsApp/contacts/updateContact',
+  async (contact, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/update-contact', { contact });
+    const data = await response.data;
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
-// export const removeContact = createAsyncThunk(
-//   'contactsApp/contacts/removeContact',
-//   async (contactId, { dispatch, getState }) => {
-//     await axios.post('/api/contacts-app/remove-contact', { contactId });
+export const removeContact = createAsyncThunk(
+  'contactsApp/contacts/removeContact',
+  async (contactId, { dispatch, getState }) => {
+    await axios.post('/api/contacts-app/remove-contact', { contactId });
 
-//     return contactId;
-//   }
-// );
+    return contactId;
+  }
+);
 
-// export const removeContacts = createAsyncThunk(
-//   'contactsApp/contacts/removeContacts',
-//   async (contactIds, { dispatch, getState }) => {
-//     await axios.post('/api/contacts-app/remove-contacts', { contactIds });
+export const removeContacts = createAsyncThunk(
+  'contactsApp/contacts/removeContacts',
+  async (contactIds, { dispatch, getState }) => {
+    await axios.post('/api/contacts-app/remove-contacts', { contactIds });
 
-//     return contactIds;
-//   }
-// );
+    return contactIds;
+  }
+);
 
-// export const toggleStarredContact = createAsyncThunk(
-//   'contactsApp/contacts/toggleStarredContact',
-//   async (contactId, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/toggle-starred-contact', { contactId });
-//     const data = await response.data;
+export const toggleStarredContact = createAsyncThunk(
+  'contactsApp/contacts/toggleStarredContact',
+  async (contactId, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/toggle-starred-contact', { contactId });
+    const data = await response.data;
 
-//     dispatch(getUserData());
+    dispatch(getUserData());
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
-// export const toggleStarredContacts = createAsyncThunk(
-//   'contactsApp/contacts/toggleStarredContacts',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/toggle-starred-contacts', { contactIds });
-//     const data = await response.data;
+export const toggleStarredContacts = createAsyncThunk(
+  'contactsApp/contacts/toggleStarredContacts',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/toggle-starred-contacts', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getUserData());
+    dispatch(getUserData());
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
-// export const setContactsStarred = createAsyncThunk(
-//   'contactsApp/contacts/setContactsStarred',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/set-contacts-starred', { contactIds });
-//     const data = await response.data;
+export const setContactsStarred = createAsyncThunk(
+  'contactsApp/contacts/setContactsStarred',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/set-contacts-starred', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getUserData());
+    dispatch(getUserData());
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
-// export const setContactsUnstarred = createAsyncThunk(
-//   'contactsApp/contacts/setContactsUnstarred',
-//   async (contactIds, { dispatch, getState }) => {
-//     const response = await axios.post('/api/contacts-app/set-contacts-unstarred', { contactIds });
-//     const data = await response.data;
+export const setContactsUnstarred = createAsyncThunk(
+  'contactsApp/contacts/setContactsUnstarred',
+  async (contactIds, { dispatch, getState }) => {
+    const response = await axios.post('/api/contacts-app/set-contacts-unstarred', { contactIds });
+    const data = await response.data;
 
-//     dispatch(getUserData());
+    dispatch(getUserData());
 
-//     dispatch(getContacts());
+    dispatch(getContacts());
 
-//     return data;
-//   }
-// );
+    return data;
+  }
+);
 
 const contactsAdapter = createEntityAdapter({});
 
@@ -174,6 +176,9 @@ const contactsSlice = createSlice({
         },
         data: null
       };
+    },
+    clearInputValue: (state, action) => {
+      state.searchText = '';
     }
   },
   extraReducers: {
@@ -195,7 +200,8 @@ export const {
   openNewContactDialog,
   closeNewContactDialog,
   openEditContactDialog,
-  closeEditContactDialog
+  closeEditContactDialog,
+  clearInputValue
 } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
