@@ -7,12 +7,12 @@ export const getVehicles = createAsyncThunk(
   // '/vehicles-emplosoft.herokuapp.com/vehicles',
   async (routeParams, { getState }) => {
     routeParams = routeParams || getState().contactsApp.contacts.routeParams;
-    const response = await axios.get('/api/vehicle-list-app/vehicles', {
-    // const response = await axios.get('/api/vehicles-emplosoft.herokuapp.com/vehicles', {
+    const response = await axios.get('https://vehicles-emplosoft.herokuapp.com/vehicles', {
       params: routeParams
     });
-    const data = await response.data;
-console.log(data,'data')
+    // const data = await response.data;
+    const data = await {vehicles : response.data}
+    console.log(data, "contactSlice")
     return { data, routeParams };
   }
 );
@@ -179,6 +179,9 @@ const contactsSlice = createSlice({
     },
     clearInputValue: (state, action) => {
       state.searchText = '';
+    },
+    setSearchVal : (state, action) => {
+      state.searchText = action.payload
     }
   },
   extraReducers: {
@@ -201,7 +204,8 @@ export const {
   closeNewContactDialog,
   openEditContactDialog,
   closeEditContactDialog,
-  clearInputValue
+  clearInputValue,
+  setSearchVal
 } = contactsSlice.actions;
 
 export default contactsSlice.reducer;
