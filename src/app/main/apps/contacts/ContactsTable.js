@@ -82,7 +82,6 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
     }
   );
 
-
   const handleChangePage = (event, newPage) => {
     gotoPage(newPage);
   };
