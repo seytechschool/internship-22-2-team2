@@ -36,13 +36,13 @@ function ContactsHeader(props) {
         </Hidden>
 
         <div className="flex items-center">
-          <Icon
+           <Icon
             component={motion.span}
             initial={{ scale: 0 }}
             animate={{ scale: 1, transition: { delay: 0.2 } }}
             className="text-24 md:text-32"
           >
-            account_box
+            directions_car
           </Icon>
           <Typography
             component={motion.span}
@@ -51,7 +51,7 @@ function ContactsHeader(props) {
             delay={300}
             className="hidden sm:flex text-16 md:text-24 mx-12 font-semibold"
           >
-            Contacts
+            Vehicles 
           </Typography>
         </div>
       </div>
@@ -83,15 +83,6 @@ function ContactsHeader(props) {
               <CloseIcon style={{ cursor: 'pointer' }} onClick={() => dispatch(clearInputValue())} color="action" />
             )}
             {/* <Asynchronous/> */}
-            {/* </div> */}
-            {/* {searchText !== "" && contacts.map((item, index) => (
-                <div className={index === 0 ? "active" :"item" } key={item.id} 
-                onClick={() => dispatch(setSearchVal(item.model))}
-                >
-                  <span>{item.brand}</span><span className="capital">{item.model}</span>
-                </div>
-            ))} */}
-            {/* </div> */}
           </Paper>
           <Button style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
             ADD

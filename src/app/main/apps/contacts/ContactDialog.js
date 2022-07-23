@@ -121,7 +121,7 @@ function ContactDialog(props) {
   function handleRemove() {
     dispatch(removeContact(id));
     closeComposeDialog();
-    console.log(id, 'id')
+    console.log(id, 'id');
   }
 
   return (
@@ -132,7 +132,7 @@ function ContactDialog(props) {
       {...contactDialog.props}
       onClose={closeComposeDialog}
       fullWidth
-      maxWidth="xs"
+      maxWidth="lg"
     >
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
@@ -153,7 +153,7 @@ function ContactDialog(props) {
         <DialogContent classes={{ root: 'p-24' }}>
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">account_circle</Icon>
+              <Icon color="action">directions_car</Icon>
             </div>
             <Controller
               control={control}
@@ -162,12 +162,11 @@ function ContactDialog(props) {
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Name"
+                  label="Brand"
                   id="name"
                   error={!!errors.name}
                   helperText={errors?.name?.message}
                   variant="outlined"
-                  required
                   fullWidth
                 />
               )}
@@ -181,20 +180,28 @@ function ContactDialog(props) {
               control={control}
               name="lastName"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Last name" id="lastName" variant="outlined" fullWidth />
+                <TextField {...field} className="mb-24" label="Model" id="lastName" variant="outlined" fullWidth />
               )}
             />
           </div>
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">star</Icon>
+              <Icon color="action">credit_card</Icon>
             </div>
             <Controller
               control={control}
               name="nickname"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Nickname" id="nickname" variant="outlined" fullWidth />
+                <TextField
+                  {...field}
+                  required
+                  className="mb-24"
+                  label="Plate Number"
+                  id="nickname"
+                  variant="outlined"
+                  fullWidth
+                />
               )}
             />
           </div>
