@@ -11,9 +11,11 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect,useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import {addressData} from './VehicleAddress';
+
 
 import _ from '@lodash';
 import * as yup from 'yup';
@@ -51,6 +53,7 @@ const schema = yup.object().shape({
 function ContactDialog(props) {
   const dispatch = useDispatch();
   const contactDialog = useSelector(({ contactsApp }) => contactsApp.contacts.contactDialog);
+  const [location, setLocation]=useState(addressData[0])
 
   const { control, watch, reset, handleSubmit, formState, getValues } = useForm({
     mode: 'onChange',
@@ -93,6 +96,8 @@ function ContactDialog(props) {
   useEffect(() => {
     if (contactDialog.props.open) {
       initDialog();
+      let random=Math.floor(Math.random()*addressData.length)
+      setLocation(addressData[random])
     }
   }, [contactDialog.props.open, initDialog]);
 
@@ -132,7 +137,7 @@ function ContactDialog(props) {
       {...contactDialog.props}
       onClose={closeComposeDialog}
       fullWidth
-      maxWidth="lg"
+      maxWidth="md"
     >
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
@@ -141,7 +146,7 @@ function ContactDialog(props) {
           </Typography>
         </Toolbar>
         <div className="flex flex-col items-center justify-center pb-24">
-          <Avatar className="w-96 h-96" alt="contact avatar" src={avatar} />
+          <Avatar className="w-96 h-96" alt="contact avatar" src='https://i.pinimg.com/originals/58/c5/0e/58c50eaea4d172efb4f2f9fd72f5471b.jpg' />
           {contactDialog.type === 'edit' && (
             <Typography variant="h6" color="inherit" className="pt-8">
               {name}
@@ -149,7 +154,8 @@ function ContactDialog(props) {
           )}
         </div>
       </AppBar>
-      <form noValidate onSubmit={handleSubmit(onSubmit)} className="flex flex-col md:overflow-hidden">
+      <div className='flex items-start'>
+      <form noValidate onSubmit={handleSubmit(onSubmit)} style={{flexBasis:'50%'}} className="flex flex-col md:overflow-hidden">
         <DialogContent classes={{ root: 'p-24' }}>
           <div className="flex">
             <div className="min-w-48 pt-20">
@@ -174,13 +180,14 @@ function ContactDialog(props) {
           </div>
 
           <div className="flex">
-            <div className="min-w-48 pt-20" />
-
+            <div className="min-w-48 pt-20">
+            <span class='material-icons' style={{color:'grey'}}>extension</span>
+            </div>
             <Controller
               control={control}
-              name="lastName"
+              name="model"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Model" id="lastName" variant="outlined" fullWidth />
+                <TextField {...field} className="mb-24" label="Model" id="model" variant="outlined" fullWidth />
               )}
             />
           </div>
@@ -208,117 +215,58 @@ function ContactDialog(props) {
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">phone</Icon>
+              <span className="material-icons" style={{color:'grey'}}>article</span>
             </div>
             <Controller
               control={control}
-              name="phone"
+              name="status"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Phone" id="phone" variant="outlined" fullWidth />
+                <TextField {...field} className="mb-24" label="Assigned Status" id="status" variant="outlined" fullWidth />
               )}
             />
           </div>
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">email</Icon>
+            <span class="material-icons" style={{color:'grey'}}>local_shipping </span>
             </div>
             <Controller
               control={control}
-              name="email"
+              name="vehicle-status"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Email" id="email" variant="outlined" fullWidth />
+                <TextField {...field} className="mb-24" label="Vehicle Status" id="vehicle-status" variant="outlined" fullWidth />
               )}
             />
           </div>
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">domain</Icon>
+            <span class="material-icons" style={{color:'grey'}}>attach_money</span>
             </div>
             <Controller
               control={control}
-              name="company"
+              name="cost"
               render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Company" id="company" variant="outlined" fullWidth />
+                <TextField {...field} className="mb-24" label="Total Cost" id="cost" variant="outlined" fullWidth />
               )}
             />
           </div>
 
           <div className="flex">
             <div className="min-w-48 pt-20">
-              <Icon color="action">work</Icon>
+            <span class='material-icons' style={{color:'grey'}}>add_road</span>
             </div>
             <Controller
               control={control}
-              name="jobTitle"
+              name="millage"
               render={({ field }) => (
                 <TextField
                   {...field}
                   className="mb-24"
-                  label="Job title"
-                  id="jobTitle"
-                  name="jobTitle"
+                  label="Millage"
+                  id="millage"
+                  name="millage"
                   variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex">
-            <div className="min-w-48 pt-20">
-              <Icon color="action">cake</Icon>
-            </div>
-            <Controller
-              control={control}
-              name="birthday"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  id="birthday"
-                  label="Birthday"
-                  type="date"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                  variant="outlined"
-                  fullWidth
-                />
-              )}
-            />
-          </div>
-
-          <div className="flex">
-            <div className="min-w-48 pt-20">
-              <Icon color="action">home</Icon>
-            </div>
-            <Controller
-              control={control}
-              name="address"
-              render={({ field }) => (
-                <TextField {...field} className="mb-24" label="Address" id="address" variant="outlined" fullWidth />
-              )}
-            />
-          </div>
-
-          <div className="flex">
-            <div className="min-w-48 pt-20">
-              <Icon color="action">note</Icon>
-            </div>
-            <Controller
-              control={control}
-              name="notes"
-              render={({ field }) => (
-                <TextField
-                  {...field}
-                  className="mb-24"
-                  label="Notes"
-                  id="notes"
-                  variant="outlined"
-                  multiline
-                  rows={5}
                   fullWidth
                 />
               )}
@@ -347,6 +295,9 @@ function ContactDialog(props) {
           </DialogActions>
         )}
       </form>
+      <iframe style={{width:'500px', height:'500px', margin:'auto'}} src={location} frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+     
+      </div>
     </Dialog>
   );
 }

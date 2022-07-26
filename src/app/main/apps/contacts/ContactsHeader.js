@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
-import contactsSlice, { setContactsSearchText, selectContacts, clearInputValue, setSearchVal } from './store/contactsSlice';
+import { setContactsSearchText, selectContacts, clearInputValue, openNewContactDialog,setSearchVal } from './store/contactsSlice';
 import "./autocomplete.css"
 import Asynchronous from './Asynchronous';
 
@@ -53,6 +53,9 @@ function ContactsHeader(props) {
           >
             Vehicles 
           </Typography>
+          <Button onClick={()=>dispatch(openNewContactDialog())} style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
+            ADD
+          </Button>
         </div>
       </div>
 
@@ -84,9 +87,6 @@ function ContactsHeader(props) {
             )}
             {/* <Asynchronous/> */}
           </Paper>
-          <Button style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
-            ADD
-          </Button>
         </ThemeProvider>
       </div>
     </div>
