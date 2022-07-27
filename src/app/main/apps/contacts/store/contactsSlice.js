@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/too
 import axios from 'axios';
 import { getUserData } from './userSlice';
 
-
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
   async (routeParams, { getState }) => {
@@ -11,17 +10,16 @@ export const getVehicles = createAsyncThunk(
       params: routeParams
     });
     // const data = await {vehicles : response.data}
-    const data = await response.data
-    console.log(data, "contactSlice data")
+    const data = await response.data;
+    console.log(data, 'contactSlice data');
     return { data, routeParams };
   }
 );
 
-
 export const addContact = createAsyncThunk(
   'contactsApp/contacts/addContact',
   async (contact, { dispatch, getState }) => {
-    const response = await axios.post('/api/contacts-app/add-contact', { contact });
+    const response = await axios.post('https://vehicles-emplosoft.herokuapp.com/vehicles/addVehicle', { contact });
     const data = await response.data;
 
     dispatch(getContacts());
@@ -181,8 +179,8 @@ const contactsSlice = createSlice({
     clearInputValue: (state, action) => {
       state.searchText = '';
     },
-    setSearchVal : (state, action) => {
-      state.searchText = action.payload
+    setSearchVal: (state, action) => {
+      state.searchText = action.payload;
     }
   },
   extraReducers: {

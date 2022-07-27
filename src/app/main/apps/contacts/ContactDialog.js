@@ -30,24 +30,21 @@ import {
 
 const defaultValues = {
   id: '',
-  name: '',
-  lastName: '',
-  avatar: 'assets/images/avatars/profile.jpg',
-  nickname: '',
-  company: '',
-  jobTitle: '',
-  email: '',
-  phone: '',
-  address: '',
-  birthday: '',
-  notes: ''
+  brand: '',
+  model: '',
+  plateNumber: '',
+  isAssigned: '',
+  vehicleStatus: '',
+  totalCost: '',
+  millage: ''
 };
 
 /**
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  name: yup.string().required('You must enter a name')
+  brand: yup.string()
+ .required('You must enter a name') 
 });
 
 function ContactDialog(props) {
@@ -64,8 +61,8 @@ function ContactDialog(props) {
   const { isValid, dirtyFields, errors } = formState;
 
   const id = watch('id');
-  const name = watch('name');
-  const avatar = watch('avatar');
+  const brand = watch('brand');
+  const model = watch('model');
 
   /**
    * Initialize Dialog with Data
@@ -114,6 +111,7 @@ function ContactDialog(props) {
   function onSubmit(data) {
     if (contactDialog.type === 'new') {
       dispatch(addContact(data));
+      console.log(data, 'data')
     } else {
       dispatch(updateContact({ ...contactDialog.data, ...data }));
     }
@@ -163,7 +161,7 @@ function ContactDialog(props) {
             </div>
             <Controller
               control={control}
-              name="name"
+              name="brand"
               render={({ field }) => (
                 <TextField
                   {...field}
@@ -198,7 +196,7 @@ function ContactDialog(props) {
             </div>
             <Controller
               control={control}
-              name="nickname"
+              name="plateNumber"
               render={({ field }) => (
                 <TextField
                   {...field}
@@ -219,7 +217,7 @@ function ContactDialog(props) {
             </div>
             <Controller
               control={control}
-              name="status"
+              name="isAssigned"
               render={({ field }) => (
                 <TextField {...field} className="mb-24" label="Assigned Status" id="status" variant="outlined" fullWidth />
               )}
@@ -232,7 +230,7 @@ function ContactDialog(props) {
             </div>
             <Controller
               control={control}
-              name="vehicle-status"
+              name="vehicleStatus"
               render={({ field }) => (
                 <TextField {...field} className="mb-24" label="Vehicle Status" id="vehicle-status" variant="outlined" fullWidth />
               )}
@@ -245,7 +243,7 @@ function ContactDialog(props) {
             </div>
             <Controller
               control={control}
-              name="cost"
+              name="totalCost"
               render={({ field }) => (
                 <TextField {...field} className="mb-24" label="Total Cost" id="cost" variant="outlined" fullWidth />
               )}
@@ -277,7 +275,9 @@ function ContactDialog(props) {
         {contactDialog.type === 'new' ? (
           <DialogActions className="justify-between p-4 pb-16">
             <div className="px-16">
-              <Button variant="contained" color="secondary" type="submit" disabled={_.isEmpty(dirtyFields) || !isValid}>
+              <Button variant="contained" color="secondary" type="submit"
+            //    disabled={_.isEmpty(dirtyFields) || !isValid}
+               >
                 Add
               </Button>
             </div>
@@ -285,7 +285,9 @@ function ContactDialog(props) {
         ) : (
           <DialogActions className="justify-between p-4 pb-16">
             <div className="px-16">
-              <Button variant="contained" color="secondary" type="submit" disabled={_.isEmpty(dirtyFields) || !isValid}>
+              <Button variant="contained" color="secondary" type="submit" 
+            //   disabled={_.isEmpty(dirtyFields) || !isValid}
+              >
                 Save
               </Button>
             </div>
