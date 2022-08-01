@@ -24,10 +24,6 @@ const formatData = vehicles =>
     };
   });
 
-function popUp() {
-  return <FuseMessage props="Deleted" />;
-}
-
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -117,7 +113,6 @@ function ContactsList(props) {
             </IconButton>
             <IconButton
               onClick={ev => {
-                popUp();
                 ev.stopPropagation();
                 dispatch(removeContact(row.original._id));
               }}

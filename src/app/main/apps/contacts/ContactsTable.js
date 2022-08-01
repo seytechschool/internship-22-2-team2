@@ -1,4 +1,4 @@
-import { forwardRef, useRef, useEffect } from 'react';
+import { forwardRef, useRef, useEffect, useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import Table from '@material-ui/core/Table';
 import PropTypes from 'prop-types';
@@ -11,11 +11,10 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import { useGlobalFilter, usePagination, useRowSelect, useSortBy, useTable } from 'react-table';
 import clsx from 'clsx';
-import ContactsTablePaginationActions from './ContactsTablePaginationActions';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import DeleteIcon from '@material-ui/icons/Delete';
 import styled from 'styled-components';
-import { useState } from 'react';
+import ContactsTablePaginationActions from './ContactsTablePaginationActions';
 
 const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
   const defaultRef = useRef();
@@ -32,7 +31,6 @@ const IndeterminateCheckbox = forwardRef(({ indeterminate, ...rest }, ref) => {
 });
 
 const EnhancedTable = ({ columns, data, onRowClick }) => {
-  
   const [hiddenBtn, setHiddenBtn] = useState(false);
   const {
     getTableProps,
@@ -98,19 +96,19 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
       />
       {hiddenBtn && (
         <Div>
-          <button onClick={() => setHiddenBtn(false)}>
+          <button type="submit" onClick={() => setHiddenBtn(false)}>
             <DeleteIcon /> REMOVE
           </button>
         </Div>
       )}
       <TableContainer className="flex flex-1">
-        <Table {...getTableProps()} stickyHeader className="simple borderless">
+        <Table {...getTableProps()} className="simple borderless">
           <TableHead>
             {headerGroups.map(headerGroup => (
               <TableRow {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map(column => (
                   <TableCell
-                    className="whitespace-nowrap p-4 md:p-12"
+                    className="whitespace-wrap p-4 md:p-12"
                     {...(!column.sortable
                       ? column.getHeaderProps()
                       : column.getHeaderProps(column.getSortByToggleProps()))}

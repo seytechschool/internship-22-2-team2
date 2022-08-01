@@ -21,13 +21,25 @@ import { addressData } from './VehicleAddress';
 
 import {
   removeContact,
-  // eslint-disable-next-line import/named
   updateContact,
   addContact,
   closeNewContactDialog,
   closeEditContactDialog
 } from './store/contactsSlice';
-import FuseMessage from '@fuse/core/FuseMessage';
+
+const avatars = [
+  'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
+  'https://avatarfiles.alphacoders.com/170/170744.jpg',
+  'https://www.aalgse.com.au/wp-content/uploads/2018/05/Photo2-003-3.png',
+  'https://s3-ap-southeast-2.amazonaws.com/imotor-cms/images_cms/513d8ff1-5a40-4d66-a74c-f64702fa453a.jpg',
+  'https://www.ecotruckwash.com/wp-content/uploads/2019/10/EcoTruckWash-1058907888-600x600.jpg',
+  'https://imotor-cms-uploads.s3.ap-southeast-2.amazonaws.com/qzevjK8Awyt3Kw8AfcfFXvDZ',
+  'https://www.velocitytruckcentres.com.au/storage/app/media/Newcastle%20Recent%20Deliveries%20Images/92542aaa-9a37-45f4-ba97-7be5b43e4133.jpg'
+];
+
+function randomAvatars() {
+  return avatars[Math.floor(Math.random() * avatars.length)];
+}
 
 const defaultValues = {
   id: '',
@@ -48,7 +60,7 @@ const schema = yup.object().shape({
   brand: yup.string().required('You must enter a name')
 });
 
-function ContactDialog(props) {
+function ContactDialog(data) {
   const dispatch = useDispatch();
   const contactDialog = useSelector(({ contactsApp }) => contactsApp.contacts.contactDialog);
   const [location, setLocation] = useState(addressData[0]);
@@ -109,7 +121,7 @@ function ContactDialog(props) {
   /**
    * Form Submit
    */
-  function onSubmit(data) {
+  function onSubmit() {
     if (contactDialog.type === 'new') {
       dispatch(addContact(data));
     } else {
@@ -121,9 +133,9 @@ function ContactDialog(props) {
   /**
    * Remove Event
    */
-  function handleRemove(data) {
+  function handleRemove() {
     console.log(data.id, 'id');
-    //dispatch(removeContact(id));
+    dispatch(removeContact(id));
     closeComposeDialog();
   }
 
@@ -139,19 +151,15 @@ function ContactDialog(props) {
     >
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
-          <Typography variant="subtitle1" color="inherit">
+          <Typography variant="subtitle" color="inherit">
             {contactDialog.type === 'new' ? 'New Contact' : 'Edit Contact'}
           </Typography>
         </Toolbar>
         <div className="flex flex-col items-center justify-center pb-24">
-          <Avatar
-            className="w-96 h-96"
-            alt="contact avatar"
-            src="https://i.pinimg.com/originals/58/c5/0e/58c50eaea4d172efb4f2f9fd72f5471b.jpg"
-          />
+          <Avatar className="w-96 h-96" alt="contact avatar" src={randomAvatars()} />
           {contactDialog.type === 'edit' && (
-            <Typography variant="h6" color="inherit" className="pt-8">
-              {brand}
+            <Typography style={{ fontSize: '2rem' }} variant="subtitle" color="inherit" className="pt-8">
+              {brand} {model}
             </Typography>
           )}
         </div>
@@ -308,7 +316,7 @@ function ContactDialog(props) {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    className="mb-24"
+                    className="mb-1"
                     label="Mileage"
                     id="mileage"
                     name="mileage"
@@ -345,14 +353,20 @@ function ContactDialog(props) {
                   Save
                 </Button>
               </div>
-              <IconButton onClick={handleRemove}>
+              <IconButton
+                onClick={ev => {
+                  ev.stopPropagation();
+                  dispatch(removeContact(id));
+                  console.log('ID ===> ', id);
+                }}
+              >
                 <Icon>delete</Icon>
               </IconButton>
             </DialogActions>
           )}
         </form>
         <iframe
-          style={{ width: '500px', height: '500px', margin: 'auto' }}
+          style={{ width: '400px', height: '400px', margin: 'auto' }}
           src={location}
           frameBorder="0"
           scrolling="no"
@@ -360,7 +374,6 @@ function ContactDialog(props) {
           marginWidth="0"
           title="iframe"
         />
-        
       </div>
     </Dialog>
   );

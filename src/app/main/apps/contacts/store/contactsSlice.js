@@ -44,47 +44,6 @@ const createVehicleObject = vehicle => {
     __v: 0
   };
 };
-const updateVehicleObject = vehicle => {
-  return {
-    brand: vehicle.brand,
-    model: vehicle.model,
-    plateNumber: vehicle.plateNumber,
-    isAssigned: true,
-    vehicleStatus: vehicle.vehicleStatus,
-    serviceHistory: {
-      cost: 1234,
-      address: {
-        addressLine1: 'test1',
-        city: 'test1',
-        province: 'test1',
-        country: 'test1',
-        postalCode: 'test1'
-      }
-    },
-    fuelHistory: {
-      cost: vehicle.fuelCost,
-      volume: 123456,
-      address: {
-        addressLine1: 'test',
-        city: 'test',
-        province: 'test',
-        country: 'test',
-        postalCode: 'test'
-      }
-    },
-    mileageHistory: {
-      mileage: vehicle.mileageCost,
-      address: {
-        addressLine1: 'test',
-        city: 'test',
-        province: 'test',
-        country: 'test',
-        postalCode: 'test'
-      }
-    },
-    __v: 0
-  };
-};
 
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
@@ -105,40 +64,38 @@ export const addContact = createAsyncThunk(
   async (contact, { dispatch, getState }) => {
     const vehicle = createVehicleObject(contact);
     const vehicleStringified = JSON.stringify(vehicle);
-    const response = await axios.post(
-      'https://internship-api-22-2-team2.herokuapp.com/vehicles/addVehicle',
-      vehicleStringified,
-      {
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Access-Control-Allow-Origin': '*'
+    try {
+      const response = await axios.post(
+        'https://internship-api-22-2-team2.herokuapp.com/vehicles/addVehicle',
+        vehicleStringified,
+        {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*'
+          }
         }
-      }
-    );
-    const data = await response.data;
-
-    return data;
+      );
+      const data = await response.data;
+  
+      return data;
+      
+    } catch (error) {
+      return alert(' Not Added');
+    }
   }
 );
 export const updateContact = createAsyncThunk(
   'vehicle-list-app/vehicles/updateVehicle',
   async (contact, { dispatch, getState }) => {
-    const vehicle = updateVehicleObject(contact);
-    const vehicleString = JSON.stringify(vehicle);
-    const response = await axios.patch(
-      `https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`, 
-      vehicleString,
-      console.log('Id is ===>', vehicleString),
-      {
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PATCH'
-        }
+    const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`, {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PATCH'
       }
-    );
+    });
     const data = await response.data;
-      alert('Updated')
+    alert('Updated');
     return data;
   }
 );
@@ -160,7 +117,6 @@ export const removeContact = createAsyncThunk(
   }
 );
 
-
 export const removeContacts = createAsyncThunk(
   'contactsApp/contacts/removeContacts',
   async (contactIds, { dispatch, getState }) => {
@@ -177,9 +133,6 @@ export const toggleStarredContact = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -192,8 +145,6 @@ export const toggleStarredContacts = createAsyncThunk(
 
     dispatch(getUserData());
 
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -205,9 +156,6 @@ export const setContactsStarred = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -219,9 +167,6 @@ export const setContactsUnstarred = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
