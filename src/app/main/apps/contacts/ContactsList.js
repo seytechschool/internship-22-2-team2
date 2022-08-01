@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import { motion } from 'framer-motion';
 import FuseUtils from '@fuse/utils';
 import Avatar from '@material-ui/core/Avatar';
@@ -5,6 +6,7 @@ import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { useMemo, useEffect, useState } from 'react';
+import FuseMessage from '@fuse/core/FuseMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
@@ -22,10 +24,14 @@ const formatData = vehicles =>
     };
   });
 
+function popUp() {
+  return <FuseMessage props="Deleted" />;
+}
+
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  console.log(contacts, "contacts")
+  console.log(contacts, 'contacts');
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const user = useSelector(({ contactsApp }) => contactsApp.user);
 
@@ -111,8 +117,9 @@ function ContactsList(props) {
             </IconButton>
             <IconButton
               onClick={ev => {
+                popUp();
                 ev.stopPropagation();
-                dispatch(removeContact(row.original.id));
+                dispatch(removeContact(row.original._id));
               }}
             >
               <Icon>delete</Icon>
