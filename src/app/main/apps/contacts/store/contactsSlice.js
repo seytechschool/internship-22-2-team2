@@ -1,6 +1,49 @@
+/* eslint-disable no-alert */
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { getUserData } from './userSlice';
+
+const createVehicleObject = vehicle => {
+  return {
+    brand: vehicle.brand,
+    model: vehicle.model,
+    plateNumber: vehicle.plateNumber,
+    isAssigned: true,
+    vehicleStatus: vehicle.vehicleStatus,
+    serviceHistory: {
+      cost: 1234,
+      address: {
+        addressLine1: 'test1',
+        city: 'test1',
+        province: 'test1',
+        country: 'test1',
+        postalCode: 'test1'
+      }
+    },
+    fuelHistory: {
+      cost: vehicle.fuelCost,
+      volume: 123456,
+      address: {
+        addressLine1: 'test',
+        city: 'test',
+        province: 'test',
+        country: 'test',
+        postalCode: 'test'
+      }
+    },
+    mileageHistory: {
+      mileage: vehicle.mileageCost,
+      address: {
+        addressLine1: 'test',
+        city: 'test',
+        province: 'test',
+        country: 'test',
+        postalCode: 'test'
+      }
+    },
+    __v: 0
+  };
+};
 
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
@@ -17,35 +60,60 @@ export const getVehicles = createAsyncThunk(
 );
 
 export const addContact = createAsyncThunk(
-  'contactsApp/contacts/addContact',
+  'vehicle-list-app/vehicles/addVehicle',
   async (contact, { dispatch, getState }) => {
-    const response = await axios.post('https://vehicles-emplosoft.herokuapp.com/vehicles/addVehicle', { contact });
-    const data = await response.data;
-
-    dispatch(getContacts());
-
-    return data;
+    const vehicle = createVehicleObject(contact);
+    const vehicleStringified = JSON.stringify(vehicle);
+    try {
+      const response = await axios.post(
+        'https://internship-api-22-2-team2.herokuapp.com/vehicles/addVehicle',
+        vehicleStringified,
+        {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*'
+          }
+        }
+      );
+      const data = await response.data;
+  
+      return data;
+      
+    } catch (error) {
+      return alert(' Not Added');
+    }
   }
 );
-
 export const updateContact = createAsyncThunk(
-  'contactsApp/contacts/updateContact',
+  'vehicle-list-app/vehicles/updateVehicle',
   async (contact, { dispatch, getState }) => {
-    const response = await axios.post('/api/contacts-app/update-contact', { contact });
+    const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`, {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PATCH'
+      }
+    });
     const data = await response.data;
-
-    dispatch(getContacts());
-
+    alert('Updated');
     return data;
   }
 );
-
 export const removeContact = createAsyncThunk(
-  'contactsApp/contacts/removeContact',
+  'vehicle-list-app/vehicles/removeVehicle',
   async (contactId, { dispatch, getState }) => {
-    await axios.post('/api/contacts-app/remove-contact', { contactId });
-
-    return contactId;
+    try {
+      await axios.delete(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${contactId}`, {
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE'
+        }
+      });
+      return contactId;
+    } catch (err) {
+      return alert(' Not deleted');
+    }
   }
 );
 
@@ -65,9 +133,6 @@ export const toggleStarredContact = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -80,8 +145,6 @@ export const toggleStarredContacts = createAsyncThunk(
 
     dispatch(getUserData());
 
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -93,9 +156,6 @@ export const setContactsStarred = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -107,9 +167,6 @@ export const setContactsUnstarred = createAsyncThunk(
     const data = await response.data;
 
     dispatch(getUserData());
-
-    dispatch(getContacts());
-
     return data;
   }
 );
@@ -184,10 +241,10 @@ const contactsSlice = createSlice({
     }
   },
   extraReducers: {
-    // [updateContact.fulfilled]: contactsAdapter.upsertOne,
-    // [addContact.fulfilled]: contactsAdapter.addOne,
+    [updateContact.fulfilled]: contactsAdapter.upsertOne,
+    [addContact.fulfilled]: contactsAdapter.addOne,
     // [removeContacts.fulfilled]: (state, action) => contactsAdapter.removeMany(state, action.payload),
-    // [removeContact.fulfilled]: (state, action) => contactsAdapter.removeOne(state, action.payload),
+    [removeContact.fulfilled]: (state, action) => contactsAdapter.removeOne(state, action.payload),
     [getVehicles.fulfilled]: (state, action) => {
       const { data, routeParams } = action.payload;
       contactsAdapter.setAll(state, data);

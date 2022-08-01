@@ -10,8 +10,14 @@ import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMainTheme } from 'app/store/fuse/settingsSlice';
-import { setContactsSearchText, selectContacts, clearInputValue, openNewContactDialog,setSearchVal } from './store/contactsSlice';
-import "./autocomplete.css"
+import {
+  setContactsSearchText,
+  selectContacts,
+  clearInputValue,
+  openNewContactDialog,
+  setSearchVal
+} from './store/contactsSlice';
+import './autocomplete.css';
 import Asynchronous from './Asynchronous';
 
 function ContactsHeader(props) {
@@ -19,7 +25,7 @@ function ContactsHeader(props) {
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const contacts = useSelector(selectContacts);
   const mainTheme = useSelector(selectMainTheme);
-  console.log(contacts, "contactHeader")
+  console.log(contacts, 'contactHeader');
 
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
@@ -36,7 +42,7 @@ function ContactsHeader(props) {
         </Hidden>
 
         <div className="flex items-center">
-           <Icon
+          <Icon
             component={motion.span}
             initial={{ scale: 0 }}
             animate={{ scale: 1, transition: { delay: 0.2 } }}
@@ -51,17 +57,23 @@ function ContactsHeader(props) {
             delay={300}
             className="hidden sm:flex text-16 md:text-24 mx-12 font-semibold"
           >
-            Vehicles 
+            Vehicles
           </Typography>
-          <Button onClick={()=>dispatch(openNewContactDialog())} style={{ marginLeft: '10px' }} variant="contained" color="success" size="large">
-            ADD
+          <Button
+            onClick={() => dispatch(openNewContactDialog())}
+            style={{ marginLeft: '10px', backgroundColor: '#81c784' }}
+            size="lg"
+            variant="contained"
+            component="label"
+            color="neutral"
+          >
+            +Add
           </Button>
         </div>
       </div>
 
       <div className="flex flex-1 items-center justify-center px-8 sm:px-12">
         <ThemeProvider theme={mainTheme}>
-          
           <Paper
             component={motion.div}
             initial={{ y: -20, opacity: 0 }}
@@ -70,7 +82,7 @@ function ContactsHeader(props) {
           >
             {/* <div className='wrapper'> */}
             {/* <div className='d-flex align-items-center'> */}
-              <Icon color="action">search</Icon>
+            <Icon color="action">search</Icon>
             <Input
               placeholder="Search for anything"
               className="flex flex-1 px-16"
@@ -82,7 +94,7 @@ function ContactsHeader(props) {
               }}
               onChange={ev => dispatch(setContactsSearchText(ev))}
             />
-                  {searchText && (
+            {searchText && (
               <CloseIcon style={{ cursor: 'pointer' }} onClick={() => dispatch(clearInputValue())} color="action" />
             )}
             {/* <Asynchronous/> */}
