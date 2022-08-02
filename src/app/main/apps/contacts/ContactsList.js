@@ -8,14 +8,14 @@ import Typography from '@material-ui/core/Typography';
 import { useMemo, useEffect, useState } from 'react';
 import FuseMessage from '@fuse/core/FuseMessage';
 import { useDispatch, useSelector } from 'react-redux';
-import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
-import ContactsTable from './ContactsTable';
-import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
 import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
 import { DialogContentText, DialogTitle } from '@material-ui/core';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import Button from '@material-ui/core/Button';
+import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
+import ContactsTable from './ContactsTable';
+import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
 // import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
@@ -29,6 +29,20 @@ const formatData = vehicles =>
     };
   });
 
+const avatars = [
+  'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
+  'https://avatarfiles.alphacoders.com/170/170744.jpg',
+  'https://www.aalgse.com.au/wp-content/uploads/2018/05/Photo2-003-3.png',
+  'https://s3-ap-southeast-2.amazonaws.com/imotor-cms/images_cms/513d8ff1-5a40-4d66-a74c-f64702fa453a.jpg',
+  'https://www.ecotruckwash.com/wp-content/uploads/2019/10/EcoTruckWash-1058907888-600x600.jpg',
+  'https://imotor-cms-uploads.s3.ap-southeast-2.amazonaws.com/qzevjK8Awyt3Kw8AfcfFXvDZ',
+  'https://www.velocitytruckcentres.com.au/storage/app/media/Newcastle%20Recent%20Deliveries%20Images/92542aaa-9a37-45f4-ba97-7be5b43e4133.jpg'
+];
+
+function randomAvatars() {
+  return avatars[Math.floor(Math.random() * avatars.length)];
+}
+
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -39,20 +53,20 @@ function ContactsList(props) {
 
   const columns = useMemo(
     () => [
-      // {
-      //   Header: ({ selectedFlatRows }) => {
-      //     const selectedRowIds = selectedFlatRows.map(row => row.original.id);
+      {
+        Header: ({ selectedFlatRows }) => {
+          const selectedRowIds = selectedFlatRows.map(row => row.original.id);
 
-      //     return selectedFlatRows.length > 0 && <ContactsMultiSelectMenu selectedContactIds={selectedRowIds} />;
-      //   },
-      //   accessor: 'avatar',
-      //   Cell: ({ row }) => {
-      //     return <Avatar className="mx-8" alt={row.original.name} src={row.original.avatar} />;
-      //   },
-      //   className: 'justify-center',
-      //   width: 64,
-      //   sortable: false
-      // },
+          return selectedFlatRows.length > 0 && <ContactsMultiSelectMenu selectedContactIds={selectedRowIds} />;
+        },
+        accessor: 'avatar',
+        Cell: ({ row }) => {
+          return <Avatar className="mx-8" alt={row.original.name} src={randomAvatars()} />;
+        },
+        className: 'justify-center',
+        width: 64,
+        sortable: false
+      },
       {
         Header: 'Brand',
         accessor: 'brand',
@@ -122,13 +136,10 @@ function ContactsList(props) {
                   openDialog({
                     children: (
                       <>
-                        <DialogTitle id="alert-dialog-title"></DialogTitle>
-                        <DialogContent>
-                          <DialogContentText id="alert-dialog-description">Do you want to delete?</DialogContentText>
-                        </DialogContent>
+                        <DialogTitle id="alert-dialog-title">Do you want to delete?</DialogTitle>
                         <DialogActions>
                           <Button
-                            onClick={ev => {
+                            onClick={() => {
                               dispatch(removeContact(row.original._id));
                               dispatch(closeDialog());
                             }}

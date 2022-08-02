@@ -174,10 +174,30 @@ function Login() {
           </CardContent>
         </Card>
 
-        <div className={clsx(classes.rightSection, 'hidden md:flex flex-1 items-center justify-center p-64')}>
-          <div className="max-w-320">
+        <div
+          style={{
+            backgroundImage: 'url("https://i.gifer.com/CuoX.gif")',
+
+            backgroundSize: ' cover '
+          }}
+          className={clsx(classes.rightSection, 'hidden md:flex flex-1 items-center justify-center p-64')}
+        >
+          <div
+            className="max-w-320"
+            style={{
+              backgroundColor: 'rgba(0,0,0, 0.5)',
+              width: '60vw',
+              height: ' 25vh',
+              textAlign: 'center',
+              borderRadius: '20px'
+            }}
+          >
             <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}>
-              <Typography color="inherit" className="text-32 sm:text-44 font-semibold leading-tight">
+              <Typography
+                style={{ marginTop: '5rem' }}
+                color="inherit"
+                className="text-32 sm:text-44 font-semibold leading-tight"
+              >
                 EmploSoft <br />
               </Typography>
             </motion.div>

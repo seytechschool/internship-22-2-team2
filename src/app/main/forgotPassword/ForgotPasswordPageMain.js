@@ -32,7 +32,7 @@ const defaultValues = {
 
 function ForgotPasswordPageMain() {
   const classes = useStyles();
-  const { control, formState, handleSubmit, reset, setError} = useForm({
+  const { control, formState, handleSubmit, reset, setError } = useForm({
     mode: 'onChange',
     defaultValues,
     resolver: yupResolver(schema)
