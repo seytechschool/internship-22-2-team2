@@ -14,10 +14,11 @@ import Typography from '@material-ui/core/Typography';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import FuseDialog from '@fuse/core/FuseDialog';
 
 import _ from '@lodash';
 import * as yup from 'yup';
+import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { DialogContentText, DialogTitle } from '@material-ui/core';
 import { addressData } from './VehicleAddress';
 
 import {
@@ -27,8 +28,6 @@ import {
   closeNewContactDialog,
   closeEditContactDialog
 } from './store/contactsSlice';
-import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
-import { DialogContentText, DialogTitle } from '@material-ui/core';
 
 const avatars = [
   'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
@@ -129,7 +128,6 @@ function ContactDialog() {
       dispatch(addContact(data));
     } else {
       dispatch(updateContact({ ...contactDialog.data, ...data }));
-      console.log(data, 'contactDialog')
     }
     closeComposeDialog();
   }
@@ -155,7 +153,7 @@ function ContactDialog() {
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
           <Typography variant="subtitle" color="inherit">
-            {contactDialog.type === 'new' ? 'New Contact' : 'Edit Contact'}
+            {contactDialog.type === 'new' ? 'New Vehicle' : 'Edit Vehicle Info'}
           </Typography>
         </Toolbar>
         <div className="flex flex-col items-center justify-center pb-24">
@@ -177,7 +175,9 @@ function ContactDialog() {
           <DialogContent classes={{ root: 'p-24' }}>
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <Icon color="action">directions_car</Icon>
+                <span className="material-icons" style={{ color: 'black' }}>
+                  local_shipping
+                </span>
               </div>
               <Controller
                 control={control}
@@ -199,7 +199,7 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
+                <span className="material-icons" style={{ color: 'black' }}>
                   extension
                 </span>
               </div>
@@ -214,7 +214,9 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <Icon color="action">credit_card</Icon>
+                <span className="material-icons" style={{ color: 'black' }}>
+                  straighten
+                </span>
               </div>
               <Controller
                 control={control}
@@ -235,8 +237,8 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
-                  article
+                <span className="material-icons" style={{ color: 'black' }}>
+                  done_outline
                 </span>
               </div>
               <Controller
@@ -257,8 +259,8 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
-                  local_shipping{' '}
+                <span className="material-icons" style={{ color: 'black' }}>
+                  article
                 </span>
               </div>
               <Controller
@@ -279,8 +281,8 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
-                  attach_money
+                <span className="material-icons" style={{ color: 'black' }}>
+                  build_circle
                 </span>
               </div>
               <Controller
@@ -293,8 +295,8 @@ function ContactDialog() {
             </div>
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
-                  attach_money
+                <span className="material-icons" style={{ color: 'black' }}>
+                  local_gas_station
                 </span>
               </div>
               <Controller
@@ -309,7 +311,7 @@ function ContactDialog() {
 
             <div className="flex">
               <div className="min-w-48 pt-20">
-                <span className="material-icons" style={{ color: 'grey' }}>
+                <span className="material-icons" style={{ color: 'black' }}>
                   add_road
                 </span>
               </div>
@@ -367,35 +369,38 @@ function ContactDialog() {
                 <Icon>delete</Icon>
               </IconButton> */}
               <Button
-    onClick={()=> dispatch(openDialog({
-        children: (
-            <>
-                <DialogTitle id="alert-dialog-title"></DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-dialog-description">Do you want to delete?
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={(ev)=> {
-                      ev.stopPropagation();
-                      dispatch(removeContact(contactDialog.data._id));
-                      dispatch(closeDialog());
-                      closeComposeDialog();
-                      }} color="primary">
-                        Yes
-                    </Button>
-                    <Button onClick={()=> dispatch(closeDialog())} color="primary" autoFocus>
-                        No
-                    </Button>
-                </DialogActions>
-            </>
-             )
-         }))}
-    variant="contained"
-    color="secondary"
->
-<Icon>delete</Icon>
-</Button>
+                onClick={() =>
+                  dispatch(
+                    openDialog({
+                      children: (
+                        <>
+                          <DialogTitle id="alert-dialog-title">Do you want to delete?</DialogTitle>
+                          <DialogActions>
+                            <Button
+                              onClick={ev => {
+                                ev.stopPropagation();
+                                dispatch(removeContact(contactDialog.data._id));
+                                dispatch(closeDialog());
+                                closeComposeDialog();
+                              }}
+                              color="primary"
+                            >
+                              Yes
+                            </Button>
+                            <Button onClick={() => dispatch(closeDialog())} color="primary" autoFocus>
+                              No
+                            </Button>
+                          </DialogActions>
+                        </>
+                      )
+                    })
+                  )
+                }
+                variant="contained"
+                color="secondary"
+              >
+                <Icon>delete</Icon>
+              </Button>
             </DialogActions>
           )}
         </form>

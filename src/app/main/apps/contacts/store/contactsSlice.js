@@ -5,43 +5,43 @@ import { getUserData } from './userSlice';
 
 const createVehicleObject = vehicle => {
   return {
-    "brand": vehicle.brand,
-    "model": vehicle.model,
-    "plateNumber": vehicle.plateNumber,
-    "isAssigned": true,
-    "vehicleStatus": vehicle.vehicleStatus,
-    "serviceHistory": {
-      "cost": 1234,
-      "address": {
-        "addressLine1": 'test1',
-        "city": 'test1',
-        "province": 'test1',
-        "country": 'test1',
-        "postalCode": 'test1'
+    brand: vehicle.brand,
+    model: vehicle.model,
+    plateNumber: vehicle.plateNumber,
+    isAssigned: true,
+    vehicleStatus: vehicle.vehicleStatus,
+    serviceHistory: {
+      cost: 1234,
+      address: {
+        addressLine1: 'test1',
+        city: 'test1',
+        province: 'test1',
+        country: 'test1',
+        postalCode: 'test1'
       }
     },
-    "fuelHistory": {
-      "cost": vehicle.fuelCost,
-      "volume": 123456,
-      "address": {
-        "addressLine1": 'test',
-        "city": 'test',
-        "province": 'test',
-        "country": 'test',
-        "postalCode": 'test'
+    fuelHistory: {
+      cost: vehicle.fuelCost,
+      volume: 123456,
+      address: {
+        addressLine1: 'test',
+        city: 'test',
+        province: 'test',
+        country: 'test',
+        postalCode: 'test'
       }
     },
-    "mileageHistory": {
-      "mileage": vehicle.mileageCost,
-      "address": {
-        "addressLine1": 'test',
-        "city": 'test',
-        "province": 'test',
-        "country": 'test',
-        "postalCode": 'test'
+    mileageHistory: {
+      mileage: vehicle.mileageCost,
+      address: {
+        addressLine1: 'test',
+        city: 'test',
+        province: 'test',
+        country: 'test',
+        postalCode: 'test'
       }
     },
-    "__v": 0
+    __v: 0
   };
 };
 
@@ -76,9 +76,8 @@ export const addContact = createAsyncThunk(
         }
       );
       const data = await response.data;
-  
+
       return data;
-      
     } catch (error) {
       return alert(' Not Added');
     }
@@ -88,16 +87,18 @@ export const updateContact = createAsyncThunk(
   'vehicle-list-app/vehicles/updateVehicle',
   async (contact, { dispatch, getState }) => {
     const vehicleUpdated = JSON.stringify(contact);
-    console.log(contact, 'UPDATE')
-    const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`,
-    vehicleUpdated,
-    {
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PATCH'
+    console.log(contact, 'UPDATE');
+    const response = await axios.patch(
+      `https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`,
+      vehicleUpdated,
+      {
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE, PATCH'
+        }
       }
-    });
+    );
     const data = await response.data;
     alert('Updated');
     return data;
@@ -175,7 +176,7 @@ export const setContactsUnstarred = createAsyncThunk(
   }
 );
 
-const contactsAdapter = createEntityAdapter({ selectId: ({ _id }) => _id }); //missed part
+const contactsAdapter = createEntityAdapter({ selectId: ({ _id }) => _id }); // missed part
 
 export const { selectAll: selectContacts, selectById: selectContactsById } = contactsAdapter.getSelectors(
   state => state.contactsApp.contacts

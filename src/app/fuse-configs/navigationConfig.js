@@ -46,9 +46,9 @@ const navigationConfig = [
       {
         id: 'vehicles',
         title: 'Vehicles',
-        translate: 'VEHICLES',
+        translate: 'Vehicles',
         type: 'item',
-        icon: 'account_box',
+        icon: 'directions_car',
         url: '/apps/vehicles/all'
       }
       // {
