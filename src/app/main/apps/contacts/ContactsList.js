@@ -11,6 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
 import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
+import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { DialogContentText, DialogTitle } from '@material-ui/core';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import Button from '@material-ui/core/Button';
 // import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
@@ -27,7 +32,6 @@ const formatData = vehicles =>
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-  console.log(contacts, 'contacts');
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const user = useSelector(({ contactsApp }) => contactsApp.user);
 
@@ -114,8 +118,35 @@ function ContactsList(props) {
             <IconButton
               onClick={ev => {
                 ev.stopPropagation();
-                dispatch(removeContact(row.original._id));
+                dispatch(
+                  openDialog({
+                    children: (
+                      <>
+                        <DialogTitle id="alert-dialog-title"></DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="alert-dialog-description">Do you want to delete?</DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button
+                            onClick={ev => {
+                              dispatch(removeContact(row.original._id));
+                              dispatch(closeDialog());
+                            }}
+                            color="primary"
+                          >
+                            Yes
+                          </Button>
+                          <Button onClick={() => dispatch(closeDialog())} color="primary" autoFocus>
+                            No
+                          </Button>
+                        </DialogActions>
+                      </>
+                    )
+                  })
+                );
               }}
+              variant="contained"
+              color="secondary"
             >
               <Icon>delete</Icon>
             </IconButton>
@@ -123,7 +154,7 @@ function ContactsList(props) {
         )
       }
     ],
-    // eslint-disable-next-line
+
     [dispatch, contacts]
   );
 
