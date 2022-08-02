@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
+import FuseDialog from '@fuse/core/FuseDialog';
 
 import _ from '@lodash';
 import * as yup from 'yup';
@@ -26,6 +27,8 @@ import {
   closeNewContactDialog,
   closeEditContactDialog
 } from './store/contactsSlice';
+import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
+import { DialogContentText, DialogTitle } from '@material-ui/core';
 
 const avatars = [
   'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
@@ -60,7 +63,7 @@ const schema = yup.object().shape({
   brand: yup.string().required('You must enter a name')
 });
 
-function ContactDialog(data) {
+function ContactDialog() {
   const dispatch = useDispatch();
   const contactDialog = useSelector(({ contactsApp }) => contactsApp.contacts.contactDialog);
   const [location, setLocation] = useState(addressData[0]);
@@ -121,11 +124,12 @@ function ContactDialog(data) {
   /**
    * Form Submit
    */
-  function onSubmit() {
+  function onSubmit(data) {
     if (contactDialog.type === 'new') {
       dispatch(addContact(data));
     } else {
       dispatch(updateContact({ ...contactDialog.data, ...data }));
+      console.log(data, 'contactDialog')
     }
     closeComposeDialog();
   }
@@ -133,11 +137,10 @@ function ContactDialog(data) {
   /**
    * Remove Event
    */
-  function handleRemove() {
-    console.log(data.id, 'id');
-    dispatch(removeContact(id));
-    closeComposeDialog();
-  }
+  // function handleRemove(id) {
+  //   dispatch(removeContact(id));
+  //   closeComposeDialog();
+  // }
 
   return (
     <Dialog
@@ -353,15 +356,46 @@ function ContactDialog(data) {
                   Save
                 </Button>
               </div>
-              <IconButton
-                onClick={ev => {
-                  ev.stopPropagation();
-                  dispatch(removeContact(id));
-                  console.log('ID ===> ', id);
-                }}
+              {/* <IconButton
+              onClick={() => {deleteDialogBox(); closeComposeDialog()} }
+                // onClick={ev => {
+                //   ev.stopPropagation();
+                //   dispatch(removeContact(contactDialog.data._id));
+                //   closeComposeDialog();
+                // }}
               >
                 <Icon>delete</Icon>
-              </IconButton>
+              </IconButton> */}
+              <Button
+    onClick={()=> dispatch(openDialog({
+        children: (
+            <>
+                <DialogTitle id="alert-dialog-title"></DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">Do you want to delete?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={(ev)=> {
+                      ev.stopPropagation();
+                      dispatch(removeContact(contactDialog.data._id));
+                      dispatch(closeDialog());
+                      closeComposeDialog();
+                      }} color="primary">
+                        Yes
+                    </Button>
+                    <Button onClick={()=> dispatch(closeDialog())} color="primary" autoFocus>
+                        No
+                    </Button>
+                </DialogActions>
+            </>
+             )
+         }))}
+    variant="contained"
+    color="secondary"
+>
+<Icon>delete</Icon>
+</Button>
             </DialogActions>
           )}
         </form>
