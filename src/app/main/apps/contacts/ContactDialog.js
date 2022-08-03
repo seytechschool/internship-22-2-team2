@@ -128,6 +128,8 @@ function ContactDialog() {
       dispatch(addContact(data));
     } else {
       dispatch(updateContact({ ...contactDialog.data, ...data }));
+      console.log(contactDialog.data, 'Contact Dialog Data');
+      console.log(data, 'Dialog Data');
     }
     closeComposeDialog();
   }
@@ -287,9 +289,16 @@ function ContactDialog() {
               </div>
               <Controller
                 control={control}
-                name="mileageCost"
+                name="serviceCost"
                 render={({ field }) => (
-                  <TextField {...field} className="mb-24" label="Mileage Cost" id="cost" variant="outlined" fullWidth />
+                  <TextField
+                    {...field}
+                    className="mb-24"
+                    label="Service Cost"
+                    id="serviceCost"
+                    variant="outlined"
+                    fullWidth
+                  />
                 )}
               />
             </div>
