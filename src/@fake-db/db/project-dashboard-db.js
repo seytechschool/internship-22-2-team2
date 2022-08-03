@@ -881,27 +881,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/james.jpg'
+                value: 'https://media-exp1.licdn.com/dms/image/C4E03AQH17rpZBZ1V-g/profile-displayphoto-shrink_100_100/0/1647547777270?e=1665014400&v=beta&t=RtbBBQtbC0qWaQXHPWEwqmIcA1PRfgQDa-naoxZQKI8'
               },
               {
                 id: 'name',
-                value: 'Jack Gilbert'
+                value: 'Ilgiz Temirbekov'
               },
               {
                 id: 'position',
-                value: 'Design Manager'
+                value: 'Team Leader'
               },
               {
                 id: 'office',
-                value: 'Johor Bahru'
+                value: 'Montreal'
               },
               {
                 id: 'email',
-                value: 'jgilbert48@mail.com'
+                value: 'temirbekov91@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+16 298 032 7774'
+                value: '+1  148 096 544'
               }
             ]
           },
@@ -910,27 +910,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/katherine.jpg'
+                value: 'https://media-exp1.licdn.com/dms/image/C5603AQEiHrY6hEyqXA/profile-displayphoto-shrink_200_200/0/1627026666268?e=1660176000&v=beta&t=Ju3RMWwm3mqtsPmagINxehO7qL_hbRXG1XntI0HqIXE'
               },
               {
                 id: 'name',
-                value: 'Kathy Anderson'
+                value: 'Erzhan Aldamatov'
               },
               {
                 id: 'position',
-                value: 'Recruiting Manager'
+                value: 'Scrum Master'
               },
               {
                 id: 'office',
-                value: 'Solţānābād'
+                value: 'Sydney'
               },
               {
                 id: 'email',
-                value: 'kanderson49@mail.com.br'
+                value: 'aldamatov@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+23 572 311 1136'
+                value: '+61 431 553 757'
               }
             ]
           },
@@ -939,27 +939,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/garry.jpg'
+                value: 'https://ca.slack-edge.com/THH47V4TS-U0348SVP2Q0-0fc682f56f61-72'
               },
               {
                 id: 'name',
-                value: 'Gary Gonzalez'
+                value: 'Asel Williams'
               },
               {
                 id: 'position',
-                value: 'Speech Pathologist'
+                value: 'Scrum Master'
               },
               {
                 id: 'office',
-                value: 'Gangkou'
+                value: 'Dallas'
               },
               {
                 id: 'email',
-                value: 'ggonzalez4r@mail.cc'
+                value: 'aselwilliams22@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+10 862 046 7916'
+                value: '+59 996 987 691'
               }
             ]
           },
@@ -968,27 +968,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/andrew.jpg'
+                value: ''
               },
               {
                 id: 'name',
-                value: 'Mark Turner'
+                value: 'Mars Eshnazarov'
               },
               {
                 id: 'position',
-                value: 'Recruiting Manager'
+                value: 'Frontend Developer'
               },
               {
                 id: 'office',
-                value: 'Neftegorsk'
+                value: 'Pennsylvania'
               },
               {
                 id: 'email',
-                value: 'mturner4a@mail.com'
+                value: 'mars.eshnazarov@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+01 139 803 9263'
+                value: '+12 159 625 671'
               }
             ]
           },
@@ -997,27 +997,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/jane.jpg'
+                value: 'https://media-exp1.licdn.com/dms/image/C5603AQEzvSRSr90f6A/profile-displayphoto-shrink_100_100/0/1656564834502?e=1665014400&v=beta&t=tPVv09MVYkc8bmSAlNHhcZjD85KiFigoNM1kD8NXR8A'
               },
               {
                 id: 'name',
-                value: 'Kathryn Martinez'
+                value: 'Rakhat Mamytova'
               },
               {
                 id: 'position',
-                value: 'Director of Sales'
+                value: 'Frontend Developer'
               },
               {
                 id: 'office',
-                value: 'Palekastro'
+                value: 'Los Angeles'
               },
               {
                 id: 'email',
-                value: 'kmartinez4b@mail.com'
+                value: 'rakhat.mamyt@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+25 467 022 5393'
+                value: '+16 318 301 278'
               }
             ]
           },
@@ -1026,27 +1026,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/alice.jpg'
+                value: 'https://ca.slack-edge.com/THH47V4TS-U031QRAQSNL-e4b2faeb6d46-72'
               },
               {
                 id: 'name',
-                value: 'Annie Gonzales'
+                value: 'Tatiana Cherbaeva'
               },
               {
                 id: 'position',
-                value: 'Actuary'
+                value: 'UX/UI Designer'
               },
               {
                 id: 'office',
-                value: 'Candon'
+                value: 'Los Angeles'
               },
               {
                 id: 'email',
-                value: 'agonzales4c@mail.edu'
+                value: 'tatianacherbaeva@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+99 891 619 7138'
+                value: '+13 109 944 976'
               }
             ]
           },
@@ -1055,27 +1055,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/vincent.jpg'
+                value: ''
               },
               {
                 id: 'name',
-                value: 'Howard King'
+                value: 'Gyzylgul Garryyeva'
               },
               {
                 id: 'position',
-                value: 'Human Resources'
+                value: 'Backend Developer'
               },
               {
                 id: 'office',
-                value: 'Bergen op Zoom'
+                value: 'Vancouver'
               },
               {
                 id: 'email',
-                value: 'hking4d@mail.gov'
+                value: 'gyzyl89@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+46 984 348 1409'
+                value: '+12 369 969 197'
               }
             ]
           },
@@ -1084,27 +1084,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/joyce.jpg'
+                value: 'https://lh3.googleusercontent.com/a-/AFdZucoHc56dppF2yQwh-HyiHVtRRBycsb0VgIufJZfD=s64-p-k-rw-no'
               },
               {
                 id: 'name',
-                value: 'Elizabeth Dixon'
+                value: 'Aimana Tazhibaeva'
               },
               {
                 id: 'position',
-                value: 'Electrical Engineer'
+                value: 'Backend Developer'
               },
               {
                 id: 'office',
-                value: 'Písečná'
+                value: 'Los Angeles'
               },
               {
                 id: 'email',
-                value: 'edixon4e@mail.gov'
+                value: 'aimasha200300@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+33 332 067 9063'
+                value: '+19 294 769 298'
               }
             ]
           },
@@ -1113,346 +1113,27 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'assets/images/avatars/danielle.jpg'
+                value: 'https://media-exp1.licdn.com/dms/image/C4D03AQEgAEkY_okcGw/profile-displayphoto-shrink_200_200/0/1658292509405?e=1665014400&v=beta&t=TzEhpf96hb8sO5gEuB9lgXnu5hkIYxS8bYQtD1cNtfc'
               },
               {
                 id: 'name',
-                value: 'Dorothy Morris'
+                value: 'Bekzat Minbaev'
               },
               {
                 id: 'position',
-                value: 'Office Assistant'
+                value: 'DevOps'
               },
               {
                 id: 'office',
-                value: 'Magsaysay'
+                value: 'USA'
               },
               {
                 id: 'email',
-                value: 'dmorris4f@mail.com'
+                value: 'bekatut@gmail.com'
               },
               {
                 id: 'phone',
-                value: '+05 490 958 6120'
-              }
-            ]
-          },
-          {
-            id: 10,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/carl.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Mark Gonzales'
-              },
-              {
-                id: 'position',
-                value: 'Quality Control'
-              },
-              {
-                id: 'office',
-                value: 'Matsue-shi'
-              },
-              {
-                id: 'email',
-                value: 'mgonzales4g@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+03 168 394 9935'
-              }
-            ]
-          },
-          {
-            id: 11,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/profile.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Catherine Rogers'
-              },
-              {
-                id: 'position',
-                value: 'Programmer Analyst'
-              },
-              {
-                id: 'office',
-                value: 'Kangar'
-              },
-              {
-                id: 'email',
-                value: 'crogers4h@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+86 235 407 5373'
-              }
-            ]
-          },
-          {
-            id: 12,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/garry.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Ruth Grant'
-              },
-              {
-                id: 'position',
-                value: 'Community Outreach'
-              },
-              {
-                id: 'office',
-                value: 'Beaune'
-              },
-              {
-                id: 'email',
-                value: 'rgrant4i@mail.pl'
-              },
-              {
-                id: 'phone',
-                value: '+36 288 083 8460'
-              }
-            ]
-          },
-          {
-            id: 13,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/james.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Phyllis Gutierrez'
-              },
-              {
-                id: 'position',
-                value: 'Administrative Assistant'
-              },
-              {
-                id: 'office',
-                value: 'Shlissel’burg'
-              },
-              {
-                id: 'email',
-                value: 'pgutierrez4j@mail.net'
-              },
-              {
-                id: 'phone',
-                value: '+52 749 861 9304'
-              }
-            ]
-          },
-          {
-            id: 14,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/alice.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Lillian Morris'
-              },
-              {
-                id: 'position',
-                value: 'Media Planner'
-              },
-              {
-                id: 'office',
-                value: 'Berlin'
-              },
-              {
-                id: 'email',
-                value: 'lmorris4k@mail.de'
-              },
-              {
-                id: 'phone',
-                value: '+59 695 110 3856'
-              }
-            ]
-          },
-          {
-            id: 15,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/vincent.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Jeremy Anderson'
-              },
-              {
-                id: 'position',
-                value: 'Systems Engineer'
-              },
-              {
-                id: 'office',
-                value: 'Lũng Hồ'
-              },
-              {
-                id: 'email',
-                value: 'janderson4l@mail.uk'
-              },
-              {
-                id: 'phone',
-                value: '+40 384 115 1448'
-              }
-            ]
-          },
-          {
-            id: 16,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/carl.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Arthur Lawrence'
-              },
-              {
-                id: 'position',
-                value: 'Nurse Practicioner'
-              },
-              {
-                id: 'office',
-                value: 'Sarkanjut'
-              },
-              {
-                id: 'email',
-                value: 'alawrence4m@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+36 631 599 7867'
-              }
-            ]
-          },
-          {
-            id: 17,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/andrew.jpg'
-              },
-              {
-                id: 'name',
-                value: 'David Simmons'
-              },
-              {
-                id: 'position',
-                value: 'Social Worker'
-              },
-              {
-                id: 'office',
-                value: 'Ushumun'
-              },
-              {
-                id: 'email',
-                value: 'dsimmons4n@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+01 189 681 4417'
-              }
-            ]
-          },
-          {
-            id: 18,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/danielle.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Daniel Johnston'
-              },
-              {
-                id: 'position',
-                value: 'Help Desk'
-              },
-              {
-                id: 'office',
-                value: 'São Carlos'
-              },
-              {
-                id: 'email',
-                value: 'djohnston4o@mail.gov'
-              },
-              {
-                id: 'phone',
-                value: '+60 028 943 7919'
-              }
-            ]
-          },
-          {
-            id: 19,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/joyce.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Ann King'
-              },
-              {
-                id: 'position',
-                value: 'Internal Auditor'
-              },
-              {
-                id: 'office',
-                value: 'Liren'
-              },
-              {
-                id: 'email',
-                value: 'aking4p@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+91 103 932 6545'
-              }
-            ]
-          },
-          {
-            id: 20,
-            cells: [
-              {
-                id: 'avatar',
-                value: 'assets/images/avatars/james.jpg'
-              },
-              {
-                id: 'name',
-                value: 'Phillip Franklin'
-              },
-              {
-                id: 'position',
-                value: 'VP Accounting'
-              },
-              {
-                id: 'office',
-                value: 'Soba'
-              },
-              {
-                id: 'email',
-                value: 'pfranklin4q@mail.com'
-              },
-              {
-                id: 'phone',
-                value: '+25 820 986 7626'
+                value: '+4 254 594 134'
               }
             ]
           }
