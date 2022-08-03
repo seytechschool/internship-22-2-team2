@@ -25,7 +25,6 @@ function ContactsHeader(props) {
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const contacts = useSelector(selectContacts);
   const mainTheme = useSelector(selectMainTheme);
-  console.log(contacts, 'contactHeader');
 
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">

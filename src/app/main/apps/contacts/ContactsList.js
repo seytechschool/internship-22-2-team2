@@ -204,6 +204,7 @@ function ContactsList(props) {
         columns={columns}
         data={formattedData}
         onRowClick={(ev, row) => {
+          console.log(row.original);
           if (row) {
             dispatch(openEditContactDialog(row.original));
           }

@@ -8,10 +8,10 @@ const createVehicleObject = vehicle => {
     brand: vehicle.brand,
     model: vehicle.model,
     plateNumber: vehicle.plateNumber,
-    isAssigned: true,
+    isAssigned: vehicle.isAssigned === 'YES' ? 'true' : 'false',
     vehicleStatus: vehicle.vehicleStatus,
     serviceHistory: {
-      cost: 1234,
+      cost: vehicle.serviceCost,
       address: {
         addressLine1: 'test1',
         city: 'test1',
@@ -32,7 +32,7 @@ const createVehicleObject = vehicle => {
       }
     },
     mileageHistory: {
-      mileage: vehicle.mileageCost,
+      mileage: vehicle.mileage,
       address: {
         addressLine1: 'test',
         city: 'test',
@@ -54,7 +54,7 @@ export const getVehicles = createAsyncThunk(
     });
     // const data = await {vehicles : response.data}
     const data = await response.data;
-    console.log(data, 'contactSlice data');
+ /*    console.log(data, 'contactSlice data'); */
     return { data, routeParams };
   }
 );
@@ -76,6 +76,7 @@ export const addContact = createAsyncThunk(
         }
       );
       const data = await response.data;
+      console.log(contact, 'ADD Contact')
 
       return data;
     } catch (error) {
