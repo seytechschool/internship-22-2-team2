@@ -16,7 +16,6 @@ import Button from '@material-ui/core/Button';
 import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
 import ContactsTable from './ContactsTable';
 import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
-// import { openEditContactDialog, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles.map(vehicle => {
@@ -55,7 +54,7 @@ function ContactsList(props) {
     () => [
       {
         Header: ({ selectedFlatRows }) => {
-          const selectedRowIds = selectedFlatRows.map(row => row.original.id);
+          const selectedRowIds = selectedFlatRows.map(row => row.original._id);
 
           return selectedFlatRows.length > 0 && <ContactsMultiSelectMenu selectedContactIds={selectedRowIds} />;
         },
@@ -120,14 +119,11 @@ function ContactsList(props) {
             <IconButton
               onClick={ev => {
                 ev.stopPropagation();
-                dispatch(toggleStarredContact(row.original.id));
+                dispatch(toggleStarredContact(row.original._id));
               }}
             >
-              {user.starred && user.starred.includes(row.original.id) ? (
-                <Icon className="text-yellow-700">star</Icon>
-              ) : (
-                <Icon>star_border</Icon>
-              )}
+              {/* {user.starred && user.starred.includes(row.original._id) ? ( */}
+              {row.original.__v ? <Icon className="text-yellow-700">star</Icon> : <Icon>star_border</Icon>}
             </IconButton>
             <IconButton
               onClick={ev => {
@@ -166,7 +162,7 @@ function ContactsList(props) {
       }
     ],
 
-    [dispatch, user]
+    [dispatch]
   );
 
   useEffect(() => {

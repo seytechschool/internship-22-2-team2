@@ -136,9 +136,13 @@ export const removeContacts = createAsyncThunk(
 export const toggleStarredContact = createAsyncThunk(
   'contactsApp/contacts/toggleStarredContact',
   async (contactId, { dispatch, getState }) => {
-    const response = await axios.post('/api/contacts-app/toggle-starred-contact', { contactId });
+    const star = getState().contactsApp.user.find(u => u._id === contactId);
+    const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${contactId}`, {
+      __v: !star.__v
+    });
     const data = await response.data;
 
+    dispatch(getVehicles());
     dispatch(getUserData());
     return data;
   }

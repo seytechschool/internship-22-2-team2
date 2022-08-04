@@ -2,8 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getUserData = createAsyncThunk('contactsApp/user/getUserData', async () => {
-  const response = await axios.get('/api/contacts-app/user');
-  // const response = await axios.get('/vehicles-emplosoft.herokuapp.com/vehicles');
+  const response = await axios.get('https://internship-api-22-2-team2.herokuapp.com/vehicles');
   const data = await response.data;
   return data;
 });
