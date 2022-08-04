@@ -4,12 +4,19 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import { memo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Widget1(props) {
+  const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
   const [currentRange, setCurrentRange] = useState(props.widget.currentRange);
+  const [status, setStatus] = useState(currentRange)
+  const Active = Object.values(vehicleData).filter(i => i.vehicleStatus == 'active').length;
+  const Inactive = Object.values(vehicleData).filter(i => i.vehicleStatus == 'inactive').length;
+  const Inshop = Object.values(vehicleData).filter(i => i.vehicleStatus == 'inShop').length;
 
   function handleChangeRange(ev) {
     setCurrentRange(ev.target.value);
+    setStatus(currentRange)
   }
 
   return (
@@ -42,7 +49,7 @@ function Widget1(props) {
       <div className="text-center py-12">
         <Typography className="text-18 text-blue-800 font-normal mb-8">{props.widget.data.name}</Typography>
         <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
-          {props.widget.data.count[currentRange]}
+        {currentRange == 'Active' ? Active : currentRange == 'Inactive' ? Inactive : Inshop}
         </Typography>
       </div>
       {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">

@@ -2,11 +2,11 @@ import { createEntityAdapter, createSlice, createAsyncThunk } from '@reduxjs/too
 import axios from 'axios';
 
 export const getProjects = createAsyncThunk('projectDashboardApp/projects/getProjects', async () => {
-  const response = await axios.get('/api/project-dashboard-app/projects');
+  const response = await axios.get('https://internship-api-22-2-team2.herokuapp.com/vehicles');
   return response.data;
 });
 
-const projectsAdapter = createEntityAdapter({});
+const projectsAdapter = createEntityAdapter({ selectId: ({ _id }) => _id });
 
 export const {
   selectAll: selectProjects,
