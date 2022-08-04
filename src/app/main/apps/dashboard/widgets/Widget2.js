@@ -10,8 +10,8 @@ function Widget2(props) {
   const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
   const [currentRange, setCurrentRange] = useState(props.widget.currentRange);
   const [status, setStatus] = useState(currentRange);
-  const Assigned = Object.values(vehicleData).filter(i => i.isAssigned == true).length;
-  const Unassigned = Object.values(vehicleData).filter(i => i.isAssigned == false).length;
+  const Assigned = Object.values(vehicleData).filter(i => i.isAssigned === true).length;
+  const Unassigned = Object.values(vehicleData).filter(i => i.isAssigned === false).length;
 
   function handleChangeRange(ev) {
     setCurrentRange(ev.target.value);
@@ -48,7 +48,7 @@ function Widget2(props) {
       <div className="text-center py-12">
         <Typography className="text-18 text-blue-800 font-normal mb-8">{props.widget.data.name}</Typography>
         <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
-          {currentRange == 'Assigned' ? Assigned : Unassigned}
+          {currentRange === 'Assigned' ? Assigned : Unassigned}
         </Typography>
       </div>
       {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
