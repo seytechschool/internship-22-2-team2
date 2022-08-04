@@ -54,7 +54,8 @@ export const getVehicles = createAsyncThunk(
     });
     // const data = await {vehicles : response.data}
     const data = await response.data;
- /*    console.log(data, 'contactSlice data'); */
+    /*    console.log(data, 'contactSlice data'); */
+
     return { data, routeParams };
   }
 );
@@ -76,7 +77,7 @@ export const addContact = createAsyncThunk(
         }
       );
       const data = await response.data;
-      console.log(contact, 'ADD Contact')
+      console.log(contact, 'ADD Contact');
 
       return data;
     } catch (error) {

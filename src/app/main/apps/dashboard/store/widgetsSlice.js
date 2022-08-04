@@ -2,21 +2,14 @@ import { createEntityAdapter, createSlice, createAsyncThunk } from '@reduxjs/too
 import axios from 'axios';
 
 export const getWidgets = createAsyncThunk(
-'vehicle-list-app/vehicles/getWidgets', 
-async (routeParams, { getState }) => {
+  'vehicle-list-app/vehicles/getWidgets',
+  async (routeParams, { getState }) => {
+    const response = await axios.get('/api/project-dashboard-app/widgets');
+    const data = await response.data;
 
-
-
-
-
-
-  
-  const response = await axios.get('/api/project-dashboard-app/widgets');
-  const data = await response.data;
-
-  return data;
-});
-
+    return data;
+  }
+);
 
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
@@ -27,7 +20,7 @@ export const getVehicles = createAsyncThunk(
     });
     // const data = await {vehicles : response.data}
     const data = await response.data;
- /*    console.log(data, 'contactSlice data'); */
+    /*    console.log(data, 'contactSlice data'); */
     return { data, routeParams };
   }
 );

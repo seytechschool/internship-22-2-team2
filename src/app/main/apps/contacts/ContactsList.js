@@ -166,7 +166,7 @@ function ContactsList(props) {
       }
     ],
 
-    [dispatch, contacts]
+    [dispatch, user]
   );
 
   useEffect(() => {

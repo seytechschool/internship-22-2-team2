@@ -53,15 +53,15 @@ function ProjectDashboardApp(props) {
       }}
       header={<ProjectDashboardAppHeader pageLayout={pageLayout} />}
       contentToolbar={
-      <Tabs
-        value={tabValue}
+        <Tabs
+          value={tabValue}
           onChange={handleChangeTab}
           indicatorColor="secondary"
           textColor="inherit"
           variant="scrollable"
-           scrollButtons="off"
+          scrollButtons="off"
           className="w-full px-24 -mx-4 min-h-40"
-           classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
+          classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
           TabIndicatorProps={{
             children: <Divider className="w-full h-full rounded-full opacity-50" />
           }}
@@ -73,7 +73,6 @@ function ProjectDashboardApp(props) {
       }
       content={
         <div className="p-12 lg:ltr:pr-0 lg:rtl:pl-0">
-         
           {tabValue === 0 && <HomeTab />}
           {tabValue === 1 && <BudgetSummaryTab />}
           {tabValue === 2 && <TeamMembersTab />}

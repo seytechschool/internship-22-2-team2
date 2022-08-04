@@ -1150,7 +1150,7 @@ const projectDashboardAppDB = {
             {
               name: 'SAMPLE A',
               data: generateDayWiseTimeSeries(new Date('11 Feb 2020 GMT').getTime(), 10, {
-                min: 300000,
+                min: 100000,
                 max: 600000
               })
             }
