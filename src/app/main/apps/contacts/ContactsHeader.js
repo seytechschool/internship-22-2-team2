@@ -61,10 +61,10 @@ function ContactsHeader(props) {
           <Button
             onClick={() => dispatch(openNewContactDialog())}
             style={{ marginLeft: '10px', backgroundColor: '#81c784' }}
-            size="lg"
+            size="large"
             variant="contained"
             component="label"
-            color="neutral"
+            color="default"
           >
             +Add
           </Button>
