@@ -20,10 +20,11 @@ function Widget5(props) {
   const serviceData = Object.values(vehicleData).map(i => i.serviceHistory.cost);
   const totalData = [];
 
+  /* 
   for (let i in fuelData) {
     totalData.push(fuelData[i] + serviceData[i]);
   }
-
+ */
   const fuelSeries = [
     {
       name: 'Fuel Cost',
