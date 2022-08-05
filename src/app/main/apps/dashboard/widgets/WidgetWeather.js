@@ -4,15 +4,86 @@ import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { memo } from 'react';
+import {useState, useEffect} from 'react'
+import Moment from 'moment'
 
-function WidgetWeather(props) {
+function WidgetWeather() {
+  const [searchVal, setSearchVal]= useState('')
+  const [weatherData, setWeatherData]=useState({
+  weather:[{id:'', description: '', icon:''}],
+  coord:{lon:'', lat:''},
+  name:'',
+  main:{temp:''}
+  })
+  const [lon, setLon] =useState('')
+  const [lat, setLat] =useState('')
+  const [forecast, setForecast]= useState([])
+  const [dailyForecast, setDailyForecast]=useState([])
+  const apiKey='107a420b6f4b7dd8c2243eb7a310e6fe'
+
+const fetchData=(url)=>{
+  fetch(url)
+  .then(res => res.json())
+  .then(res => setWeatherData(res))
+}
+
+  useEffect(()=>{
+    // if(searchVal.length>3){
+    //   const url=`http://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}`;
+    //   fetchData(url)
+    // }
+    //  else {
+      const api=`http://api.openweathermap.org/data/2.5/weather?q=chicago&appid=${apiKey}`;
+      fetchData(api)
+  // }
+    setLon(weatherData.coord.lon)
+    setLat(weatherData.coord.lat)
+  },[searchVal])
+console.log(weatherData)
+
+const convertCtoF=(temp,type)=>{
+  return type==='fahrenheit'   ? Math.floor(((temp - 273.15) * 9) / 5 + 32)
+  : Math.floor(temp - 273.15);
+}
+
+const getDailyForecast=(arr)=>{
+  const newArr=[];
+  let count=0
+  for (let i=0; i<arr.length; i++){
+    if(i===count){
+      newArr.push(arr[i])
+      count+=8
+    }
+  }
+  setDailyForecast(newArr)
+  return newArr
+}
+useEffect(()=>{
+  const API=`http://api.openweathermap.org/data/2.5/forecast?lat=${Number(lat)}&lon=${Number(lon)}&appid=${apiKey}&units=metric`;
+  fetch(API).then((res)=>res.json()).then((res)=>setForecast(getDailyForecast(res.list)))
+},[lat, lon])
+
+console.log(forecast,'forecast')
+
+const omitTime=(str)=> {
+  let arr=str.split(' ')
+  let sliced=arr.slice(0,1)
+  return sliced.join('')
+}
+
+const handleChange=(e)=>{
+setSearchVal(e.target.value)
+}
+console.log(searchVal)
+
   return (
-    <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
+    <Paper className="w-full rounded-20 shadow flex flex-col justify-between" style={{background: 'rgb(172, 223, 223)'}}>
       <div className="flex items-center justify-between px-4 pt-8">
         <div className="flex items-center px-16">
           <Icon color="action">location_on</Icon>
-          <Typography className="text-16 mx-8 font-medium" color="textSecondary">
-            {props.widget.locations[props.widget.currentLocation].name}
+          <Typography className="text-20 mx-8 font-medium text-center" color="textSecondary">
+            {/* <input value={searchVal} type='text' onChange={handleChange} placeholder='Enter a city...'/> */}
+         {weatherData.name}
           </Typography>
         </div>
         <IconButton aria-label="more">
@@ -20,11 +91,11 @@ function WidgetWeather(props) {
         </IconButton>
       </div>
       <div className="flex items-center justify-center p-20 pb-32">
-        <Icon className="meteocons text-40 ltr:mr-8 rtl:ml-8" color="action">
-          {props.widget.locations[props.widget.currentLocation].icon}
+        <Icon className="meteocons text-48 ltr:mr-8 rtl:ml-8" color="action">
+          <img  className='w-img' src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt='weather' style={{width: '150px'}}/>
         </Icon>
         <Typography className="text-44 mx-8 font-medium tracking-tighter" color="textSecondary">
-          {props.widget.locations[props.widget.currentLocation].temp[props.widget.tempUnit]}
+          {convertCtoF(weatherData.main.temp)}
         </Typography>
         <Typography className="text-48" color="textSecondary">
           °
@@ -36,50 +107,36 @@ function WidgetWeather(props) {
       <Divider />
       <div className="flex justify-between items-center p-16">
         <div className="flex items-center">
-          <Icon className="meteocons text-14" color="action">
-            windy
-          </Icon>
           <Typography className="mx-4 font-semibold">
-            {props.widget.locations[props.widget.currentLocation].windSpeed[props.widget.speedUnit]}
-          </Typography>
-          <Typography color="textSecondary">{props.widget.speedUnit}</Typography>
-        </div>
-
-        <div className="flex items-center">
-          <Icon className="meteocons text-14" color="action">
-            compass
-          </Icon>
-          <Typography className="mx-4 font-semibold">
-            {props.widget.locations[props.widget.currentLocation].windDirection}
+            {weatherData.weather[0].description}
           </Typography>
         </div>
 
         <div className="flex items-center">
-          <Icon className="meteocons text-14" color="action">
-            rainy
-          </Icon>
           <Typography className="mx-4 font-semibold">
-            {props.widget.locations[props.widget.currentLocation].rainProbability}
+           feels like: {convertCtoF(weatherData.main.feels_like)}&deg;C
           </Typography>
         </div>
       </div>
       <Divider />
       <div className="w-full py-16">
-        {props.widget.locations[props.widget.currentLocation].next5Days.map(day => (
-          <div className="flex items-center justify-between w-full py-16 px-24" key={day.name}>
-            <Typography className="text-15 font-medium">{day.name}</Typography>
+        {forecast.map((day, index) => (
+          <div className="flex items-center justify-between w-full py-16 px-24" key={index}>
+            <Typography className="text-15 font-medium">
+              {Moment(omitTime(day.dt_txt)).format('MM-DD-YYYY')}
+              </Typography>
             <div className="flex items-center">
               <Icon className="meteocons text-24 ltr:mr-16 rtl:ml-16" color="action">
-                {day.icon}
+                <img className='f-img' src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt='weather'/>
               </Icon>
               <Typography className="text-20 font-medium tracking-tighter">
-                {day.temp[props.widget.tempUnit]}
+                {Math.round(day.main.temp)}
               </Typography>
               <Typography className="text-20" color="textSecondary">
                 &deg;
               </Typography>
               <Typography className="text-20" color="textSecondary">
-                {props.widget.tempUnit}
+                C
               </Typography>
             </div>
           </div>
