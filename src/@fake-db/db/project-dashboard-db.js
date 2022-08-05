@@ -335,13 +335,14 @@ const projectDashboardAppDB = {
     },
     {
       id: 'widget8',
-      title: 'Inspection Summary',
+      // title: 'Inspection Summary',
+      title: 'Vehicle Status',
       mainChart: {
         series: [66.7, 33.3],
         options: {
           chart: {
             height: '100%',
-            type: 'pie'
+            type: 'donut'
           },
           name: {
             fontSize: '16px',
@@ -366,7 +367,8 @@ const projectDashboardAppDB = {
               shadeIntensity: 0.65
             }
           },
-          labels: ['with 0 inspections', 'With > 0 inspections']
+          // labels: ['with 0 inspections', 'With > 0 inspections']
+          labels: ['Active', 'Inactive', 'In Shop']
         }
       }
     },
@@ -1160,7 +1162,8 @@ const projectDashboardAppDB = {
           chart: {
             width: '100%',
             height: '100%',
-            type: 'scatter',
+            // type: 'scatter',
+            type: 'line',
             toolbar: {
               show: false
             }

@@ -90,17 +90,17 @@ const EnhancedTable = ({ columns, data, onRowClick }) => {
   // Render the UI for your table
   return (
     <div className="flex flex-col min-h-full sm:border-1 sm:rounded-16 overflow-hidden">
-      <MoreHorizIcon
+      {/* <MoreHorizIcon
         style={{ position: 'absolute', top: '50px', left: '100px', zIndex: '10' }}
         onClick={() => setHiddenBtn(true)}
-      />
-      {hiddenBtn && (
+      /> */}
+      {/* {hiddenBtn && (
         <Div>
           <button type="submit" onClick={() => setHiddenBtn(false)}>
             <DeleteIcon /> REMOVE
           </button>
         </Div>
-      )}
+      )} */}
       <TableContainer className="flex flex-1">
         <Table {...getTableProps()} className="simple borderless">
           <TableHead>
@@ -175,14 +175,14 @@ EnhancedTable.propTypes = {
   data: PropTypes.array.isRequired,
   onRowClick: PropTypes.func
 };
-const Div = styled.div`
-  position: absolute;
-  top: 70px;
-  background-color: white;
-  left: 110px;
-  color: #101010;
-  padding: 7px;
-  border-radius: 10px;
-  z-index: 10;
-`;
+// const Div = styled.div`
+//   position: absolute;
+//   top: 70px;
+//   background-color: white;
+//   left: 110px;
+//   color: #101010;
+//   padding: 7px;
+//   border-radius: 10px;
+//   z-index: 10;
+// `;
 export default EnhancedTable;
