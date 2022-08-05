@@ -47,7 +47,9 @@ function Widget1(props) {
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">{props.widget.data.name}</Typography>
+        <Typography className="text-18 text-blue-800 font-normal mb-8">{`${
+          currentRange === 'Active' ? 'Active' : currentRange === 'Inactive' ? 'Inactive' : 'Inshop'
+        } Vehicles`}</Typography>
         <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
           {currentRange === 'Active' ? Active : currentRange === 'Inactive' ? Inactive : Inshop}
         </Typography>

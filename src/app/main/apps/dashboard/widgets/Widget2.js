@@ -46,7 +46,9 @@ function Widget2(props) {
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">{props.widget.data.name}</Typography>
+        <Typography className="text-18 text-blue-800 font-normal mb-8">{`${
+          currentRange === 'Assigned' ? 'Assigned' : 'Unassigned'
+        } Vehicles`}</Typography>
         <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
           {currentRange === 'Assigned' ? Assigned : Unassigned}
         </Typography>

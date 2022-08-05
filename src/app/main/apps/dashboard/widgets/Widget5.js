@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import _ from '@lodash';
 import { memo, useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useSelector } from 'react-redux';
 
 function Widget5(props) {
   const theme = useTheme();
@@ -14,6 +15,33 @@ function Widget5(props) {
   const [tabValue, setTabValue] = useState(0);
   const widget = _.merge({}, props.widget);
   const currentRange = Object.keys(widget.ranges)[tabValue];
+  const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
+  const fuelData = Object.values(vehicleData).map(i => i.fuelHistory.cost);
+  const serviceData = Object.values(vehicleData).map(i => i.serviceHistory.cost);
+  const totalData = [];
+
+  for (let i in fuelData) {
+    totalData.push(fuelData[i] + serviceData[i]);
+  }
+
+  const fuelSeries = [
+    {
+      name: 'Fuel Cost',
+      data: fuelData
+    }
+  ];
+  const serviceSeries = [
+    {
+      name: 'Service Cost',
+      data: serviceData
+    }
+  ];
+  const serviceTotal = [
+    {
+      name: 'Total Cost',
+      data: totalData
+    }
+  ];
 
   _.setWith(widget, 'mainChart.options.colors', [theme.palette.primary.main, theme.palette.secondary.main]);
 
@@ -49,7 +77,8 @@ function Widget5(props) {
       <div className="w-full p-16 min-h-420 h-420">
         <ReactApexChart
           options={widget.mainChart.options}
-          series={widget.mainChart[currentRange].series}
+          // series={widget.mainChart[currentRange].series}
+          series={currentRange === 'Fuel' ? fuelSeries : currentRange === 'Service' ? serviceSeries : serviceTotal}
           type={widget.mainChart.options.chart.type}
           height={widget.mainChart.options.chart.height}
         />
