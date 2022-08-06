@@ -253,82 +253,82 @@ const projectDashboardAppDB = {
       title: 'Schedule',
       currentRange: 'T',
       ranges: {
-        T: 'Today',
-        TM: 'Tomorrow'
+        T: 'August',
+        TM: 'September'
       },
       schedule: {
         T: [
           {
             id: 1,
-            title: 'Group Meeting',
-            time: 'In 32 minutes'
+				  title: 'Semi Annual Report Meeting',
+            time: 'August 1, 2022 11:00AM(PST)'
           },
           {
             id: 2,
-            title: 'Coffee Break',
-            time: '10:30 AM'
+            title: 'August Birthdays',
+				 time: 'August 5, 2022 4:00PM(PST)'
           },
           {
             id: 3,
-            title: 'Public Beta Release',
-            time: '11:00 AM'
+            title: 'Budget Re-evaluation',
+				 time: 'August 9, 2022 10:00AM(PST)'
           },
           {
             id: 4,
-            title: 'Lunch',
-            time: '12:10 PM'
+				 title: 'Greet & Meet New hirees',
+				 time: 'August 12, 2022 4:00PM(PST)'
           },
           {
             id: 5,
-            title: 'Dinner with David',
-            time: '17:30 PM'
+				 title: 'Web App Accessibility Check',
+				 time: 'August 15, 2022 9:30AM(PST)'
           },
           {
             id: 6,
-            title: "Jane's Birthday Party",
-            time: '19:30 PM'
+				 title: "Re-evaluated Budget Submission",
+				 time: 'August 24, 2022 2:00PM(PST)'
           },
           {
             id: 7,
-            title: "Overseer's Retirement Party",
-            time: '21:30 PM'
+				 title: "Seasonal Safety Requirements",
+				 time: 'August 29, 2022 10:00AM(PST)'
           }
         ],
         TM: [
           {
             id: 1,
-            title: 'Marketing Meeting',
-            time: '09:00 AM'
+            title: 'Labor Day (Enjoy Day off!)',
+				  time: 'September 5, 2022 All day'
           },
           {
             id: 2,
-            title: 'Public Announcement',
-            time: '11:00 AM'
+				 title: 'Vehicle Checkup Requirements',
+				 time: 'September 6, 2022 1:00PM(PST)'
           },
           {
             id: 3,
-            title: 'Lunch',
-            time: '12:10 PM'
+				 title: 'September Birthdays',
+				 time: 'September 9, 2022 4:00PM(PST)'
           },
           {
             id: 4,
-            title: 'Meeting with Beta Testers',
-            time: '15:00 AM'
+				 title: 'Weather Widget Expansion',
+				 time: 'September 12, 2022 11:00AM(PST)'
           },
           {
             id: 5,
-            title: 'Live Stream',
-            time: '17:30 PM'
+				 title: 'Meeting with Beta Testers',
+				 time: 'September 22, 2022 11:00AM(PST)'
           },
           {
             id: 6,
-            title: 'Release Party',
-            time: '19:30 PM'
+            title: 'Marketing Meeting',
+				 time: 'September 26, 2022 10:00AM(PST)'
           },
           {
             id: 7,
-            title: "CEO's Party",
-            time: '22:30 PM'
+            title: "Sales Team Meeting",
+				 time: 'September 29, 2022 10:30AM(PST)'
           }
         ]
       }
