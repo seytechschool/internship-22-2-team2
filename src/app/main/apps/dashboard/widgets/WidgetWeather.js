@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { memo } from 'react';
 import {useState, useEffect} from 'react'
 import Moment from 'moment'
+import {DebounceInput} from 'react-debounce-input'
 
 function WidgetWeather() {
   const [searchVal, setSearchVal]= useState('')
@@ -28,14 +29,14 @@ const fetchData=(url)=>{
 }
 
   useEffect(()=>{
-    // if(searchVal.length>3){
-    //   const url=`http://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}`;
-    //   fetchData(url)
-    // }
-    //  else {
+    if(searchVal !==''){
+      const url=`http://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}`;
+      fetchData(url)
+    }
+     else if(searchVal.length===0){
       const api=`http://api.openweathermap.org/data/2.5/weather?q=chicago&appid=${apiKey}`;
       fetchData(api)
-  // }
+  }
     setLon(weatherData.coord.lon)
     setLat(weatherData.coord.lat)
   },[searchVal])
@@ -75,21 +76,28 @@ const handleChange=(e)=>{
 setSearchVal(e.target.value)
 }
 console.log(searchVal)
-
+// if (!searchVal) {
+//   return <div>Loading...</div>
+// }
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-between" style={{background: 'rgb(172, 223, 223)'}}>
       <div className="flex items-center justify-between px-4 pt-8">
-        <div className="flex items-center px-16">
+        <div className="flex items-center align-content-center px-16">
           <Icon color="action">location_on</Icon>
-          <Typography className="text-20 mx-8 font-medium text-center" color="textSecondary">
-            {/* <input value={searchVal} type='text' onChange={handleChange} placeholder='Enter a city...'/> */}
-         {weatherData.name}
-          </Typography>
+          <DebounceInput
+            value={searchVal}
+        placeholder="Enter a city..."
+        debounceTimeout={1000}
+        onChange={handleChange}
+      />
         </div>
         <IconButton aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
+      <Typography className="text-20 mx-8 font-medium text-center" color="textSecondary"> 
+         {weatherData.name}
+          </Typography>
       <div className="flex items-center justify-center p-20 pb-32">
         <Icon className="meteocons text-48 ltr:mr-8 rtl:ml-8" color="action">
           <img  className='w-img' src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt='weather' style={{width: '150px'}}/>
