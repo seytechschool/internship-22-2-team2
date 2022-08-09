@@ -163,22 +163,30 @@ export const toggleStarredContacts = createAsyncThunk(
 export const setContactsStarred = createAsyncThunk(
   'contactsApp/contacts/setContactsStarred',
   async (contactIds, { dispatch, getState }) => {
-    const response = await axios.post('/api/contacts-app/set-contacts-starred', { contactIds });
-    const data = await response.data;
+    for (const id of contactIds) {
+      const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
+        __v: true
+      });
 
-    dispatch(getUserData());
-    return data;
+      dispatch(getVehicles());
+      dispatch(getUserData());
+    }
+    return;
   }
 );
 
 export const setContactsUnstarred = createAsyncThunk(
   'contactsApp/contacts/setContactsUnstarred',
   async (contactIds, { dispatch, getState }) => {
-    const response = await axios.post('/api/contacts-app/set-contacts-unstarred', { contactIds });
-    const data = await response.data;
+    for (const id of contactIds) {
+      const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
+        __v: false
+      });
 
-    dispatch(getUserData());
-    return data;
+      dispatch(getVehicles());
+      dispatch(getUserData());
+    }
+    return;
   }
 );
 

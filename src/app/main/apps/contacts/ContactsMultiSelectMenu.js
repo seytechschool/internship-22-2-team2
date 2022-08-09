@@ -26,7 +26,7 @@ function ContactsMultiSelectMenu(props) {
   return (
     <>
       <IconButton
-        className="p-0"
+        className="p-12"
         aria-owns={anchorEl ? 'selectedContactsMenu' : null}
         aria-haspopup="true"
         onClick={openSelectedContactMenu}

@@ -16,9 +16,18 @@ function Widget5(props) {
   const widget = _.merge({}, props.widget);
   const currentRange = Object.keys(widget.ranges)[tabValue];
   const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
-  const fuelData = Object.values(vehicleData).map(i => i.fuelHistory.cost);
-  const serviceData = Object.values(vehicleData).map(i => i.serviceHistory.cost);
+  const fuelData = Object.values(vehicleData).map(i => Math.round(i.fuelHistory.cost));
+  const serviceData = Object.values(vehicleData).map(i => Math.round(i.serviceHistory.cost));
   const totalData = [];
+
+  const divideByMonth = array => {
+    const size = 11;
+    const dividedArray = [];
+    for (let i = 0; i < Math.ceil(array.length / size); i += 1) {
+      dividedArray[i] = array.slice(i * size, i * size + size).reduce((a, b) => a + b);
+    }
+    return dividedArray;
+  };
 
   /* 
   for (let i in fuelData) {
@@ -28,13 +37,13 @@ function Widget5(props) {
   const fuelSeries = [
     {
       name: 'Fuel Cost',
-      data: fuelData
+      data: divideByMonth(fuelData)
     }
   ];
   const serviceSeries = [
     {
       name: 'Service Cost',
-      data: serviceData
+      data: divideByMonth(serviceData)
     }
   ];
   const serviceTotal = [

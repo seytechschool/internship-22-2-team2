@@ -183,6 +183,16 @@ const projectDashboardAppDB = {
           legend: {
             show: false
           },
+          theme: {
+            mode: 'light',
+            // palette: 'palette2',
+            monochrome: {
+              enabled: true,
+              color: '#326ba8',
+              shadeTo: 'light',
+              shadeIntensity: 0.65
+            }
+          },
           dataLabels: {
             enabled: false
           }
@@ -361,8 +371,9 @@ const projectDashboardAppDB = {
             fontFamily: 'Helvetica, Arial, sans-serif'
           },
           theme: {
+            palette: 'palette3',
             monochrome: {
-              enabled: true,
+              enabled: false,
               shadeTo: 'light',
               shadeIntensity: 0.65
             }
@@ -1144,69 +1155,104 @@ const projectDashboardAppDB = {
     },
     {
       id: 'widget12',
-      title: 'Latest Meter Readings',
-      currentRange: 'TW',
+      title: 'Trucks Count',
       mainChart: {
-        series: {
-          TW: [
-            {
-              name: 'SAMPLE A',
-              data: generateDayWiseTimeSeries(new Date('11 Feb 2020 GMT').getTime(), 10, {
-                min: 100000,
-                max: 600000
-              })
-            }
-          ]
-        },
+        series: [
+          {
+            name: 'Trucks',
+            data: [5, 9, 14, 22, 31, 47, 75]
+          }
+        ],
         options: {
           chart: {
-            width: '100%',
-            height: '100%',
-            // type: 'scatter',
             type: 'line',
-            toolbar: {
-              show: false
+            zoom: {
+              enabled: false
             }
           },
+          dataLabels: {
+            enabled: true
+          },
           stroke: {
-            width: 1,
-            colors: undefined
+            curve: 'straight'
           },
-          fill: {
-            type: 'solid',
-            opacity: 0.9
-          },
-          legend: {
-            position: 'bottom'
-          },
-          theme: {
-            monochrome: {
-              enabled: true,
-              shadeTo: 'dark',
-              shadeIntensity: 0.65
+          grid: {
+            row: {
+              colors: ['#f3f3f3', 'transparent'],
+              opacity: 0.5
             }
           },
           xaxis: {
-            type: 'datetime',
-            labels: {
-              style: {
-                fontSize: '16px',
-                fontFamily: 'Helvetica, Arial, sans-serif'
-              }
-            }
-          },
-          yaxis: {
-            tickAmount: 5,
-            labels: {
-              style: {
-                fontSize: '16px',
-                fontFamily: 'Helvetica, Arial, sans-serif'
-              }
-            }
+            categories: ['2016', '2017', '2018', '2019', '2020', '2021', '2022']
           }
         }
       }
     },
+    // {
+    //   id: 'widget12',
+    //   title: 'Latest Meter Readings',
+    //   currentRange: 'TW',
+    //   mainChart: {
+    //     series: {
+    //       TW: [
+    //         {
+    //           name: 'SAMPLE A',
+    //           data: generateDayWiseTimeSeries(new Date('11 Feb 2020 GMT').getTime(), 10, {
+    //             min: 100000,
+    //             max: 600000
+    //           })
+    //         }
+    //       ]
+    //     },
+    //     options: {
+    //       chart: {
+    //         width: '100%',
+    //         height: '100%',
+    //         // type: 'scatter',
+    //         type: 'line',
+    //         toolbar: {
+    //           show: false
+    //         }
+    //       },
+    //       stroke: {
+    //         width: 1,
+    //         colors: undefined
+    //       },
+    //       fill: {
+    //         type: 'solid',
+    //         opacity: 0.9
+    //       },
+    //       legend: {
+    //         position: 'bottom'
+    //       },
+    //       theme: {
+    //         monochrome: {
+    //           enabled: true,
+    //           shadeTo: 'dark',
+    //           shadeIntensity: 0.65
+    //         }
+    //       },
+    //       xaxis: {
+    //         type: 'datetime',
+    //         labels: {
+    //           style: {
+    //             fontSize: '16px',
+    //             fontFamily: 'Helvetica, Arial, sans-serif'
+    //           }
+    //         }
+    //       },
+    //       yaxis: {
+    //         tickAmount: 5,
+    //         labels: {
+    //           style: {
+    //             fontSize: '16px',
+    //             fontFamily: 'Helvetica, Arial, sans-serif'
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
     {
       id: 'weatherWidget',
       locations: {

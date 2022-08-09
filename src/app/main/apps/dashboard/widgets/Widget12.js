@@ -20,7 +20,7 @@ function Widget12(props) {
       <div className="h-400 w-full">
         <ReactApexChart
           options={widget.mainChart.options}
-          series={widget.mainChart.series[currentRange]}
+          series={widget.mainChart.series}
           type={widget.mainChart.options.chart.type}
           width="100%"
           height="100%"
