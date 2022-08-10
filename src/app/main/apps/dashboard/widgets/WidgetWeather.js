@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect /* memo */ } from 'react';
 import Moment from 'moment';
 import { DebounceInput } from 'react-debounce-input';
 
@@ -162,4 +162,4 @@ function WidgetWeather() {
   );
 }
 
-export default memo(WidgetWeather);
+export default WidgetWeather;
