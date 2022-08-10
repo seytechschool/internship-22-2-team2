@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: () => <Redirect to="https://dynamic-salmiakki-0fc309.netlify.app/apps/dashboard" />
+    component: () => <Redirect to="/apps/dashboard" />
   },
   {
     component: () => <Redirect to="/pages/errors/error-404" />
