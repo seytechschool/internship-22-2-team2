@@ -29,10 +29,10 @@ function WidgetWeather() {
 
   useEffect(() => {
     if (searchVal !== '') {
-      const url = `http://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchVal}&appid=${apiKey}`;
       fetchData(url);
     } else if (searchVal.length === 0) {
-      const api = `http://api.openweathermap.org/data/2.5/weather?q=chicago&appid=${apiKey}`;
+      const api = `https://api.openweathermap.org/data/2.5/weather?q=chicago&appid=${apiKey}`;
       fetchData(api);
     }
     setLon(weatherData.coord.lon);
@@ -58,7 +58,7 @@ function WidgetWeather() {
     return newArr;
   };
   useEffect(() => {
-    const API = `http://api.openweathermap.org/data/2.5/forecast?lat=${Number(lat)}&lon=${Number(
+    const API = `https://api.openweathermap.org/data/2.5/forecast?lat=${Number(lat)}&lon=${Number(
       lon
     )}&appid=${apiKey}&units=metric`;
     fetch(API)
@@ -107,7 +107,7 @@ function WidgetWeather() {
         <Icon className="meteocons text-48 ltr:mr-8 rtl:ml-8" color="action">
           <img
             className="w-img"
-            src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+            src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
             alt="weather"
             style={{ width: '150px' }}
           />
@@ -143,7 +143,7 @@ function WidgetWeather() {
               <Icon className="meteocons text-24 ltr:mr-16 rtl:ml-16" color="action">
                 <img
                   className="f-img"
-                  src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`}
+                  src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`}
                   alt="weather"
                 />
               </Icon>
