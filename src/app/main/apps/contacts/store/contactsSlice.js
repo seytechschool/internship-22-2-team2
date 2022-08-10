@@ -163,30 +163,32 @@ export const toggleStarredContacts = createAsyncThunk(
 export const setContactsStarred = createAsyncThunk(
   'contactsApp/contacts/setContactsStarred',
   async (contactIds, { dispatch, getState }) => {
-    for (const id of contactIds) {
-      const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
-        __v: true
-      });
+    const response = await axios.all(
+      contactIds.map(id => axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, { __v: true }))
+    );
+    const data = await response.data;
 
-      dispatch(getVehicles());
-      dispatch(getUserData());
-    }
-    return;
+    dispatch(getVehicles());
+    dispatch(getUserData());
+
+    return data;
   }
 );
 
 export const setContactsUnstarred = createAsyncThunk(
   'contactsApp/contacts/setContactsUnstarred',
   async (contactIds, { dispatch, getState }) => {
-    for (const id of contactIds) {
-      const response = await axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
-        __v: false
-      });
+    const response = await axios.all(
+      contactIds.map(id =>
+        axios.patch(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, { __v: false })
+      )
+    );
+    const data = await response.data;
 
-      dispatch(getVehicles());
-      dispatch(getUserData());
-    }
-    return;
+    dispatch(getVehicles());
+    dispatch(getUserData());
+
+    return data;
   }
 );
 

@@ -28,7 +28,20 @@ function Widget5(props) {
     }
     return dividedArray;
   };
+  const fuelTotal = divideByMonth(fuelData);
+  const servicesTotal = divideByMonth(serviceData);
 
+  const totalDataArray = () => {
+    const totalArr = [];
+    fuelTotal.map((data, i) => {
+      return totalArr.push(fuelTotal[i] + servicesTotal[i]);
+    });
+    return totalArr;
+  };
+  totalDataArray();
+
+  /*  console.log(divideByMonth(fuelData))
+  console.log(divideByMonth(serviceData)) */
   /* 
   for (let i in fuelData) {
     totalData.push(fuelData[i] + serviceData[i]);
@@ -49,7 +62,7 @@ function Widget5(props) {
   const serviceTotal = [
     {
       name: 'Total Cost',
-      data: totalData
+      data: totalDataArray()
     }
   ];
 
