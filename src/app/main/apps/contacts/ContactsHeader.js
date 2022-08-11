@@ -36,7 +36,7 @@ function ContactsHeader(props) {
             }}
             aria-label="open left sidebar"
           >
-            <Icon>menu</Icon>
+            {/* <Icon>menu</Icon> */}
           </IconButton>
         </Hidden>
 

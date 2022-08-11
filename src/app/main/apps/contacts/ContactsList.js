@@ -42,6 +42,25 @@ function randomAvatars() {
   return avatars[Math.floor(Math.random() * avatars.length)];
 }
 
+const choseAvatar = brand => {
+  switch (brand) {
+    case 'TOYOTA':
+      return avatars[0];
+    case 'AUDI':
+      return avatars[1];
+    case 'BMW':
+      return avatars[2];
+    case 'HONDA':
+      return avatars[3];
+    case 'LEXUS':
+      return avatars[4];
+    case 'MERCEDES':
+      return avatars[5];
+    default:
+      return avatars[6];
+  }
+};
+
 function ContactsList(props) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -60,7 +79,7 @@ function ContactsList(props) {
         },
         accessor: 'avatar',
         Cell: ({ row }) => {
-          return <Avatar className="mx-8" alt={row.original.name} src={randomAvatars()} />;
+          return <Avatar className="mx-8" alt={row.original.name} src={choseAvatar(row.original.brand)} />;
         },
         className: 'justify-center',
         width: 64,

@@ -4,9 +4,14 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import { memo, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function Widget4(props) {
   const [currentRange, setCurrentRange] = useState(props.widget.currentRange);
+  const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
+  const vehicleDataDate = Object.values(vehicleData).map(i => i.serviceHistory.date);
+  const vehicleDataDateSliced = vehicleDataDate.slice(63, vehicleDataDate.length);
+  console.log(vehicleDataDateSliced, 'vehicleDataDateSliced');
 
   function handleChangeRange(ev) {
     setCurrentRange(ev.target.value);
@@ -15,7 +20,7 @@ function Widget4(props) {
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-start">
       <div className="flex items-center justify-between px-4 pt-8">
-        <Select
+        {/* <Select
           native
           className="mx-16"
           classes={{ root: 'py-8 font-medium opacity-75' }}
@@ -34,22 +39,25 @@ function Widget4(props) {
               </option>
             );
           })}
-        </Select>
+        </Select> */}
+        <Typography className="text-16 px-16 font-medium" color="textSecondary">
+          Service
+        </Typography>
         <IconButton aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">Reminders</Typography>
-        <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
-          {props.widget.data.count[currentRange]}
+        <Typography className="text-18 text-blue-800 font-normal mb-8">August</Typography>
+        <Typography className="text-72 font-semibold leading-none text-red tracking-tighter">
+          {vehicleDataDateSliced.length}
         </Typography>
-        <Typography className="text-18 text-blue-800 font-normal">{props.widget.data.name}</Typography>
+        <Typography className="text-18 text-red-800 font-normal">{props.widget.data.name}</Typography>
       </div>
-      <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
+      {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
         <span className="truncate">{props.widget.data.extra.name}</span>:
         <b className="px-8">{props.widget.data.extra.count[currentRange]}</b>
-      </Typography>
+      </Typography> */}
     </Paper>
   );
 }

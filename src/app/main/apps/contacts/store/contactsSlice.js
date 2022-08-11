@@ -11,7 +11,7 @@ const createVehicleObject = vehicle => {
     isAssigned: vehicle.isAssigned === 'YES' ? 'true' : 'false',
     vehicleStatus: vehicle.vehicleStatus,
     serviceHistory: {
-      cost: vehicle.serviceCost,
+      cost: vehicle.serviceHistory.cost,
       address: {
         addressLine1: 'test1',
         city: 'test1',
@@ -21,7 +21,7 @@ const createVehicleObject = vehicle => {
       }
     },
     fuelHistory: {
-      cost: vehicle.fuelCost,
+      cost: vehicle.fuelHistory.cost,
       volume: 123456,
       address: {
         addressLine1: 'test',
@@ -32,7 +32,7 @@ const createVehicleObject = vehicle => {
       }
     },
     mileageHistory: {
-      mileage: vehicle.mileage,
+      mileage: vehicle.millage,
       address: {
         addressLine1: 'test',
         city: 'test',
@@ -127,9 +127,23 @@ export const removeContact = createAsyncThunk(
 export const removeContacts = createAsyncThunk(
   'contactsApp/contacts/removeContacts',
   async (contactIds, { dispatch, getState }) => {
-    await axios.post('/api/contacts-app/remove-contacts', { contactIds });
+    const response = await axios.all(
+      contactIds.map(id =>
+        axios.delete(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE'
+          }
+        })
+      )
+    );
+    const data = await response.data;
 
-    return contactIds;
+    dispatch(getVehicles());
+    dispatch(getUserData());
+
+    return data;
   }
 );
 
