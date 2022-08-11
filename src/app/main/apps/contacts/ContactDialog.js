@@ -62,6 +62,25 @@ const schema = yup.object().shape({
   brand: yup.string().required('You must enter a name')
 });
 
+const choseAvatar = brand => {
+  switch (brand) {
+    case 'TOYOTA':
+      return avatars[0];
+    case 'AUDI':
+      return avatars[1];
+    case 'BMW':
+      return avatars[2];
+    case 'HONDA':
+      return avatars[3];
+    case 'LEXUS':
+      return avatars[4];
+    case 'MERCEDES':
+      return avatars[5];
+    default:
+      return avatars[6];
+  }
+};
+
 function ContactDialog() {
   const dispatch = useDispatch();
   const contactDialog = useSelector(({ contactsApp }) => contactsApp.contacts.contactDialog);
@@ -159,7 +178,7 @@ function ContactDialog() {
           </Typography>
         </Toolbar>
         <div className="flex flex-col items-center justify-center pb-24">
-          <Avatar className="w-96 h-96" alt="contact avatar" src={randomAvatars()} />
+          <Avatar className="w-96 h-96" alt="contact avatar" src={choseAvatar(brand)} />
           {contactDialog.type === 'edit' && (
             <Typography style={{ fontSize: '2rem' }} variant="subtitle" color="inherit" className="pt-8">
               {brand} {model}
@@ -289,7 +308,7 @@ function ContactDialog() {
               </div>
               <Controller
                 control={control}
-                name="serviceCost"
+                name="serviceHistory.cost"
                 render={({ field }) => (
                   <TextField
                     {...field}
@@ -310,10 +329,17 @@ function ContactDialog() {
               </div>
               <Controller
                 control={control}
-                name="fuelCost"
+                name="fuelHistory.cost"
                 render={({ field }) => (
                   // eslint-disable-next-line prettier/prettier
-                  <TextField {...field} className="mb-24" label="Fuel Cost" id="fuelCost" variant="outlined" fullWidth />
+                  <TextField
+                    {...field}
+                    className="mb-24"
+                    label="Fuel Cost"
+                    id="fuelCost"
+                    variant="outlined"
+                    fullWidth
+                  />
                 )}
               />
             </div>
@@ -326,7 +352,7 @@ function ContactDialog() {
               </div>
               <Controller
                 control={control}
-                name="mileage"
+                name="millage"
                 render={({ field }) => (
                   <TextField
                     {...field}

@@ -3,8 +3,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
 function Widget3(props) {
+  const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
+  const Inshop = Object.values(vehicleData).filter(i => i.vehicleStatus === 'inShop').length;
   return (
     <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
       <div className="flex items-center justify-between px-4 pt-8">
@@ -18,9 +21,9 @@ function Widget3(props) {
       <div className="text-center py-12">
         <Typography className="text-18 text-blue-800 font-normal mb-8">Issues</Typography>
         <Typography className="text-72 font-semibold leading-none text-orange tracking-tighter my-11">
-          {props.widget.data.count}
+          {Inshop}
         </Typography>
-        <Typography className="text-18 font-normal text-orange-800">{props.widget.data.name}</Typography>
+        <Typography className="text-18 font-normal text-orange-800">In Shop</Typography>
       </div>
       <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
         {/* <span className="truncate">{props.widget.data.extra.name}</span>:

@@ -24,10 +24,10 @@ function BudgetSummaryTab() {
 
   return (
     <motion.div className="flex flex-wrap" variants={container} initial="hidden" animate="show">
-      <motion.div variants={item} className="widget flex w-full p-12">
+      <motion.div variants={item} className="widget flex w-full sm:w-3/4 p-12">
         <Widget5 widget={widgets.widget5} />
       </motion.div>
-      <motion.div variants={item} className="widget flex w-full p-12">
+      <motion.div variants={item} className="widget flex w-full sm:w-1/4 p-12">
         <Widget9 widget={widgets.widget9} />
       </motion.div>
     </motion.div>

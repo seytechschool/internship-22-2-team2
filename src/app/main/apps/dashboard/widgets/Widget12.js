@@ -4,11 +4,19 @@ import Typography from '@material-ui/core/Typography';
 import _ from '@lodash';
 import { memo } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { useSelector } from 'react-redux';
 
 function Widget12(props) {
   const { currentRange } = props.widget;
   const widget = _.merge({}, props.widget);
   const theme = useTheme();
+  const vehicleData = useSelector(({ projectDashboardApp }) => projectDashboardApp.projects.entities);
+  const series = [
+    {
+      name: 'Trucks',
+      data: [5, 9, 14, 22, 31, 47, Object.keys(vehicleData).length]
+    }
+  ];
 
   _.setWith(widget, 'mainChart.options.theme.monochrome.color', theme.palette.secondary.main);
 
@@ -20,7 +28,7 @@ function Widget12(props) {
       <div className="h-400 w-full">
         <ReactApexChart
           options={widget.mainChart.options}
-          series={widget.mainChart.series}
+          series={series}
           type={widget.mainChart.options.chart.type}
           width="100%"
           height="100%"

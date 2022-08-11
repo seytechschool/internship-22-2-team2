@@ -69,11 +69,11 @@ const projectDashboardAppDB = {
       id: 'widget4',
       ranges: {
         Service: 'Service',
-        VehicleRenewal: 'Vehicle Renewal'
+        // VehicleRenewal: 'Vehicle Renewal'
       },
       currentRange: 'Service',
       data: {
-        name: 'Due',
+        name: 'Vehicles Due',
         count: {
           Service: 3,
           VehicleRenewal: 2
@@ -104,6 +104,17 @@ const projectDashboardAppDB = {
               data: [1100, 1000, 800, 1100, 800, 1000, 170]
             }
           ]
+        },
+        options: {
+          theme: {
+            mode: 'light',
+            monochrome: {
+              enabled: true,
+              color: '#eb4034',
+              shadeTo: 'light',
+              sgadeIntensity: 0.65
+            }
+          }
         },
         Service: {
           labels: {
@@ -1180,6 +1191,14 @@ const projectDashboardAppDB = {
             row: {
               colors: ['#f3f3f3', 'transparent'],
               opacity: 0.5
+            }
+          },
+          theme: {
+            palette: 'palette7',
+            monochrome: {
+              enabled: false,
+              shadeTo: 'dark',
+              shadeIntensity: 0.65
             }
           },
           xaxis: {
