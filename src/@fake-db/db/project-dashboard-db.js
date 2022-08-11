@@ -68,10 +68,10 @@ const projectDashboardAppDB = {
     {
       id: 'widget4',
       ranges: {
-        Service: 'Service',
+       August: 'August',
         // VehicleRenewal: 'Vehicle Renewal'
       },
-      currentRange: 'Service',
+      currentRange: 'August',
       data: {
         name: 'Vehicles Due',
         count: {
@@ -396,7 +396,7 @@ const projectDashboardAppDB = {
     },
     {
       id: 'widget9',
-      title: 'Spent',
+      title: 'Budget',
       ranges: {
         TW: 'This Week',
         LW: 'Last Week',

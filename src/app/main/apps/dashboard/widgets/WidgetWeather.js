@@ -26,6 +26,9 @@ function WidgetWeather() {
       .then(res => res.json())
       .then(res => setWeatherData(res));
   };
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   useEffect(() => {
     if (searchVal !== '') {
@@ -83,13 +86,16 @@ function WidgetWeather() {
   // }
   return (
     <Paper
-      className="w-full rounded-20 shadow flex flex-col justify-between"
-      style={{ background: 'rgb(172, 223, 223)' }}
+      className="w-full rounded-20 shadow flex flex-col justify-between text-white"
+      style={{
+        background: 'linear-gradient(180deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%)'
+      }}
     >
       <div className="flex items-center justify-between px-4 pt-8">
-        <div className="flex items-center align-content-center px-16">
-          <Icon color="action">location_on</Icon>
+        <div className="flex items-center align-content-center px-8">
+          <Icon className="text-black">location_on</Icon>
           <DebounceInput
+            style={{ borderRadius: '30px', padding: '8px', color: 'black' }}
             value={searchVal}
             placeholder="Enter a city..."
             debounceTimeout={1000}
@@ -100,9 +106,7 @@ function WidgetWeather() {
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
-      <Typography className="text-20 mx-8 font-medium text-center" color="textSecondary">
-        {weatherData.name}
-      </Typography>
+      <Typography className="text-20 mx-8 font-medium text-center">{weatherData.name}</Typography>
       <div className="flex items-center justify-center p-20 pb-32">
         <Icon className="meteocons text-48 ltr:mr-8 rtl:ml-8" color="action">
           <img
@@ -112,25 +116,23 @@ function WidgetWeather() {
             style={{ width: '150px' }}
           />
         </Icon>
-        <Typography className="text-44 mx-8 font-medium tracking-tighter" color="textSecondary">
+        <Typography className="text-44 mx-8 font-medium tracking-tighter">
           {convertCtoF(weatherData.main.temp)}
         </Typography>
-        <Typography className="text-48" color="textSecondary">
-          °
-        </Typography>
-        <Typography className="text-44" color="textSecondary">
-          C
-        </Typography>
+        <Typography className="text-48">°</Typography>
+        <Typography className="text-44">C</Typography>
       </div>
       <Divider />
       <div className="flex justify-between items-center p-16">
         <div className="flex items-center">
-          <Typography className="mx-4 font-semibold">{weatherData.weather[0].description}</Typography>
+          <Typography className="mx-4 font-semibold">
+            {capitalizeFirstLetter(weatherData.weather[0].description)}
+          </Typography>
         </div>
 
         <div className="flex items-center">
           <Typography className="mx-4 font-semibold">
-            feels like: {convertCtoF(weatherData.main.feels_like)}&deg;C
+            Feels like: {convertCtoF(weatherData.main.feels_like)}&deg;C
           </Typography>
         </div>
       </div>
@@ -138,7 +140,7 @@ function WidgetWeather() {
       <div className="w-full py-16">
         {forecast.map((day, index) => (
           <div className="flex items-center justify-between w-full py-16 px-24" key={index}>
-            <Typography className="text-15 font-medium">{Moment(omitTime(day.dt_txt)).format('MM-DD-YYYY')}</Typography>
+            <Typography className="text-15 font-medium">{Moment(omitTime(day.dt_txt)).format('DD.MM.YYYY')}</Typography>
             <div className="flex items-center">
               <Icon className="meteocons text-24 ltr:mr-16 rtl:ml-16" color="action">
                 <img
@@ -148,12 +150,8 @@ function WidgetWeather() {
                 />
               </Icon>
               <Typography className="text-20 font-medium tracking-tighter">{Math.round(day.main.temp)}</Typography>
-              <Typography className="text-20" color="textSecondary">
-                &deg;
-              </Typography>
-              <Typography className="text-20" color="textSecondary">
-                C
-              </Typography>
+              <Typography className="text-20">&deg;</Typography>
+              <Typography className="text-20">C</Typography>
             </div>
           </div>
         ))}

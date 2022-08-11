@@ -22,7 +22,7 @@ function Widget8(props) {
       <div className="flex items-center justify-between p-20 h-64">
         <Typography className="text-16 font-medium">{widget.title}</Typography>
       </div>
-      <div className="h-420 w-full">
+      <div className="h-420 w-full font-large">
         <ReactApexChart
           options={widget.mainChart.options}
           // series={widget.mainChart.series}

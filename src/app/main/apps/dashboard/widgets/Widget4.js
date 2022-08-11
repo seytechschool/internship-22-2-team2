@@ -41,14 +41,14 @@ function Widget4(props) {
           })}
         </Select> */}
         <Typography className="text-16 px-16 font-medium" color="textSecondary">
-          Service
+          August
         </Typography>
         <IconButton aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">August</Typography>
+        <Typography className="text-18 text-blue-800 font-normal mb-8">Service</Typography>
         <Typography className="text-72 font-semibold leading-none text-red tracking-tighter">
           {vehicleDataDateSliced.length}
         </Typography>

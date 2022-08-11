@@ -31,13 +31,9 @@ function WidgetNow() {
         </IconButton>
       </div>
       <div className="text-center px-20 pt-20 pb-32">
-        <Typography className="text-24 leading-tight font-normal" color="textSecondary">
-          {format(time, 'MMMM')}
-        </Typography>
-        <Typography className="text-72 leading-tight font-medium tracking-tighter" color="textSecondary">
-          {format(time, 'd')}
-        </Typography>
-        <Typography className="mt-8 text-20 leading-tight font-semibold tracking-tighter" color="textSecondary">
+        <Typography className="text-24 leading-tight font-normal">{format(time, 'MMMM')}</Typography>
+        <Typography className="text-72 leading-tight font-medium tracking-tighter">{format(time, 'd')}</Typography>
+        <Typography className="mt-8 text-20 leading-tight font-semibold tracking-tighter">
           {format(time, 'Y')}
         </Typography>
       </div>
