@@ -21,11 +21,15 @@ function WidgetNow() {
   }
 
   return (
-    <Paper className="w-full rounded-20 shadow flex flex-col justify-between">
+    <Paper
+      style={{
+        background: 'linear-gradient(180deg, hsla(203, 88%, 61%, 1) 0%, hsla(219, 46%, 24%, 1) 100%)',
+        color: 'white'
+      }}
+      className="w-full rounded-20 shadow flex flex-col justify-between"
+    >
       <div className="flex items-center justify-between px-4 pt-8">
-        <Typography className="text-16 px-16 font-medium tracking-tighter" color="textSecondary">
-          {format(time, 'eee, HH:mm:ss')}
-        </Typography>
+        <Typography className="text-16 px-16 font-medium tracking-tighter">{format(time, 'eee, HH:mm:ss')}</Typography>
         <IconButton aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>

@@ -19,12 +19,16 @@ function Widget2(props) {
   }
 
   return (
-    <Paper className="w-full rounded-20 shadow flex flex-col justify-start">
+    <Paper
+      style={{ background: '#9b3b4f', color: 'white' }}
+      className="w-full rounded-20 shadow flex flex-col justify-start"
+    >
       <div className="flex items-center justify-between px-4 pt-8">
         <Select
+          style={{ color: 'white' }}
           native
           className="mx-16"
-          classes={{ root: 'py-8 font-medium opacity-75' }}
+          classes={{ root: 'py-8 font-medium opacity-100' }}
           value={currentRange}
           onChange={handleChangeRange}
           inputProps={{
@@ -35,21 +39,21 @@ function Widget2(props) {
         >
           {Object.entries(props.widget.ranges).map(([key, n]) => {
             return (
-              <option key={key} value={key}>
+              <option style={{ background: 'white', color: 'black' }} key={key} value={key}>
                 {n}
               </option>
             );
           })}
         </Select>
-        <IconButton aria-label="more">
+        <IconButton style={{ color: 'white' }} aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">{`${
+        <Typography className="text-18 text-800 font-normal mb-8">{`${
           currentRange === 'Assigned' ? 'Assigned' : 'Unassigned'
         } Vehicles`}</Typography>
-        <Typography className="text-72 font-semibold leading-none text-blue tracking-tighter">
+        <Typography className="text-72 font-semibold leading-none  tracking-tighter">
           {currentRange === 'Assigned' ? Assigned : Unassigned}
         </Typography>
       </div>

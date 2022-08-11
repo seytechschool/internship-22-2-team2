@@ -90,7 +90,7 @@ const projectDashboardAppDB = {
     },
     {
       id: 'widget5',
-      title: 'Costs',
+      title: 'Costs 2022',
       ranges: {
         Fuel: 'Fuel',
         Service: 'Service',
@@ -110,7 +110,7 @@ const projectDashboardAppDB = {
             mode: 'light',
             monochrome: {
               enabled: true,
-              color: '#eb4034',
+              color: '#AD343E',
               shadeTo: 'light',
               sgadeIntensity: 0.65
             }
@@ -118,7 +118,7 @@ const projectDashboardAppDB = {
         },
         Service: {
           labels: {
-            formatter: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            formatter: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August'],
             style: {
               fontSize: '16px',
               fontFamily: 'Helvetica, Arial, sans-serif'
@@ -133,7 +133,7 @@ const projectDashboardAppDB = {
         },
         Total: {
           labels: {
-            formatter: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            formatter: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' ],
             style: {
               fontSize: '16px',
               fontFamily: 'Helvetica, Arial, sans-serif'
@@ -162,7 +162,7 @@ const projectDashboardAppDB = {
             }
           },
           xaxis: {
-            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
             labels: {
               style: {
                 fontSize: '16px',
@@ -186,7 +186,7 @@ const projectDashboardAppDB = {
             theme: 'dark',
             fixed: {
               enabled: false,
-              position: 'topRight',
+              position: 'topLeft',
               offsetX: 0,
               offsetY: 0
             }
@@ -199,13 +199,13 @@ const projectDashboardAppDB = {
             // palette: 'palette2',
             monochrome: {
               enabled: true,
-              color: '#326ba8',
+              color: '#006BA6',
               shadeTo: 'light',
               shadeIntensity: 0.65
             }
           },
           dataLabels: {
-            enabled: false
+            enabled: true
           }
         }
       }
@@ -934,7 +934,7 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: 'https://media-exp1.licdn.com/dms/image/C5603AQEiHrY6hEyqXA/profile-displayphoto-shrink_200_200/0/1627026666268?e=1660176000&v=beta&t=Ju3RMWwm3mqtsPmagINxehO7qL_hbRXG1XntI0HqIXE'
+                value: 'https://media-exp1.licdn.com/dms/image/C5603AQEiHrY6hEyqXA/profile-displayphoto-shrink_800_800/0/1627026666268?e=1665619200&v=beta&t=VilpbPPRr2WQ83se_lGgQAbOQ7S-T86oeJbYbO1MAis'
               },
               {
                 id: 'name',

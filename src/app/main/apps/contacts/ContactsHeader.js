@@ -58,6 +58,7 @@ function ContactsHeader(props) {
           >
             Vehicles
           </Typography>
+
           <Button
             onClick={() => dispatch(openNewContactDialog())}
             style={{ marginLeft: '10px', backgroundColor: '#81c784' }}
