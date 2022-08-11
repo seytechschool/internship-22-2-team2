@@ -18,7 +18,10 @@ function Widget4(props) {
   }
 
   return (
-    <Paper className="w-full rounded-20 shadow flex flex-col justify-start">
+    <Paper
+      style={{ background: '#14213D', color: 'white' }}
+      className="w-full rounded-20 shadow flex flex-col justify-start"
+    >
       <div className="flex items-center justify-between px-4 pt-8">
         {/* <Select
           native
@@ -40,19 +43,17 @@ function Widget4(props) {
             );
           })}
         </Select> */}
-        <Typography className="text-16 px-16 font-medium" color="textSecondary">
-          August
-        </Typography>
-        <IconButton aria-label="more">
+        <Typography className="text-16 px-16 font-medium">August</Typography>
+        <IconButton style={{ color: 'white' }} aria-label="more">
           <Icon>more_vert</Icon>
         </IconButton>
       </div>
       <div className="text-center py-12">
-        <Typography className="text-18 text-blue-800 font-normal mb-8">Service</Typography>
+        <Typography className="text-18 text-white-800 font-normal mb-8">Service</Typography>
         <Typography className="text-72 font-semibold leading-none text-red tracking-tighter">
           {vehicleDataDateSliced.length}
         </Typography>
-        <Typography className="text-18 text-red-800 font-normal">{props.widget.data.name}</Typography>
+        <Typography className="text-18 text-800 font-normal">{props.widget.data.name}</Typography>
       </div>
       {/* <Typography className="p-20 pt-0 h-56 flex justify-center items-end text-13 font-medium" color="textSecondary">
         <span className="truncate">{props.widget.data.extra.name}</span>:

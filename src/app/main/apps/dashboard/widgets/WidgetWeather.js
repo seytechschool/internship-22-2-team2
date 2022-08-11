@@ -88,7 +88,7 @@ function WidgetWeather() {
     <Paper
       className="w-full rounded-20 shadow flex flex-col justify-between text-white"
       style={{
-        background: 'linear-gradient(180deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%)'
+        background: 'linear-gradient(180deg, hsla(358, 69%, 62%, 1) 0%, hsla(0, 76%, 10%, 1) 84%)'
       }}
     >
       <div className="flex items-center justify-between px-4 pt-8">
