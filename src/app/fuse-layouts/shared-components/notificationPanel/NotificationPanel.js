@@ -10,13 +10,13 @@ import { useEffect, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import { addContact } from 'app/main/apps/contacts/store/contactsSlice';
 import NotificationModel from './model/NotificationModel';
 import NotificationCard from './NotificationCard';
 import NotificationTemplate from './NotificationTemplate';
 import { getNotifications, addNotification, dismissAll, dismissItem, selectNotifications } from './store/dataSlice';
 import reducer from './store';
 import { closeNotificationPanel, toggleNotificationPanel } from './store/stateSlice';
-import { addContact } from 'app/main/apps/contacts/store/contactsSlice';
 
 const useStyles = makeStyles(theme => ({
   root: {

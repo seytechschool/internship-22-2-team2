@@ -13,12 +13,12 @@ import { DialogContentText, DialogTitle } from '@material-ui/core';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import Button from '@material-ui/core/Button';
-import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
-import ContactsTable from './ContactsTable';
-import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
 import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
 import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
 import NotificationPanel from 'app/fuse-layouts/shared-components/notificationPanel/NotificationPanel';
+import ContactsMultiSelectMenu from './ContactsMultiSelectMenu';
+import ContactsTable from './ContactsTable';
+import { openEditContactDialog, removeContact, toggleStarredContact, selectContacts } from './store/contactsSlice';
 
 const formatData = vehicles =>
   vehicles.map(vehicle => {
@@ -147,7 +147,7 @@ function ContactsList(props) {
               {/* {user.starred && user.starred.includes(row.original._id) ? ( */}
               {row.original.__v ? <Icon className="text-yellow-700">star</Icon> : <Icon>star_border</Icon>}
             </IconButton>
-            <NotificationPanel/>
+            <NotificationPanel />
             <IconButton
               onClick={ev => {
                 ev.stopPropagation();

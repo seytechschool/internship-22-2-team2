@@ -63,12 +63,12 @@ function ProjectDashboardApp(props) {
           className="w-full px-24 -mx-4 min-h-40"
           classes={{ indicator: 'flex justify-center bg-transparent w-full h-full' }}
           TabIndicatorProps={{
-            children: <Divider className="w-full h-full rounded-full opacity-50" />
+            children: <Divider style={{ background: '#005858' }} className="w-full h-full rounded-full opacity-25" />
           }}
         >
-          <Tab className="text-14 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Home" />
-          <Tab className="text-14 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Budget Summary" />
-          <Tab className="text-14 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Team Members" />
+          <Tab className="text-16 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Home" />
+          <Tab className="text-16 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Budget Summary" />
+          <Tab className="text-16 font-semibold min-h-40 min-w-64 mx-4" disableRipple label="Team Members" />
         </Tabs>
       }
       content={

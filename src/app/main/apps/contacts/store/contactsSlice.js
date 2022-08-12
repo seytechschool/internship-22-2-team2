@@ -1,10 +1,10 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-alert */
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
 import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
 import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
 import axios from 'axios';
 import { getUserData } from './userSlice';
-
 
 const createVehicleObject = vehicle => {
   return {
@@ -47,7 +47,7 @@ const createVehicleObject = vehicle => {
     __v: 0
   };
 };
-
+/*       Get Vehicle      */
 export const getVehicles = createAsyncThunk(
   'vehicle-list-app/vehicles/getContacts',
   async (routeParams, { getState }) => {
@@ -55,14 +55,11 @@ export const getVehicles = createAsyncThunk(
     const response = await axios.get('https://internship-api-22-2-team2.herokuapp.com/vehicles', {
       params: routeParams
     });
-    // const data = await {vehicles : response.data}
     const data = await response.data;
-    /*    console.log(data, 'contactSlice data'); */
-
     return { data, routeParams };
   }
 );
-
+/*        Add Contact (Vehicle)        */
 export const addContact = createAsyncThunk(
   'vehicle-list-app/vehicles/addVehicle',
   async (contact, { dispatch, getState }) => {
@@ -80,22 +77,22 @@ export const addContact = createAsyncThunk(
         }
       );
       const data = await response.data;
-      dispatch(addNotification(NotificationModel({ message: 'Vehicle is successfully added!', options: { variant: 'success'}})))
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle Added successfully!', options: { variant: 'success'}})))
       console.log(contact, 'ADD Contact');
 
       return data;
     } catch (error) {
-      dispatch(addNotification(NotificationModel({ message: 'Vehicle already exists!', options: { variant: 'info'}})))
-      return setTimeout(()=>dispatch(openNewContactDialog()),5000)
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle already exists!', options: { variant: 'error'}})))
+      return setTimeout(()=>dispatch(openNewContactDialog()),3500)
     }
   }
 );
+/*        Update Contact (Vehicle)        */
 export const updateContact = createAsyncThunk(
   'vehicle-list-app/vehicles/updateVehicle',
   async (contact, { dispatch, getState }) => {
     const vehicleUpdated = JSON.stringify(contact);
-    console.log(contact, 'UPDATE');
-    const response = await axios.patch(
+   try{ const response = await axios.patch(
       `https://internship-api-22-2-team2.herokuapp.com/vehicles/${contact._id}`,
       vehicleUpdated,
       {
@@ -107,10 +104,15 @@ export const updateContact = createAsyncThunk(
       }
     );
     const data = await response.data;
-    dispatch(addNotification(NotificationModel({ message: 'Vehicle is successfully updated!', options: { variant: 'success'}})))
+    dispatch(addNotification(NotificationModel({ message: 'Vehicle Updated!', options: { variant: 'success'}},2000)))
     return data;
+  }catch(error){
+    return dispatch(addNotification(NotificationModel({ message: 'Vehicle NOT Updated!', options: { variant: 'warning'}},1000)))
+
   }
+}
 );
+/*        Remove Contact (Vehicle)        */
 export const removeContact = createAsyncThunk(
   'vehicle-list-app/vehicles/removeVehicle',
   async (contactId, { dispatch, getState }) => {
@@ -122,18 +124,20 @@ export const removeContact = createAsyncThunk(
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE'
         }
       });
-      dispatch(addNotification(NotificationModel({ message: 'Vehicle is removed!', options: { variant: 'success'}})))
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle Deleted successfully!', options: { variant: 'success'}})))
       return contactId;
     } catch (err) {
-      dispatch(addNotification(NotificationModel({ message: 'Vehicle is NOT removed!', options: { variant: 'warning'}})))
+     dispatch(addNotification(NotificationModel({ message: 'Vehicle NOT Deleted!', options: { variant: 'warning'}})))
+     return contactId;
     }
   }
 );
-
+/*        Remove Contacts (Vehicle)        */
 export const removeContacts = createAsyncThunk(
   'contactsApp/contacts/removeContacts',
   async (contactIds, { dispatch, getState }) => {
-    const response = await axios.all(
+    try{
+      const response = await axios.all(
       contactIds.map(id =>
         axios.delete(`https://internship-api-22-2-team2.herokuapp.com/vehicles/${id}`, {
           headers: {
@@ -150,9 +154,12 @@ export const removeContacts = createAsyncThunk(
     dispatch(getUserData());
     dispatch(addNotification(NotificationModel({ message: 'Multiple vehicles are removed!', options: { variant: 'success'}})))
     return data;
+  }catch(error){
+    return  dispatch(addNotification(NotificationModel({ message: 'Multiple vehicles NOT removed!', options: { variant: 'error'}})))
   }
+}
 );
-
+/*        Toggle Starred Contact (Vehicle)        */
 export const toggleStarredContact = createAsyncThunk(
   'contactsApp/contacts/toggleStarredContact',
   async (contactId, { dispatch, getState }) => {

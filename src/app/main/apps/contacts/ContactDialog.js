@@ -14,13 +14,13 @@ import Typography from '@material-ui/core/Typography';
 import { useCallback, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-
 import _ from '@lodash';
 import * as yup from 'yup';
 import { closeDialog, openDialog } from 'app/store/fuse/dialogSlice';
 import { DialogContentText, DialogTitle } from '@material-ui/core';
-import { addressData } from './VehicleAddress';
-
+import NotificationPanel from 'app/fuse-layouts/shared-components/notificationPanel/NotificationPanel';
+import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
 import {
   removeContact,
   updateContact,
@@ -28,9 +28,7 @@ import {
   closeNewContactDialog,
   closeEditContactDialog
 } from './store/contactsSlice';
-import NotificationPanel from 'app/fuse-layouts/shared-components/notificationPanel/NotificationPanel';
-import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
-import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
+import { addressData } from './VehicleAddress';
 
 const avatars = [
   'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
@@ -218,7 +216,7 @@ function ContactDialog() {
                 )}
               />
             </div>
-            <NotificationPanel/>
+            <NotificationPanel />
             <div className="flex">
               <div className="min-w-48 pt-20">
                 <span className="material-icons" style={{ color: 'black' }}>
