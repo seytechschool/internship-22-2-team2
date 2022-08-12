@@ -11,7 +11,7 @@ const createVehicleObject = vehicle => {
     brand: vehicle.brand,
     model: vehicle.model,
     plateNumber: vehicle.plateNumber,
-    isAssigned: vehicle.isAssigned === 'YES' ? 'true' : 'false',
+    isAssigned: vehicle.isAssigned === 'YES',
     vehicleStatus: vehicle.vehicleStatus,
     serviceHistory: {
       cost: vehicle.serviceHistory.cost,

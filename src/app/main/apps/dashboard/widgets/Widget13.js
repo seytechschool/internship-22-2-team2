@@ -15,8 +15,6 @@ function Widget13() {
     return acc;
   }, {});
 
-  console.log(uniqueVehicles, 'unique');
-
   const series = [
     {
       data: [
@@ -88,7 +86,7 @@ function Widget13() {
       type: 'treemap'
     },
     title: {
-      text: 'Basic Treemap'
+      text: 'Vehicle Model Treemap'
     },
     colors: [
       '#3B93A5',
@@ -100,7 +98,7 @@ function Widget13() {
       '#D43F97',
       '#1E5D8C',
       '#421243',
-      '#7F94B0',
+      '#aacc44',
       '#EF6537',
       '#C0ADDB'
     ],
@@ -113,7 +111,7 @@ function Widget13() {
   };
 
   return (
-    <Paper className="w-full rounded-20 shadow">
+    <Paper className="w-full rounded-20 shadow" style={{ fontStyle: 'Poppins, Roboto, Helvetica, Arial, sans-serif' }}>
       {/* <div className="flex items-center justify-between p-20 h-64 ">
         <Typography className="text-16 font-medium">{'test'}</Typography>
       </div> */}
