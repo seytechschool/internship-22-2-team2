@@ -28,6 +28,9 @@ import {
   closeNewContactDialog,
   closeEditContactDialog
 } from './store/contactsSlice';
+import NotificationPanel from 'app/fuse-layouts/shared-components/notificationPanel/NotificationPanel';
+import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
 
 const avatars = [
   'https://avatarfiles.alphacoders.com/821/thumb-82113.jpg',
@@ -147,8 +150,6 @@ function ContactDialog() {
       dispatch(addContact(data));
     } else {
       dispatch(updateContact({ ...contactDialog.data, ...data }));
-      console.log(contactDialog.data, 'Contact Dialog Data');
-      console.log(data, 'Dialog Data');
     }
     closeComposeDialog();
   }
@@ -217,7 +218,7 @@ function ContactDialog() {
                 )}
               />
             </div>
-
+            <NotificationPanel/>
             <div className="flex">
               <div className="min-w-48 pt-20">
                 <span className="material-icons" style={{ color: 'black' }}>

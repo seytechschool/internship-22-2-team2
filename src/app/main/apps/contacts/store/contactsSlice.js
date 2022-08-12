@@ -1,7 +1,10 @@
 /* eslint-disable no-alert */
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit';
+import NotificationModel from 'app/fuse-layouts/shared-components/notificationPanel/model/NotificationModel';
+import { addNotification } from 'app/fuse-layouts/shared-components/notificationPanel/store/dataSlice';
 import axios from 'axios';
 import { getUserData } from './userSlice';
+
 
 const createVehicleObject = vehicle => {
   return {
@@ -77,11 +80,13 @@ export const addContact = createAsyncThunk(
         }
       );
       const data = await response.data;
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle is successfully added!', options: { variant: 'success'}})))
       console.log(contact, 'ADD Contact');
 
       return data;
     } catch (error) {
-      return alert(' Not Added');
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle already exists!', options: { variant: 'info'}})))
+      return setTimeout(()=>dispatch(openNewContactDialog()),5000)
     }
   }
 );
@@ -102,7 +107,7 @@ export const updateContact = createAsyncThunk(
       }
     );
     const data = await response.data;
-    alert('Updated');
+    dispatch(addNotification(NotificationModel({ message: 'Vehicle is successfully updated!', options: { variant: 'success'}})))
     return data;
   }
 );
@@ -117,9 +122,10 @@ export const removeContact = createAsyncThunk(
           'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE'
         }
       });
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle is removed!', options: { variant: 'success'}})))
       return contactId;
     } catch (err) {
-      return alert(' Not deleted');
+      dispatch(addNotification(NotificationModel({ message: 'Vehicle is NOT removed!', options: { variant: 'warning'}})))
     }
   }
 );
@@ -142,7 +148,7 @@ export const removeContacts = createAsyncThunk(
 
     dispatch(getVehicles());
     dispatch(getUserData());
-
+    dispatch(addNotification(NotificationModel({ message: 'Multiple vehicles are removed!', options: { variant: 'success'}})))
     return data;
   }
 );
