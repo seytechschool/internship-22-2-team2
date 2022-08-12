@@ -19,13 +19,15 @@ import {
 } from './store/contactsSlice';
 import './autocomplete.css';
 import Asynchronous from './Asynchronous';
+import NotificationPanel from 'app/fuse-layouts/shared-components/notificationPanel/NotificationPanel';
+
 
 function ContactsHeader(props) {
   const dispatch = useDispatch();
   const searchText = useSelector(({ contactsApp }) => contactsApp.contacts.searchText);
   const contacts = useSelector(selectContacts);
   const mainTheme = useSelector(selectMainTheme);
-
+  console.log(NotificationPanel,'notification')
   return (
     <div className="flex flex-1 items-center justify-between p-4 sm:p-24">
       <div className="flex flex-shrink items-center sm:w-224">
@@ -71,6 +73,8 @@ function ContactsHeader(props) {
           </Button>
         </div>
       </div>
+      <NotificationPanel/>
+
 
       <div className="flex flex-1 items-center justify-center px-8 sm:px-12">
         <ThemeProvider theme={mainTheme}>
