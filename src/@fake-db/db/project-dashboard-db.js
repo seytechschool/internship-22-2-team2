@@ -992,7 +992,7 @@ const projectDashboardAppDB = {
             cells: [
               {
                 id: 'avatar',
-                value: ''
+                value: 'https://media-exp1.licdn.com/dms/image/C4D03AQHEKRn7GMxJtg/profile-displayphoto-shrink_200_200/0/1516890380776?e=1665619200&v=beta&t=AxQ7P-348bWet_OzHhGKlClylv20TUDIBbbeFnlvSkY'
               },
               {
                 id: 'name',
