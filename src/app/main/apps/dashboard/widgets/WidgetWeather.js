@@ -24,7 +24,7 @@ function WidgetWeather() {
   const fetchData = url => {
     fetch(url)
       .then(res => res.json())
-      .then(res => setWeatherData(res));
+      .then(res => res.cod === "404" ? setWeatherData(prevState => prevState) : setWeatherData(res));
   };
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
