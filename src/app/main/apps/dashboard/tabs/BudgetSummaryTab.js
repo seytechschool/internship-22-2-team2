@@ -5,6 +5,7 @@ import Widget10 from '../widgets/Widget10';
 import Widget5 from '../widgets/Widget5';
 import Widget8 from '../widgets/Widget8';
 import Widget9 from '../widgets/Widget9';
+import Widget13 from '../widgets/Widget13';
 
 function BudgetSummaryTab() {
   const widgets = useSelector(selectWidgets);
@@ -29,6 +30,9 @@ function BudgetSummaryTab() {
       </motion.div>
       <motion.div variants={item} className="widget flex w-full sm:w-1/4 p-12">
         <Widget9 widget={widgets.widget9} />
+      </motion.div>
+      <motion.div variants={item} className="widget flex w-full p-12">
+        <Widget13 />
       </motion.div>
     </motion.div>
   );

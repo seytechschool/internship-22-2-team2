@@ -172,14 +172,14 @@ function ContactDialog() {
     >
       <AppBar position="static" elevation={0}>
         <Toolbar className="flex w-full">
-          <Typography variant="subtitle" color="inherit">
+          <Typography variant="subtitle1" color="inherit">
             {contactDialog.type === 'new' ? 'New Vehicle' : 'Edit Vehicle Info'}
           </Typography>
         </Toolbar>
         <div className="flex flex-col items-center justify-center pb-24">
           <Avatar className="w-96 h-96" alt="contact avatar" src={choseAvatar(brand)} />
           {contactDialog.type === 'edit' && (
-            <Typography style={{ fontSize: '2rem' }} variant="subtitle" color="inherit" className="pt-8">
+            <Typography style={{ fontSize: '2rem' }} variant="body1" color="inherit" className="pt-8">
               {brand} {model}
             </Typography>
           )}
